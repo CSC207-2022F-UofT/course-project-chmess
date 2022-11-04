@@ -1,40 +1,46 @@
 # Implementation Rules and Checklist
 
-- [ ]  Create a new branch for desired feature
+- [ ] Create a new branch for desired feature
 
-- [ ]  Complete feature, commit and push to the **new branch** when you need to save
+- [ ] Complete feature, commit and push to the **new branch** when you need to save
 
-- [ ]  Check for merge conflicts
-  
-  - [ ]  Repair any merge conflicts and recheck
+- [ ] Check for merge conflicts
 
-- [ ]  When feature is complete, submit a **pull request** to merge into *parent branch* **[MUST be approved by at least two other team members]**
+- [ ] Repair any merge conflicts and recheck
+
+- [ ] When feature is complete, submit a **pull request** to merge into *parent branch* *[**MUST** be approved by at least **three** other team members]*
+
+---
 
 # Internal Milestones
 
 ## Internal Milestone 1
 
-The following deliverables should be complete
+*The following deliverables should be complete*
 
 | Name                                | Description                                                                                                                                                                              |
 | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Board Class and subclasses          | The board class must be **fully implemented** and ready for testing use                                                                                                                  |
-| Piece Classes                       | The piece abstract class must be **fully implemented** and ready for testing use. Sub piece classes should be well into development with minor exceptions which may be implemented later |
-| **No** Checkmate implementation     | The checkmate implmeentation need not be completed. This requires the completion of the post move validator class which should be done by ***internal milestone 2***.                    |
-| **No restriction** on king movement | The king piece simply needs to implement the abstract piece class with no restriction on where the king can move (apart from the normal ones eg. the square is occupied).                |
+| Board class and subclasses          | The board class must be **fully implemented** and ready for testing use                                                                                                                  |
+| Piece classes                       | The piece abstract class must be **fully implemented** and ready for testing use. Sub piece classes should be well into development with minor exceptions which may be implemented later |
+| **No** checkmate implementation     | The checkmate implmeentation need not be completed. This requires the completion of the post move validator class which should be done by ***internal milestone 2***.                    |
+| **No restriction** on King movement | The king piece simply needs to implement the abstract piece class with no restriction on where the king can move (apart from the normal ones eg. the square is occupied).                |
 | CLI implementation                  | Command line style GUI, proper GUI will be implemented later, this is simply just allows testing of piece and core game features                                                         |
 
 ## Internal Milestone 2
 
+*The following deliverables should be complete*
+
 | Name                                  | Description                                                                                                                                                                                          |
 | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Post Move Validator                   | Post move validator class should be implemented and fully completed.                                                                                                                                 |
+| PostMoveValidator                     | Post move validator class should be implemented and fully completed.                                                                                                                                 |
 | Core GUI                              | Core aspects of the GUI implemented (menus and board). Does **not** need to look polished/nice (polish is for ***internal milestone 3***)                                                            |
 | Checkmate implementation              | The checkmate implmentation **needs** be completed.                                                                                                                                                  |
-| Piece (and King) Movement Restriction | The king piece must follow all rules outlined in the game of chess (cannot move into check, must move on check, must recognize checkmate). Pieces **cannot move** if they place the king into check. |
-| Game Save System                      | Command line style GUI, proper GUI will be implemented later, this is simply just                                                                                                                    |
+| Piece (and King) movement restriction | The King piece must follow all rules outlined in the game of chess (cannot move into check, must move on check, must recognize checkmate). Pieces **cannot move** if they place the King into check. |
+| Game save system                      | Command line style GUI, proper GUI will be implemented later, this is simply just                                                                                                                    |
 
 ## Internal Milestone 3
+
+*The following deliverables should be complete*
 
 | Name               | Description                                                    |
 | ------------------ | -------------------------------------------------------------- |
@@ -42,7 +48,7 @@ The following deliverables should be complete
 | Extra Features     | Any extra features (not in MVP) can now be implemented/started |
 | Pizza party        | Food Yummy                                                     |
 
-
+----
 
 # Project Template
 
