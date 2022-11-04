@@ -1,3 +1,55 @@
+# Implementation Rules and Checklist
+
+- [ ] Create a new branch for desired feature
+
+- [ ] Complete feature, commit and push to the **new branch** when you need to save
+
+- [ ] Check for merge conflicts
+
+- [ ] Repair any merge conflicts and recheck
+
+- [ ] When feature is complete, submit a **pull request** to merge into *parent branch* *[**MUST** be approved by at least **three** other team members]*
+
+---
+
+# Internal Milestones
+
+## Internal Milestone 1
+
+*The following deliverables should be complete*
+
+| Name                                | Description                                                                                                                                                                              |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Board class and subclasses          | The board class must be **fully implemented** and ready for testing use                                                                                                                  |
+| Piece classes                       | The piece abstract class must be **fully implemented** and ready for testing use. Sub piece classes should be well into development with minor exceptions which may be implemented later |
+| **No** checkmate implementation     | The checkmate implmeentation need not be completed. This requires the completion of the post move validator class which should be done by ***internal milestone 2***.                    |
+| **No restriction** on King movement | The king piece simply needs to implement the abstract piece class with no restriction on where the king can move (apart from the normal ones eg. the square is occupied).                |
+| CLI implementation                  | Command line style GUI, proper GUI will be implemented later, this is simply just allows testing of piece and core game features                                                         |
+
+## Internal Milestone 2
+
+*The following deliverables should be complete*
+
+| Name                                  | Description                                                                                                                                                                                          |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PostMoveValidator                     | Post move validator class should be implemented and fully completed.                                                                                                                                 |
+| Core GUI                              | Core aspects of the GUI implemented (menus and board). Does **not** need to look polished/nice (polish is for ***internal milestone 3***)                                                            |
+| Checkmate implementation              | The checkmate implmentation **needs** be completed.                                                                                                                                                  |
+| Piece (and King) movement restriction | The King piece must follow all rules outlined in the game of chess (cannot move into check, must move on check, must recognize checkmate). Pieces **cannot move** if they place the King into check. |
+| Game save system                      | Command line style GUI, proper GUI will be implemented later, this is simply just                                                                                                                    |
+
+## Internal Milestone 3
+
+*The following deliverables should be complete*
+
+| Name               | Description                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| Project Completion | Project should be fully completed and polished at this point   |
+| Extra Features     | Any extra features (not in MVP) can now be implemented/started |
+| Pizza party        | Food Yummy                                                     |
+
+----
+
 # Project Template
 
 This is a template repository for CSC 207 projects. 
@@ -5,6 +57,7 @@ This repository contains starter code for a gradle project.
 It also contains workflow documents that give instructions on how to manage your Github repository and how to use Github Projects for efficient collaboration.
 
 ## Checklist For Your Project
+
 - [ ] Verify the correct settings for your project repository
 - [ ] Set up Github Projects
 - [ ] Create the implementation plan using issues and Github Projects
@@ -21,6 +74,7 @@ It also contains workflow documents that give instructions on how to manage your
 * [Project Planning and Development Guide](project_plan_dev.md): This document helps you to understand how to create and maintain a project plan for your class project. **This document helps you to complete the Implementation Plan Milestone.**
 
 ## Gradle Project
+
 Import this project into your Intellij editor. It should automatically recognise this as a gradle repository.
 The starter code was built using SDK version 11.0.1. Ensure that you are using this version for this project. (You can, of course, change the SDK version as per your requirement if your team has all agreed to use a different version)
 
