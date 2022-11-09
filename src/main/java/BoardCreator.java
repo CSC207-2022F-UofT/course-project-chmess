@@ -40,7 +40,6 @@ public class BoardCreator {
 
         placeAllPieces(board, p1);
         placeAllPieces(board, p2);
-
         return board;
     }
 }
