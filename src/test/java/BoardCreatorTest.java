@@ -9,8 +9,8 @@ class BoardCreatorTest {
         BoardCreator bc = new BoardCreator(p1, p2);
         Board board = bc.create();
         for (int x = 0; x < 8; x++) {
-            Assertions.assertTrue(board.getPieceAtCoords(x, 1) instanceof Pawn);
-            Assertions.assertTrue(board.getPieceAtCoords(x, 6) instanceof Pawn);
+            Assertions.assertTrue(board.getPieceAtCoords(x, 1).getType() == "pawn");
+            Assertions.assertTrue(board.getPieceAtCoords(x, 6).getType() == "pawn");
         }
     }
 

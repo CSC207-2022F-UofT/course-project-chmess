@@ -19,4 +19,12 @@ public class Game {
     public void setPlayers(Player[] players) {
         this.players = players;
     }
+
+    public char getBoardState() {
+
+    }
+
+    public Player getCurrentPlayer() {
+
+    }
 }

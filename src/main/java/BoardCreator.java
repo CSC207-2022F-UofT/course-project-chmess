@@ -26,7 +26,7 @@ public class BoardCreator {
     private void placePawns(Board board, Player player) {
         for (int i = 0; i < 8; i++) {
             int[] coords = getCoordsPlayerAware(i, 1, player);
-            Piece pawn = new Pawn();
+            Piece pawn = new Piece("pawn");
             placePiece(board, pawn, player, coords);
         }
     }
