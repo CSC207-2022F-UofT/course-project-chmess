@@ -20,11 +20,13 @@ class GameTest {
     @Test
     public void GamePlayers() {
         Game game = new Game();
-        Player p1 = new Player();
-        Player p2 = new Player();
+        Player p1 = new Player("Player 1", 'W');
+        Player p2 = new Player("Player 2", 'B');
         Player[] players = {p1, p2};
         game.setPlayers(players);
-        Assertions.assertEquals(game.getPlayers()[0], players[0]);
-        Assertions.assertEquals(game.getPlayers()[1], players[1]);
+        Assertions.assertEquals(game.getPlayers()[0].getName(), players[0].getName());
+        Assertions.assertEquals(game.getPlayers()[0].getColor(), players[0].getColor());
+        Assertions.assertEquals(game.getPlayers()[1].getName(), players[1].getName());
+        Assertions.assertEquals(game.getPlayers()[1].getColor(), players[1].getColor());
     }
 }
