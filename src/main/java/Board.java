@@ -9,7 +9,8 @@ public class Board {
     }
 
     public Board copy() {
-
+        // placeholder
+        return null;
     }
 
     public void setPieceAtCoords(int x, int y, Piece piece) {
@@ -29,18 +30,22 @@ public class Board {
     }
 
     public boolean areCoordsOnBoard(int x, int y) {
-
+        // placeholder
+        return true;
     }
 
     public int[] getCoordsOfPiece(Piece piece) {
-
+        // placeholder
+        return null;
     }
 
     public Board getPreviousBoard() {
-
+        // placeholder
+        return null;
     }
 
     public Move getPreviousMove() {
-
+        // placeholder
+        return null;
     }
 }

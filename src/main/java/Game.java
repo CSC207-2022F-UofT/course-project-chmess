@@ -21,10 +21,14 @@ public class Game {
     }
 
     public char getBoardState() {
-
+        // '$' for stalemate, '#' for checkmate, something else for neither
+        // maybe should replace with isStalemate, isCheckmate
+        // placeholder
+        return '$';
     }
 
     public Player getCurrentPlayer() {
-
+        // placeholder
+        return null;
     }
 }
