@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 class BoardCreatorTest {
     @Test
     public void BoardCreatorPawnsExist() {
-        Player p1 = new Player();
-        Player p2 = new Player();
+        Player p1 = new Player("Player 1", 'W');
+        Player p2 = new Player("Player 2", 'B');
         BoardCreator bc = new BoardCreator(p1, p2);
         Board board = bc.create();
         for (int x = 0; x < 8; x++) {
@@ -14,9 +14,10 @@ class BoardCreatorTest {
         }
     }
 
+    @Test
     public void BoardCreatorAllPiecesExist() {
-        Player p1 = new Player();
-        Player p2 = new Player();
+        Player p1 = new Player("Player 1", 'W');
+        Player p2 = new Player("Player 2", 'B');
         BoardCreator bc = new BoardCreator(p1, p2);
         Board board = bc.create();
 
@@ -30,8 +31,8 @@ class BoardCreatorTest {
 
     @Test
     public void BoardCreatorPiecesBelongToCorrectPlayers() {
-        Player p1 = new Player();
-        Player p2 = new Player();
+        Player p1 = new Player("Player 1", 'W');
+        Player p2 = new Player("Player 2", 'B');
         BoardCreator bc = new BoardCreator(p1, p2);
         Board board = bc.create();
 

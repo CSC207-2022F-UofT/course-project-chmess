@@ -1,4 +1,5 @@
 public class BoardCreator {
+    private PieceFactory pf = new PieceFactory();
     private Player p1;
     private Player p2;
 
@@ -26,7 +27,7 @@ public class BoardCreator {
     private void placePawns(Board board, Player player) {
         for (int i = 0; i < 8; i++) {
             int[] coords = getCoordsPlayerAware(i, 1, player);
-            Piece pawn = new Piece("pawn");
+            Piece pawn = pf.create("pawn");
             placePiece(board, pawn, player, coords);
         }
     }

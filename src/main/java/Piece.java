@@ -2,15 +2,27 @@ public class Piece {
     private String type;
     private Player player;
     private int[] coords;
+    private int pointValue;
 
-    public Piece(String type) {
-        this.type = type;
+    public Piece() {
         this.coords = new int[2];
     }
 
-    public String getType() {}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-    public int getPointValue() {}
+    public String getType() {
+        return this.type;
+    }
+
+    public void setPointValue(int pointValue) {
+        this.pointValue = pointValue;
+    }
+
+    public int getPointValue() {
+        return this.pointValue;
+    }
 
     public void setPlayer(Player p) {
         this.player = p;
@@ -26,9 +38,5 @@ public class Piece {
 
     public int[] getCoords() {
         return this.coords;
-    }
-
-    public Move generateMoves() {
-
     }
 }
