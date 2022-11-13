@@ -4,12 +4,13 @@ public class PromoteMove extends Move {
         super(origin, destination);
         this.piecePromoted = piecePromoted;
     }
+
     /**
      * Mutates board to reflect promotion. Removes pawn
      * being promoted and places piecePromoted at destination.
      */
     @Override
-    public void Try (Board board) {
+    public void Try(Board board) {
 
     }
 }
