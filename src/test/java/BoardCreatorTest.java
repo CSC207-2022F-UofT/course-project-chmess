@@ -9,8 +9,8 @@ class BoardCreatorTest {
         BoardCreator bc = new BoardCreator(p1, p2);
         Board board = bc.create();
         for (int x = 0; x < 8; x++) {
-            Assertions.assertTrue(board.getPieceAtCoords(x, 1).getType() == "pawn");
-            Assertions.assertTrue(board.getPieceAtCoords(x, 6).getType() == "pawn");
+            Assertions.assertTrue(board.getPieceAtAbsCoords(x, 1).getType() == "pawn");
+            Assertions.assertTrue(board.getPieceAtAbsCoords(x, 6).getType() == "pawn");
         }
     }
 
@@ -22,10 +22,10 @@ class BoardCreatorTest {
         Board board = bc.create();
 
         for (int x = 0; x < 8; x++) {
-            Assertions.assertNotNull(board.getPieceAtCoords(x, 0));
-            Assertions.assertNotNull(board.getPieceAtCoords(x, 1));
-            Assertions.assertNotNull(board.getPieceAtCoords(x, 6));
-            Assertions.assertNotNull(board.getPieceAtCoords(x, 7));
+            Assertions.assertNotNull(board.getPieceAtAbsCoords(x, 0));
+            Assertions.assertNotNull(board.getPieceAtAbsCoords(x, 1));
+            Assertions.assertNotNull(board.getPieceAtAbsCoords(x, 6));
+            Assertions.assertNotNull(board.getPieceAtAbsCoords(x, 7));
         }
     }
 
@@ -37,10 +37,10 @@ class BoardCreatorTest {
         Board board = bc.create();
 
         for (int x = 0; x < 8; x++) {
-            Assertions.assertEquals(board.getPieceAtCoords(x, 0).getPlayer(), p1);
-            Assertions.assertEquals(board.getPieceAtCoords(x, 0).getPlayer(), p1);
-            Assertions.assertEquals(board.getPieceAtCoords(x, 6).getPlayer(), p2);
-            Assertions.assertEquals(board.getPieceAtCoords(x, 7).getPlayer(), p2);
+            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 0).getPlayer(), p1);
+            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 0).getPlayer(), p1);
+            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 6).getPlayer(), p2);
+            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 7).getPlayer(), p2);
         }
     }
 }

@@ -2,10 +2,17 @@ public class Board {
     private int WIDTH = 8;
     private int HEIGHT = 8;
     private Piece[][] board;
+    private Piece[][] mirror;
+    private Piece[][] relativeBoard;
     private Player[] players;
 
     public Board() {
-        board = new Piece[WIDTH][HEIGHT];
+        board = new Piece[HEIGHT][WIDTH];
+        mirror = new Piece[HEIGHT][];
+        for (int i = 0; i < HEIGHT; i++) {
+            mirror[HEIGHT - 1 - i] = board[i];
+        }
+        relativeBoard = board;
     }
 
     /**
@@ -22,12 +29,28 @@ public class Board {
         return null;
     }
 
-    public void setPieceAtCoords(int x, int y, Piece piece) {
-        board[x][y] = piece;
+    public void setPieceAtAbsCoords(int x, int y, Piece piece) {
+        board[y][x] = piece;
     }
 
-    public Piece getPieceAtCoords(int x, int y) {
-        return board[x][y];
+    public Piece getPieceAtAbsCoords(int x, int y) {
+        return board[y][x];
+    }
+
+    public void setPieceAtMirrorCoords(int x, int y, Piece piece) {
+        mirror[y][x] = piece;
+    }
+
+    public Piece getPieceAtMirrorCoords(int x, int y) {
+        return mirror[y][x];
+    }
+
+    public void setPieceAtRelCoords(int x, int y, Piece piece) {
+        relativeBoard[y][x] = piece;
+    }
+
+    public Piece getPieceAtRelCoords(int x, int y) {
+        return relativeBoard[y][x];
     }
 
     public Player[] getPlayers() {
@@ -67,5 +90,25 @@ public class Board {
     public Move getPreviousMove() {
         // placeholder
         return null;
+    }
+
+    public void selectDefaultPov() {
+        this.relativeBoard = board;
+    }
+
+    public void selectMirrorPov() {
+        this.relativeBoard = mirror;
+    }
+
+    public int[] getAbsCoordsFromRelCoords(int[] coords) {
+        int[] absCoords = new int[2];
+        if (relativeBoard == board) {
+            absCoords[0] = coords[0];
+            absCoords[1] = coords[1];
+        } else {
+            absCoords[0] = coords[0];
+            absCoords[1] = HEIGHT - 1 - coords[1];
+        }
+        return absCoords;
     }
 }
