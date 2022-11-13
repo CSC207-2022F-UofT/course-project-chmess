@@ -7,6 +7,7 @@ public class PassentMove extends Move {
      * method from super class to move pawn to destination
      * and also removes pawn being captured.
      */
+    @Override
     public void Try (Board board) {
 
     }

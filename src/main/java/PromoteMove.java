@@ -8,6 +8,7 @@ public class PromoteMove extends Move {
      * Mutates board to reflect promotion. Removes pawn
      * being promoted and places piecePromoted at destination.
      */
+    @Override
     public void Try (Board board) {
 
     }
