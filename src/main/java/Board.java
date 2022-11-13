@@ -29,6 +29,11 @@ public class Board {
         return null;
     }
 
+    /**
+     * Assigns the given piece to the tile with the given absolute coordinates.
+     * Absolute coordinates have "white" in row y=0 and "black" in row y=7.
+     * The x-coordinate is from left-to-right as usual.
+     */
     public void setPieceAtAbsCoords(int x, int y, Piece piece) {
         board[y][x] = piece;
     }
@@ -37,6 +42,11 @@ public class Board {
         return board[y][x];
     }
 
+    /**
+     * Assigns the given piece to the tile with the given mirror coordinates.
+     * Mirror coordinates have "white" in row y=7 and "black" in row y=0.
+     * The x-coordinate is from left-to-right as usual.
+     */
     public void setPieceAtMirrorCoords(int x, int y, Piece piece) {
         mirror[y][x] = piece;
     }
@@ -45,6 +55,15 @@ public class Board {
         return mirror[y][x];
     }
 
+    /**
+     * Assigns the given piece to the tile with the given relative coordinates.
+     * Relative coordinates are either absolute or mirror, depending on the selected POV.
+     *
+     * @see Board#setPieceAtAbsCoords(int, int, Piece)    setPieceAtAbsCoords
+     * @see Board#setPieceAtMirrorCoords(int, int, Piece) setPieceAtMirrorCoords
+     * @see Board#selectDefaultPov() selectDefaultPov
+     * @see Board#selectMirrorPov()  selectMirrorPov
+     */
     public void setPieceAtRelCoords(int x, int y, Piece piece) {
         relativeBoard[y][x] = piece;
     }
@@ -62,12 +81,36 @@ public class Board {
     }
 
     /**
-     * Returns whether coordinates are on the board.
+     * Returns whether absolute coordinates are on the board.
      * This means that the x and y coordinates each lie in the appropriate range 0-7.
      *
      * @return whether the coordinates are on the Board
      */
-    public boolean areCoordsOnBoard(int x, int y) {
+    public boolean containsAbsCoords(int x, int y) {
+        // placeholder
+        return true;
+    }
+
+    /**
+     * Returns whether mirror coordinates are on the board.
+     * This means that the absolute coordinates are on the board.
+     *
+     * @see    Board#containsAbsCoords(int, int) containsAbsCoords
+     * @return whether the coordinates are on the Board
+     */
+    public boolean containsMirrorCoords(int x, int y) {
+        // placeholder
+        return true;
+    }
+
+    /**
+     * Returns whether relative coordinates are on the board.
+     * This means that the absolute coordinates are on the board.
+     *
+     * @see    Board#containsAbsCoords(int, int) containsAbsCoords
+     * @return whether the coordinates are on the Board
+     */
+    public boolean containsRelCoords(int x, int y) {
         // placeholder
         return true;
     }
@@ -92,23 +135,35 @@ public class Board {
         return null;
     }
 
+    /**
+     * Interpret all relative coordinates as absolute coordinates.
+     *
+     * @see Board#setPieceAtRelCoords(int, int, Piece) setPieceAtRelCoords
+     * @see Board#setPieceAtAbsCoords(int, int, Piece) setPieceAtAbsCoords
+     */
     public void selectDefaultPov() {
         this.relativeBoard = board;
     }
 
+    /**
+     * Interpret all relative coordinates as mirror coordinates.
+     *
+     * @see Board#setPieceAtRelCoords(int, int, Piece)    setPieceAtRelCoords
+     * @see Board#setPieceAtMirrorCoords(int, int, Piece) setPieceAtMirrorCoords
+     */
     public void selectMirrorPov() {
         this.relativeBoard = mirror;
     }
 
-    public int[] getAbsCoordsFromRelCoords(int[] coords) {
-        int[] absCoords = new int[2];
-        if (relativeBoard == board) {
-            absCoords[0] = coords[0];
-            absCoords[1] = coords[1];
-        } else {
-            absCoords[0] = coords[0];
-            absCoords[1] = HEIGHT - 1 - coords[1];
-        }
+    /**
+     * Returns the absolute coordinates corresponding to the relative coordinates
+     *
+     * @see Board#setPieceAtRelCoords(int, int, Piece) setPieceAtRelCoords
+     */
+    public int[] getAbsCoordsFromRelCoords(int x, int y) {
+        int[] absCoords = {x, y};
+        if (relativeBoard != board) absCoords[1] = HEIGHT - 1 - y;
+
         return absCoords;
     }
 }
