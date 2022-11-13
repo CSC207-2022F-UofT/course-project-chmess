@@ -28,7 +28,9 @@ public class Game {
      * Note: Should maybe be replaced with isStalemate, isCheckmate
      */
     public char getBoardState() {
-        // placeholder
+        // Note: Closely related to seeing if King is in check
+        // both maybe should be moved to their own classes
+        // TODO
         return '$';
     }
 
@@ -39,7 +41,8 @@ public class Game {
      * @return the Player object
      */
     public Player getCurrentPlayer() {
-        // placeholder
+        // TODO
+        // the Board probably needs to know about this too
         return null;
     }
 }

@@ -25,7 +25,7 @@ public class Board {
      * @return a clone of the board
      */
     public Board copy() {
-        // placeholder
+        // TODO
         return null;
     }
 
@@ -87,7 +87,7 @@ public class Board {
      * @return whether the coordinates are on the Board
      */
     public boolean containsAbsCoords(int x, int y) {
-        // placeholder
+        // TODO
         return true;
     }
 
@@ -99,7 +99,7 @@ public class Board {
      * @return whether the coordinates are on the Board
      */
     public boolean containsMirrorCoords(int x, int y) {
-        // placeholder
+        // TODO
         return true;
     }
 
@@ -111,7 +111,7 @@ public class Board {
      * @return whether the coordinates are on the Board
      */
     public boolean containsRelCoords(int x, int y) {
-        // placeholder
+        // TODO
         return true;
     }
 
@@ -121,7 +121,7 @@ public class Board {
      * @return the preceding Board object
      */
     public Board getPreviousBoard() {
-        // placeholder
+        // TODO
         return null;
     }
 
@@ -131,7 +131,7 @@ public class Board {
      * @return the preceding Move object
      */
     public Move getPreviousMove() {
-        // placeholder
+        // TODO
         return null;
     }
 

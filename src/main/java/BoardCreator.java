@@ -40,6 +40,7 @@ public class BoardCreator {
     }
 
     private void placeAllPieces(Board board, Player player) {
+        // TODO: Finish implementing this method
         this.placePawns(board, player);
     }
 

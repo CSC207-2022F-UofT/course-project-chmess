@@ -16,6 +16,7 @@ public class Piece {
      * @return a clone of this piece
      */
     public Piece copy() {
+        // TODO
         return null;
     }
 
