@@ -1,8 +1,11 @@
+import java.util.List;
+
 public class Piece {
     private String type;
     private Player player;
     private int[] coords;
     private int pointValue;
+    private MovesGenerator mg;
 
     public Piece() {
         this.coords = new int[2];
@@ -50,5 +53,28 @@ public class Piece {
 
     public int[] getCoords() {
         return this.coords;
+    }
+
+    /**
+     * Returns a list of semivalid moves that this piece can make.
+     * A semivalid move is one which is valid in almost every way,
+     * except it could possibly put one's own King in check.
+     *
+     * @return list of semivalid moves
+     */
+    public List<Move> generateMoves() {
+        // TODO. Note: Should use mg.
+        // mg probably needs to take at least the board
+        // and the coordinates of this piece (a priori
+        // it knows nothing except *how* to generate moves)
+        return null;
+    }
+
+    public void setMovesGenerator(MovesGenerator mg) {
+        this.mg = mg;
+    }
+
+    public MovesGenerator getMovesGenerator() {
+        return this.mg;
     }
 }
