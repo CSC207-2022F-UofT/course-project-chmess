@@ -8,8 +8,12 @@ public class Move {
         this.origin = origin;
         this.destination = destination;
     }
+    /**
+     * Mutates board to reflect 'natural' move as opposed to
+     * castling, promoting, etc. Piece located on origin square
+     * is moved to destination square.
+     */
     public void Try (Board board) {
-        // mutates board to reflect 'natural' move as opposed to castling, etc
-        // piece located on origin square is moved to destination square
+
     }
 }
