@@ -1,8 +1,8 @@
 public class Board {
-    private int WIDTH = 8;
-    private int HEIGHT = 8;
-    private Piece[][] board;
-    private Piece[][] mirror;
+    private final int WIDTH = 8;
+    private final int HEIGHT = 8;
+    private final Piece[][] board;
+    private final Piece[][] mirror;
     private Piece[][] relativeBoard;
     private Player[] players;
 
@@ -26,6 +26,46 @@ public class Board {
      */
     public Board copy() {
         // TODO
+        return null;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+    }
+
+    public Player[] getPlayers() {
+        return this.players;
+    }
+
+    /**
+     * Returns the Board object which immediately precedes this one in history.
+     *
+     * @return the preceding Board object
+     */
+    public Board getPreviousBoard() {
+        // TODO
+        return null;
+    }
+
+    /**
+     * Returns the Move object which turned the previous Board object into this one.
+     *
+     * @return the preceding Move object
+     */
+    public Move getPreviousMove() {
+        // TODO
+        return null;
+    }
+
+    /**
+     * Return the Player object corresponding to
+     * the player whose turn it is to make a move.
+     *
+     * @return the Player object
+     */
+    public Player getCurrentPlayer() {
+        // TODO
+        // the Board probably needs to know about this too
         return null;
     }
 
@@ -72,14 +112,6 @@ public class Board {
         return relativeBoard[y][x];
     }
 
-    public Player[] getPlayers() {
-        return this.players;
-    }
-
-    public void setPlayers(Player[] players) {
-        this.players = players;
-    }
-
     /**
      * Returns whether absolute coordinates are on the board.
      * This means that the x and y coordinates each lie in the appropriate range 0-7.
@@ -113,26 +145,6 @@ public class Board {
     public boolean containsRelCoords(int x, int y) {
         // TODO
         return true;
-    }
-
-    /**
-     * Returns the Board object which immediately precedes this one in history.
-     *
-     * @return the preceding Board object
-     */
-    public Board getPreviousBoard() {
-        // TODO
-        return null;
-    }
-
-    /**
-     * Returns the Move object which turned the previous Board object into this one.
-     *
-     * @return the preceding Move object
-     */
-    public Move getPreviousMove() {
-        // TODO
-        return null;
     }
 
     /**
