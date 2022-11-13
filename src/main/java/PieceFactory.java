@@ -6,7 +6,7 @@ public class PieceFactory {
      * The resulting object should have appropriate:
      * - type attribute,
      * - point value,
-     * - move generator.
+     * - moves generator.
      *
      * @param type  the type of piece to be created
      * @return      the piece
@@ -17,9 +17,26 @@ public class PieceFactory {
 
         // Based on type, do what's needed. Possible types:
         // "pawn", "knight", "bishop", "rook", "queen", "king"
+        // TODO: Attach appropriate MovesGenerator for each type
         switch (type) {
             case "pawn":
                 piece.setPointValue(1);
+                break;
+            case "knight":
+                piece.setPointValue(3);
+                break;
+            case "bishop":
+                piece.setPointValue(3);
+                break;
+            case "rook":
+                piece.setPointValue(5);
+                break;
+            case "queen":
+                piece.setPointValue(9);
+                break;
+            case "king":
+                // King can never be captured so whatever
+                piece.setPointValue(0);
                 break;
         }
 
