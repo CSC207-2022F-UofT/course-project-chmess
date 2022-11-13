@@ -20,13 +20,24 @@ public class Game {
         this.players = players;
     }
 
+    /**
+     * Returns a char representing the board state.
+     * This should be '$' for stalemate or '#' for checkmate.
+     * No character is designated for the case of neither.
+     *
+     * Note: Should maybe be replaced with isStalemate, isCheckmate
+     */
     public char getBoardState() {
-        // '$' for stalemate, '#' for checkmate, something else for neither
-        // maybe should replace with isStalemate, isCheckmate
         // placeholder
         return '$';
     }
 
+    /**
+     * Return the Player object corresponding to
+     * the player whose turn it is to make a move.
+     *
+     * @return the Player object
+     */
     public Player getCurrentPlayer() {
         // placeholder
         return null;

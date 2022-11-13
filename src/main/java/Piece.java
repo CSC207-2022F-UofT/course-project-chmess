@@ -8,6 +8,13 @@ public class Piece {
         this.coords = new int[2];
     }
 
+    /**
+     * Returns a semi-deep clone of the Piece object.
+     * More precisely, the coords array is replaced with a clone.
+     * (The Player object is not replaced.)
+     *
+     * @return a clone of this piece
+     */
     public Piece copy() {
         return null;
     }
