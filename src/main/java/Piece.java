@@ -8,6 +8,10 @@ public class Piece {
         this.coords = new int[2];
     }
 
+    public Piece copy() {
+        return null;
+    }
+
     public void setType(String type) {
         this.type = type;
     }
