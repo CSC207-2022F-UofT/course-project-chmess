@@ -4,11 +4,11 @@ public class Move {
     public boolean isPawnDouble;
     public boolean isCapture;
 
-    public Move (Piece piece, int[] destination, boolean isPawnDouble, boolean isCapture) {
+    public Move (Piece piece, int[] destination) {
         this.piece = piece;
         this.destination = destination;
-        this.isPawnDouble = isPawnDouble;
-        this.isCapture = isCapture;
+        this.isPawnDouble = False;
+        this.isCapture = False;
     }
 
 }
