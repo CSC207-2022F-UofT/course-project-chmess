@@ -1,18 +1,15 @@
 public class BoardCopier {
-    private Board board;
-
-    public BoardCopier(Board board) {
-        this.board = board;
-    }
+    public BoardCopier() {}
 
     /**
      * Returns a deep clone of the given Board instance.
      *
      * @see Board#copy() Board.copy()
      *
+     * @param board the board to be cloned
      * @return a clone of the board
      */
-    public Board createCopy() {
+    public Board createCopy(Board board) {
         // TODO
         return null;
     }
