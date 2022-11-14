@@ -26,7 +26,7 @@ Class CLIOutput {
         if (!symbol) {
             for (int i = 0; i < pieceList.size(); i++) {
                 Piece piece = pieceList.get(i);
-                System.out.println(piece.toString());
+                System.out.println(piece.getType());
             }
         }
         for (int i = 0; i < 8; i++) {
