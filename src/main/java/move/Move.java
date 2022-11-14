@@ -1,3 +1,5 @@
+package move;
+
 public class Move {
     public int[] origin;
     public int[] destination;

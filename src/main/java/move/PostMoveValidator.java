@@ -1,4 +1,6 @@
+package move;
 import java.util.List;
+
 public class PostMoveValidator {
     public List<Move> validMoves;
     /**

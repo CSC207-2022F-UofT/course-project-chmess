@@ -1,3 +1,5 @@
+package move;
+
 class MoveManager {
     public MoveManager() {}
 

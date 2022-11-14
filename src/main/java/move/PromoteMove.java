@@ -1,3 +1,5 @@
+package move;
+
 public class PromoteMove extends Move {
     public Piece piecePromoted;
     public PromoteMove(int[] origin, int[] destination, Piece piecePromoted) {

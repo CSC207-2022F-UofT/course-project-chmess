@@ -1,3 +1,5 @@
+package move.movegen;
+
 import java.util.List;
 /**
  * Abstract class containing useful methods used in

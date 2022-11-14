@@ -1,3 +1,5 @@
+package move;
+
 public class EnPassantMove extends Move {
     public EnPassantMove(int[] origin, int[] destination) {
         super(origin, destination);

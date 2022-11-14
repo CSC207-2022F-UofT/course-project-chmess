@@ -1,3 +1,5 @@
+package move;
+
 public class MoveTryer {
     public Board newBoard;
     /**

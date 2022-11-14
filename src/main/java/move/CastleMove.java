@@ -1,3 +1,5 @@
+package move;
+
 public class CastleMove extends Move {
     public CastleMove(int[] origin, int[] destination) {
         super(origin, destination);

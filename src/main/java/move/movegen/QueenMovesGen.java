@@ -1,3 +1,5 @@
+package move.movegen;
+
 public class QueenMovesGen extends MovesGenerator {
     /**
      * Constructor creates list of possible moves a queen
