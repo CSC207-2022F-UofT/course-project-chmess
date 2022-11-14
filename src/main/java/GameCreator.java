@@ -11,6 +11,8 @@ class GameCreator {
     public Game create() {
         Game game = new Game();
 
+        // TODO: Rest of initialization
+
         return game;
     }
 }

@@ -4,7 +4,7 @@ public class EnPassantMove extends Move {
     }
 
     /**
-     * Mutates board to reflect en passent. Calls Try
+     * Mutates board to reflect en passant. Calls Try
      * method from super class to move pawn to destination
      * and also removes pawn being captured.
      */
