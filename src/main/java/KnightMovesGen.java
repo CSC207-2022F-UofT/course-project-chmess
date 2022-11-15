@@ -20,6 +20,5 @@ public class KnightMovesGen extends MovesGenerator {
         }
         super.removeInvalid(this.moves, board);
         return this.moves;
-
     }
 }
