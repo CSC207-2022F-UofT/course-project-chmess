@@ -21,7 +21,6 @@ public class Move {
         this.origin = origin;
         this.destination = destination;
     }
-
     /**
      * Returns the coordinates of the piece which is to be moved.
      *
