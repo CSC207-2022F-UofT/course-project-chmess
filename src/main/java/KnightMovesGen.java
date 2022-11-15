@@ -10,5 +10,6 @@ public class KnightMovesGen extends MovesGenerator {
     public KnightMovesGen (Board board, Piece knight) {
         // implementation
         // calls removeInvalid method from parent class to remove invalid moves
+
     }
 }
