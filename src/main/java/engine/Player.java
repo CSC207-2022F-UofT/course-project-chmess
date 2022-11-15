@@ -1,4 +1,7 @@
+package engine;
+
 import java.util.List;
+
 public class Player {
     public String name;
     private char color;

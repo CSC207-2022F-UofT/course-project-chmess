@@ -1,4 +1,4 @@
-package move;
+package engine.move;
 
 public class CastleMove extends Move {
     public CastleMove(int[] origin, int[] destination) {

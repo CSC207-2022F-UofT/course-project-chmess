@@ -1,3 +1,5 @@
+package engine.boardfunctions;
+
 public class BoardCopier {
     public BoardCopier() {}
 

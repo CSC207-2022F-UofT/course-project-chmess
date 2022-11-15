@@ -1,4 +1,4 @@
-package move;
+package engine.move;
 
 public class Move {
     public int[] origin;

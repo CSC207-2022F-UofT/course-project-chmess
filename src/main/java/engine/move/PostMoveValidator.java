@@ -1,4 +1,4 @@
-package move;
+package engine.move;
 import java.util.List;
 
 public class PostMoveValidator {

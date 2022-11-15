@@ -1,4 +1,4 @@
-package move.movegen;
+package engine.move.movegen;
 
 import java.util.List;
 

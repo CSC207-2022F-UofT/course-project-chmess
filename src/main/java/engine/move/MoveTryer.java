@@ -1,4 +1,4 @@
-package move;
+package engine.move;
 
 public class MoveTryer {
     public Board newBoard;

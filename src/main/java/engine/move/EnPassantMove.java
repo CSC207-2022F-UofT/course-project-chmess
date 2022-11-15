@@ -1,4 +1,4 @@
-package move;
+package engine.move;
 
 public class EnPassantMove extends Move {
     public EnPassantMove(int[] origin, int[] destination) {

@@ -1,4 +1,4 @@
-package move;
+package engine.move;
 
 public class PromoteMove extends Move {
     public Piece piecePromoted;

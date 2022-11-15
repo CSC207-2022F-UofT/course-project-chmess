@@ -1,3 +1,5 @@
+package engine.boardfunctions;
+
 public class BoardCreator {
     private PieceFactory pf = new PieceFactory();
     private Player p1;

@@ -1,4 +1,4 @@
-package move;
+package engine.move;
 
 class MoveManager {
     public MoveManager() {}

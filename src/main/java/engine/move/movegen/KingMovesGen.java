@@ -1,4 +1,4 @@
-package move.movegen;
+package engine.move.movegen;
 
 public class KingMovesGen extends MovesGenerator {
     /**

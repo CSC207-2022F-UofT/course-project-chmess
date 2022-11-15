@@ -1,3 +1,5 @@
+package engine;
+
 class GameStringManager {
     public GameStringManager() {}
 
