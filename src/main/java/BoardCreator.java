@@ -15,6 +15,10 @@ public class BoardCreator {
             + "pppppppp"
             + "rnbqkbnr";
 
+    /**
+     * @param p1 the player object representing white
+     * @param p2 the player object representing black
+     */
     public BoardCreator(Player p1, Player p2) {
         this.p1 = p1;
         this.p2 = p2;
@@ -26,6 +30,7 @@ public class BoardCreator {
      * Returns null if the given char has no corresponding type.
      *
      * @param c the char shorthand for a piece type
+     * @return the piece type the char represents
      */
     private String getTypeFromChar(char c) {
         switch (Character.toLowerCase(c)) {
@@ -51,6 +56,7 @@ public class BoardCreator {
      * given its character representation it.
      *
      * @param c the character representation of the piece
+     * @return a new Piece instance corresponding to the char
      */
     private Piece createPieceFromChar(char c) {
         String type = getTypeFromChar(c);
