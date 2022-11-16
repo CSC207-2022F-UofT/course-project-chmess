@@ -4,6 +4,7 @@ public class BoardCreator {
     private final PieceFactory pf = new PieceFactory();
     private final Player p1;
     private final Player p2;
+    // Board.getPieceAtAbsCoords(0,0) is the bottom-left square a1
     private final String boardString =
             "RNBQKBNR"
             + "PPPPPPPP"
@@ -82,31 +83,17 @@ public class BoardCreator {
     }
 
     /**
-     * Places a Piece object on the Board, setting its Player and coordinates.
-     * Also put the Piece object in the Board object.
-     * (This method mutates the given Board and Piece objects.)
-     */
-    private char[][] getCharArrayFromGridString(String gridString, int width, int height) {
-        char[][] charArray = new char[width][height];
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                int index = y * width + x;
-                charArray[x][y] = gridString.charAt(index);
-            }
-        }
-        return charArray;
-    }
-
-    /**
      * Places all pieces on the board, according to layout in usual chess.
      *
      * @param board the board on which to place the pieces
      */
     private void placeAllPieces(Board board) {
-        char[][] charArray = getCharArrayFromGridString(boardString, WIDTH, HEIGHT);
-        for (int x = 0; x < WIDTH; x++) {
-            for (int y = 0; y < HEIGHT; y++) {
-                char c = charArray[x][y];
+        // Iterate over the boardString, while imbuing it with 2D coords
+        for (int y = 0; y < HEIGHT; y++) {
+            for (int x = 0; x < WIDTH; x++) {
+                int index = y * WIDTH + x;
+                char c = boardString.charAt(index);
+                // If a char has no corresponding type, ignore it
                 if (getTypeFromChar(c) != null) {
                     Piece piece = createPieceFromChar(c);
                     placePiece(board, piece, x, y);
