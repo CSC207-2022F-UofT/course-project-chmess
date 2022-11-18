@@ -8,11 +8,11 @@ class GameCreator {
      *
      * @return a new game
      */
-    public Game create() {
+    public Game create(String playerName1, String playerName2) {
         Game game = new Game();
 
-        Player p1 = new Player("Player 1", 'W');
-        Player p2 = new Player("Player 2", 'B');
+        Player p1 = new Player(playerName1, 'W');
+        Player p2 = new Player(playerName2, 'B');
         BoardCreator bc = new BoardCreator(p1, p2);
         Board board = bc.create();
         game.setBoard(board);
