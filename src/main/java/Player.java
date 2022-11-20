@@ -12,9 +12,16 @@ public class Player {
         // implement: get players pieces from board.pieces and store in this.pieces
     }
 
+    /*
+     * Returns a deep copy of the player class
+     */
     public Player copy() {
-        // TODO
-        return null;
+        Player newPlayer = new Player(this.name, this.color);
+
+        newPlayer.points = this.points;
+        newPlayer.capturedPieces = this.capturedPieces;
+        
+        return newPlayer;
     }
 
     public String getName() {
