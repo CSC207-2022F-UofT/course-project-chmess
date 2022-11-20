@@ -27,7 +27,7 @@ public class Piece {
         this.type = type;
     }
 
-    public Char getType() {
+    public String getType() {
         //Returns P for pawn, B for bishop, N for knight, 
         //R for rook, Q for queen, K for king
         return this.type;
@@ -78,5 +78,9 @@ public class Piece {
 
     public MovesGenerator getMovesGenerator() {
         return this.mg;
+    }
+
+    public char getColor() {
+        return this.player.getColor();
     }
 }

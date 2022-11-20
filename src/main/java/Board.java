@@ -4,7 +4,7 @@ public class Board {
     private final Piece[][] board;
     private final Piece[][] mirror;
     private Piece[][] relativeBoard;
-    private Player[] players;
+    private Player[] players; //List of both players
 
     public Board() {
         board = new Piece[HEIGHT][WIDTH];
@@ -69,6 +69,9 @@ public class Board {
         return null;
     }
 
+    public Piece[][] getBoard() {
+        return this.board;
+    }
     /**
      * Assigns the given piece to the tile with the given absolute coordinates.
      * Absolute coordinates have "white" in row y=0 and "black" in row y=7.

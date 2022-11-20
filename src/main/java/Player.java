@@ -1,7 +1,7 @@
 import java.util.List;
 public class Player {
     public String name;
-    private char color;
+    private char color; // 'w' or 'b'
     private List<Piece> pieces;
     private int points = 0;
     private List<Piece> capturedPieces;
