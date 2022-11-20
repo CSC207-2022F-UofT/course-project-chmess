@@ -25,7 +25,7 @@ public class MoveTest {
         int[] origin = {0, 0};
         int[] dest = {0, 1};
         Move move = new Move(origin, dest);
-        move.execute(board, king);
+        move.execute(board);
 
         Assertions.assertEquals(board.getCurrentPlayer().getColor(), 'B');
     }
@@ -44,7 +44,7 @@ public class MoveTest {
         int[] origin = {0, 0};
         int[] dest = {0, 1};
         Move move = new Move(origin, dest);
-        move.execute(board, king);
+        move.execute(board);
 
         Assertions.assertNull(board.getPieceAtAbsCoords(0, 0));
         Assertions.assertEquals(board.getPieceAtAbsCoords(0, 1), king);
@@ -67,7 +67,7 @@ public class MoveTest {
         int[] origin = {0, 0};
         int[] dest = {0, 1};
         Move move = new Move(origin, dest);
-        move.execute(board, king);
+        move.execute(board);
         Assertions.assertEquals(p1.getCapturedPieces().size(), 1);
     }
 }

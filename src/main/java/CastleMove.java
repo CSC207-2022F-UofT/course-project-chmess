@@ -9,7 +9,7 @@ public class CastleMove extends Move {
      * the King's origin and destination.
      */
     @Override
-    public void execute(Board board, Piece piece) {
+    public void execute(Board board) {
         // this can be implemented by calling the Try method from
         // super class 2 times (once to move king and once to move rook)
     }

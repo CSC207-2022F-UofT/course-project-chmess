@@ -13,8 +13,10 @@ public class Move {
      * Mutates board to reflect 'natural' move as opposed to
      * castling, promoting, etc. Piece located on origin square
      * is moved to destination square.
+     * @param board the board on which this move should be executed
      */
-    public void execute(Board board, Piece piece) {
+    public void execute(Board board) {
+        Piece piece = board.getPieceAtAbsCoords(origin[0], origin[1]);
         board.setPieceAtAbsCoords(origin[0], origin[1], null);
         Piece captured = board.getPieceAtAbsCoords(destination[0], destination[1]);
         if (captured != null) {

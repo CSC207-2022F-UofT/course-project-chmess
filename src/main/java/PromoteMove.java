@@ -10,7 +10,7 @@ public class PromoteMove extends Move {
      * being promoted and places piecePromoted at destination.
      */
     @Override
-    public void execute(Board board, Piece piece) {
+    public void execute(Board board) {
 
     }
 }
