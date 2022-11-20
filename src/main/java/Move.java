@@ -14,7 +14,7 @@ public class Move {
      * castling, promoting, etc. Piece located on origin square
      * is moved to destination square.
      */
-    public void Try(Board board) {
+    public void execute(Board board, Piece piece) {
 
     }
 }

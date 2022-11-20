@@ -9,7 +9,7 @@ public class EnPassantMove extends Move {
      * and also removes pawn being captured.
      */
     @Override
-    public void Try(Board board) {
+    public void execute(Board board, Piece piece) {
 
     }
 }
