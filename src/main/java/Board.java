@@ -1,11 +1,17 @@
+/**
+ * A board of chess pieces.
+ */
 public class Board {
     public static final int WIDTH = 8;
     public static final int HEIGHT = 8;
     private final Piece[][] board;
     private final Piece[][] mirror;
     private Piece[][] relativeBoard;
-    private Player[] players;
+    private Player[] players = new Player[2];
 
+    /**
+     * Creates an empty board with no players.
+     */
     public Board() {
         board = new Piece[HEIGHT][WIDTH];
         mirror = new Piece[HEIGHT][];
@@ -29,10 +35,18 @@ public class Board {
         return null;
     }
 
+    /**
+     * Set this board's players.
+     * @param players
+     */
     public void setPlayers(Player[] players) {
         this.players = players;
     }
 
+    /**
+     * Get this board's players.
+     * @return players on this board
+     */
     public Player[] getPlayers() {
         return this.players;
     }

@@ -1,3 +1,6 @@
+/**
+ * A game of chess.
+ */
 public class Game {
     private Board board;
     private char gameState;

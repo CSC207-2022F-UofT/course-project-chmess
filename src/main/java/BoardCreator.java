@@ -1,3 +1,9 @@
+/**
+ * A creator for the "typical" Board instance.
+ * The created Board object will have new pieces placed
+ * according to the standard chess layout, where no moves have been made.
+ * Each BoardCreator instance is intended to be used once.
+ */
 public class BoardCreator {
     private final int WIDTH = 8;
     private final int HEIGHT = 8;
@@ -16,6 +22,10 @@ public class BoardCreator {
             + "rnbqkbnr";
 
     /**
+     * Creates a new BoardCreator object.
+     * With the parameters identify which player objects
+     * should be used when creating a board.
+     *
      * @param p1 the player object representing white
      * @param p2 the player object representing black
      */

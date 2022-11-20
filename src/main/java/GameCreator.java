@@ -1,3 +1,7 @@
+/**
+ * A creator for a new Game instance, representing
+ * a chess match in which no moves have been made.
+ */
 class GameCreator {
     public GameCreator() {}
 
@@ -6,6 +10,8 @@ class GameCreator {
      * (with pieces placed according to the rules of chess)
      * and new Player instances.
      *
+     * @param playerName1 the name of the white player
+     * @param playerName2 the name of the black player
      * @return a new game
      */
     public Game create(String playerName1, String playerName2) {
