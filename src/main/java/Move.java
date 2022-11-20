@@ -15,6 +15,11 @@ public class Move {
      * is moved to destination square.
      */
     public void execute(Board board, Piece piece) {
-
+        board.setPieceAtAbsCoords(origin[0], origin[1], null);
+        Piece captured = board.getPieceAtAbsCoords(destination[0], destination[1]);
+        if (captured != null) {
+            piece.getPlayer().addCapturedPiece(captured);
+        }
+        board.setPieceAtAbsCoords(destination[0], destination[1], piece);
     }
 }
