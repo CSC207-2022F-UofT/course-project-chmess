@@ -5,8 +5,6 @@
  * Each BoardCreator instance is intended to be used once.
  */
 public class BoardCreator {
-    private final int WIDTH = 8;
-    private final int HEIGHT = 8;
     private final PieceFactory pf = new PieceFactory();
     private final Player p1;
     private final Player p2;
@@ -104,10 +102,12 @@ public class BoardCreator {
      * @param board the board on which to place the pieces
      */
     private void placeAllPieces(Board board) {
+        int width = board.WIDTH;
+        int height = board.HEIGHT;
         // Iterate over the boardString, while imbuing it with 2D coords
-        for (int y = 0; y < HEIGHT; y++) {
-            for (int x = 0; x < WIDTH; x++) {
-                int index = y * WIDTH + x;
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int index = y * width + x;
                 char c = boardString.charAt(index);
                 // If a char has no corresponding type, ignore it
                 if (getTypeFromChar(c) != null) {
