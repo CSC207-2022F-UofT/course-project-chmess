@@ -1,18 +1,48 @@
+/**
+ * A representation of the most common move type.
+ * Contrast with the anomalies
+ * (1) castling, where multiple pieces move;
+ * (2) promoting, where the moved piece changes type;
+ * (3) en passant, where the captured piece's coordinates
+ * do not match the capturing piece's destination.
+ */
 public class Move {
-    public int[] origin;
-    public int[] destination;
-    public boolean isPawnDouble = false;
-    public boolean isCapture = false;
+    protected int[] origin;
+    protected int[] destination;
 
+    /**
+     * Creates a Move object with the given coordinate pairs.
+     *
+     * @param origin      the origin of the piece to be moved
+     * @param destination the destination of the piece to be moved
+     */
     public Move (int[] origin, int[] destination) {
         this.origin = origin;
         this.destination = destination;
     }
 
     /**
-     * Mutates board to reflect 'natural' move as opposed to
-     * castling, promoting, etc. Piece located on origin square
-     * is moved to destination square.
+     * Returns the coordinates of the piece which is to be moved.
+     *
+     * @return the origin for this move
+     */
+    public int[] getOrigin() {
+        return this.origin;
+    }
+
+    /**
+     * Returns the destination coordinates of the piece which is to be moved.
+     *
+     * @return the destination for this move
+     */
+    public int[] getDestination() {
+        return this.destination;
+    }
+
+    /**
+     * Mutates the given board (as well as players and pieces within the board)
+     * to reflect the state of the board after this move is made.
+     *
      * @param board the board on which this move should be executed
      */
     public void execute(Board board) {
