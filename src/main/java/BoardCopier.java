@@ -9,26 +9,45 @@ public class BoardCopier {
      */
 
     private Board newBoard;
-    private Board oldBoard;
+    private Board oldBoard = new Board();
 
-    public BoardCopier(Board oldBoard) {
-        this.oldBoard = oldBoard;
-    }
+    public BoardCopier() {}
 
     public Board createCopy(Board board) {
-        // TODO
-        // copy to helper functions - must deep copy all classes.
-        
-        
-        
-        return null;
+        this.oldBoard = board;
+        Player[] oldPlayers = this.oldBoard.getPlayers();
+        clonePlayer(oldPlayers);
+
+        //TODO!!!
+        // Don't entirely understand the use of mirror coordinates
+        // If still needed, will need to implement later
+
+        Piece[][] pieceBoard = oldBoard.getBoard();
+        clonePieces(pieceBoard);
+
+        Piece[][] relativeBoard = oldBoard.getRelBoard();
+        clonePieces(relativeBoard);
+
+        Piece[][] mirrorBoard = oldBoard.getMirrorBoard();
+        clonePieces(mirrorBoard);
+
+
+        return this.newBoard;
     }
 
-    private Piece clonePiece(Piece piece) {
-        // TODO: PIECE COPY MUST BE FINISHED
-        Piece newPiece = piece.copy();
+    private void clonePieces(Piece[][] pieceBoard) {
+        for (int i=0; i<pieceBoard.length; i++) {
+            for (int j=0; j<pieceBoard[0].length; j++) {
 
-        return newPiece;
+                if (pieceBoard[i][j] != null) {
+                    Piece piece = pieceBoard[i][j];
+                    Piece newPiece = piece.copy();
+                    newBoard.setPieceAtAbsCoords(i, j , newPiece);
+                    newBoard.setPieceAtRelCoords(i, j, newPiece);
+                    newBoard.setPieceAtMirrorCoords(i, j, newPiece);
+                }
+            }
+        }
     }
 
     private void clonePlayer(Player[] players) {
@@ -36,5 +55,9 @@ public class BoardCopier {
         Player player2 = players[1].copy();
         Player[] newPlayers = {player1, player2};
         this.newBoard.setPlayers(newPlayers);
+    }
+
+    private void cloneRelative(Piece piece) {
+        
     }
 }

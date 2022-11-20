@@ -72,6 +72,15 @@ public class Board {
     public Piece[][] getBoard() {
         return this.board;
     }
+
+    public Piece[][] getRelBoard() {
+        return this.relativeBoard;
+    }
+
+    public Piece[][] getMirrorBoard() {
+        return this.mirror;
+    }
+
     /**
      * Assigns the given piece to the tile with the given absolute coordinates.
      * Absolute coordinates have "white" in row y=0 and "black" in row y=7.
