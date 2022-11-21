@@ -20,9 +20,6 @@ public class Piece {
      */
     public Piece copy() {
         // TODO
-
-        
-
         return null;
     }
 
