@@ -11,7 +11,9 @@ public class PieceCopier {
     private Piece newPiece;
     private Piece oldPiece = new Piece();
 
-    public PieceCopier(Piece oldPiece) {}
+    public PieceCopier(Piece oldPiece) {
+        this.oldPiece = oldPiece;
+    }
 
     public Piece createCopy(Piece piece) {
         //TODO!!!
