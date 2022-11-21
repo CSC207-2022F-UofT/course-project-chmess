@@ -9,26 +9,28 @@ import java.util.List;
  */
 public abstract class MovesGenerator {
     public List<Move> moves;
+    public abstract List<Move> generate (Board board, Piece piece);
     /**
      * Mutates list of moves by removing moves not on
      * board or occupied by friendly pieces.
      */
-    public void removeInvalid (List<Move> moves) {
-        // implementation: will use methods isOnBoard and isOccupiedByFriendly
+    public void removeInvalid (List<Move> moves, Board board) {
+        // TODO: will use checkTile method
     }
     /**
-     * Checks to see whether destination of move is on the board.
+     * Returns true if the destination of move is on
+     * board and is NOT occupied by friendly piece.
      */
-    private boolean isOnBoard (Move move) {
-        // implementation
+    public boolean checkTile (Move move, Board board) {
+        // TODO: will use methods isOccupiedByFriendly and containsAbsCoords from board class
         return true;
     }
     /**
      * Checks to see whether destination of move is already
      * occupied by a friendly piece.
      */
-    private boolean isOccupiedByFriendly (Move move) {
-        // implementation
+    public boolean isOccupiedByFriendly (Move move) {
+        // TODO
         return true;
     }
 }
