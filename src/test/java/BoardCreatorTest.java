@@ -99,7 +99,7 @@ class BoardCreatorTest {
 
         for (int x = 0; x < 8; x++) {
             Assertions.assertEquals(board.getPieceAtAbsCoords(x, 0).getPlayer(), p1);
-            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 0).getPlayer(), p1);
+            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 1).getPlayer(), p1);
             Assertions.assertEquals(board.getPieceAtAbsCoords(x, 6).getPlayer(), p2);
             Assertions.assertEquals(board.getPieceAtAbsCoords(x, 7).getPlayer(), p2);
         }
