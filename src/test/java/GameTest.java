@@ -3,10 +3,9 @@ import org.junit.jupiter.api.Test;
 
 class GameTest {
     @Test
-    public void GameConstructor() {
+    public void GameConstructorNoBoard() {
         Game game = new Game();
-        Assertions.assertEquals(game.getBoard(), null);
-        Assertions.assertEquals(game.getPlayers(), null);
+        Assertions.assertNull(game.getBoard());
     }
 
     @Test
@@ -22,6 +21,8 @@ class GameTest {
         Game game = new Game();
         Player p1 = new Player("Player 1", 'W');
         Player p2 = new Player("Player 2", 'B');
+        Board board = new Board();
+        game.setBoard(board);
         Player[] players = {p1, p2};
         game.setPlayers(players);
         Assertions.assertEquals(game.getPlayers()[0].getName(), players[0].getName());
