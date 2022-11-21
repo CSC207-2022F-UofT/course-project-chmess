@@ -8,16 +8,27 @@ public class PieceCopier {
      * @return a clone of the board
      */
 
-    private Piece newPiece;
-    private Piece oldPiece = new Piece();
+    private Piece newPiece = new Piece();
+    private Piece oldPiece;
 
     public PieceCopier(Piece oldPiece) {
         this.oldPiece = oldPiece;
     }
 
-    public Piece createCopy(Piece piece) {
+    public Piece createCopy() {
         //TODO!!!
+        String type = this.oldPiece.getType();
+        Player player = this.oldPiece.getPlayer();
+        int[] coords = this.oldPiece.getCoords();
+        int pointValue = this.oldPiece.getPointValue();
+        MovesGenerator mg = this.oldPiece.getMovesGenerator();
+
+        this.newPiece.setType(type);
+        this.newPiece.setPlayer(player);
+        this.newPiece.setCoords(coords[0], coords[1]);
+        this.newPiece.setPointValue(pointValue);
+        this.newPiece.setMovesGenerator(mg);
+
         return this.newPiece;
     }
-
 }
