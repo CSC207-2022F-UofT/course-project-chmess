@@ -18,9 +18,7 @@ public class PlayerCopier {
 
     public Player createCopy() {
         //TODO!!!
-        // Don't entirely understand the use of mirror coordinates
-        // If still needed, will need to implement later
-
+        
         String name = this.oldPlayer.getName();
         char color = this.oldPlayer.getColor();
         int points = this.oldPlayer.getPoints();
