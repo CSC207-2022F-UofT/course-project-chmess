@@ -1,3 +1,4 @@
+import java.util.List;
 public class PlayerCopier {
     /**
      * Returns a deep clone of the given Board instance.
@@ -15,12 +16,25 @@ public class PlayerCopier {
         this.oldPlayer = oldPlayer;
     }
 
-    public Player createCopy(Player player) {
+    public Player createCopy() {
         //TODO!!!
         // Don't entirely understand the use of mirror coordinates
         // If still needed, will need to implement later
 
+        String name = this.oldPlayer.getName();
+        char color = this.oldPlayer.getColor();
+        int points = this.oldPlayer.getPoints();
+        List<Piece> capturedPieces = this.oldPlayer.getCapturedPieces();
+
         return this.newPlayer;
+    }
+
+    public void addPiecesToCaptured() {
+        List<Piece> pieces = this.oldPlayer.getPieceList();
+        for (Piece piece : pieces) {
+            Piece newPiece = piece.copy();
+            this.newPlayer.addCapturedPiece(newPiece);
+        }
     }
 
 }
