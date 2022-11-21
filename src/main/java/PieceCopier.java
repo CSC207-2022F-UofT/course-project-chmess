@@ -16,7 +16,6 @@ public class PieceCopier {
     }
 
     public Piece createCopy() {
-        //TODO!!!
         String type = this.oldPiece.getType();
         Player player = this.oldPiece.getPlayer();
         int[] coords = this.oldPiece.getCoords();
