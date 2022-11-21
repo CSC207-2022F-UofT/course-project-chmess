@@ -17,35 +17,35 @@ public class BoardCopier {
         this.oldBoard = board;
         Player[] oldPlayers = this.oldBoard.getPlayers();
         clonePlayer(oldPlayers);
-
+        clonePieces();
         //TODO!!!
         // Don't entirely understand the use of mirror coordinates
         // If still needed, will need to implement later
 
-        Piece[][] pieceBoard = oldBoard.getBoard();
-        clonePieces(pieceBoard);
-
-        Piece[][] relativeBoard = oldBoard.getRelBoard();
-        clonePieces(relativeBoard);
-
-        Piece[][] mirrorBoard = oldBoard.getMirrorBoard();
-        clonePieces(mirrorBoard);
-
-
         return this.newBoard;
     }
 
-    private void clonePieces(Piece[][] pieceBoard) {
-        for (int i=0; i<pieceBoard.length; i++) {
-            for (int j=0; j<pieceBoard[0].length; j++) {
+    private void clonePieces() {
+        for (int i=0; i<Board.HEIGHT; i++) {
+            for (int j=0; j<Board.WIDTH; j++) {
+                Piece absPiece = oldBoard.getPieceAtAbsCoords(i, j);
+                Piece relPiece = oldBoard.getPieceAtRelCoords(i, j);
+                Piece mirrorPiece = oldBoard.getPieceAtMirrorCoords(i, j);
 
-                if (pieceBoard[i][j] != null) {
-                    Piece piece = pieceBoard[i][j];
-                    Piece newPiece = piece.copy();
-                    newBoard.setPieceAtAbsCoords(i, j , newPiece);
-                    newBoard.setPieceAtRelCoords(i, j, newPiece);
-                    newBoard.setPieceAtMirrorCoords(i, j, newPiece);
+                if (absPiece != null) {
+                    Piece newPiece = absPiece.copy();
+                    newBoard.setPieceAtAbsCoords(i, j, newPiece);
                 }
+                
+                if (relPiece != null) {
+                    Piece newPiece = relPiece.copy();
+                    newBoard.setPieceAtRelCoords(i, j, newPiece);
+                }
+                 
+                if (mirrorPiece != null) {
+                    Piece newPiece = mirrorPiece.copy();
+                    newBoard.setPieceAtMirrorCoords(i, j, newPiece);
+                } 
             }
         }
     }
@@ -55,9 +55,5 @@ public class BoardCopier {
         Player player2 = players[1].copy();
         Player[] newPlayers = {player1, player2};
         this.newBoard.setPlayers(newPlayers);
-    }
-
-    private void cloneRelative(Piece piece) {
-        
     }
 }
