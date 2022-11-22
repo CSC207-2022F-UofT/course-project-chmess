@@ -8,13 +8,14 @@ public class BoardCopier {
      * @return a clone of the board
      */
 
-    private Board newBoard;
-    private Board oldBoard = new Board();
+    private Board newBoard = new Board();
+    private Board oldBoard;
 
-    public BoardCopier() {}
-
-    public Board createCopy(Board board) {
+    public BoardCopier(Board board) {
         this.oldBoard = board;
+    }
+
+    public Board createCopy() {
         Player[] oldPlayers = this.oldBoard.getPlayers();
         clonePlayer(oldPlayers);
         clonePieces();

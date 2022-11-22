@@ -26,5 +26,4 @@ class PieceCopierTest {
 
         Assertions.assertNotSame(p, p2);
     }
-
 }
