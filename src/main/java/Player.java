@@ -16,9 +16,8 @@ public class Player {
      * Returns a deep copy of the player class
      */
     public Player copy() {
-        // TODO
-
-        return null;
+        PlayerCopier pc = new PlayerCopier(this);
+        return pc.createCopy();
     }
 
     public String getName() {
