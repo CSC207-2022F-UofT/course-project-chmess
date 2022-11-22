@@ -25,16 +25,23 @@ public class CastleMove extends Move {
         // CastleMove objects are never created/used for this case
         // Move king
         movePiece(board, origin, destination);
+        int[] rookDest;
         // Move rook
         if (destination[0] > origin[0]) {
             int[] rookO = {7, origin[1]};
             int[] rookD = {5, destination[1]};
+            rookDest = rookD;
             movePiece(board, rookO, rookD);
         } else {
             int[] rookO = {0, origin[1]};
             int[] rookD = {3, destination[1]};
+            rookDest = rookD;
             movePiece(board, rookO, rookD);
         }
+        Piece king = board.getPieceAtAbsCoords(destination[0], destination[1]);
+        Piece rook = board.getPieceAtAbsCoords(rookDest[0], rookDest[1]);
+        king.setHasMadeFirstMove();
+        rook.setHasMadeFirstMove();
         board.advanceCurrentPlayer();
     }
 

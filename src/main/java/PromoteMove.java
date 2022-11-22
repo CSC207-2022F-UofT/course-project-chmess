@@ -31,6 +31,7 @@ public class PromoteMove extends Move {
         movePiece(board, origin, destination);
         // Promote to new type
         pawn.setType(promotedType);
+        pawn.setHasMadeFirstMove();
         board.advanceCurrentPlayer();
     }
 

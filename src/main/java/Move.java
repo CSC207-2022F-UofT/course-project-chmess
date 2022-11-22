@@ -41,6 +41,7 @@ public class Move {
     /**
      * Mutates the given board (as well as players and pieces within the board)
      * to reflect the state of the board after this move is made.
+     * This includes advancing the current player and setting the first move.
      *
      * @param board the board on which this move should be executed
      */
@@ -51,6 +52,8 @@ public class Move {
             piece.getPlayer().addCapturedPiece(captured);
         }
         movePiece(board, origin, destination);
+        // Might want to refactor to avoid this repetition.
+        piece.setHasMadeFirstMove();
         board.advanceCurrentPlayer();
     }
 

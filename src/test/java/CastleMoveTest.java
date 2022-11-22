@@ -66,8 +66,15 @@ public class CastleMoveTest extends MoveTest {
         Move move = new CastleMove(origin, dest);
         move.execute(board);
 
+        // There should be a clarification of interface here
+        // Does it matter that the piece objects are actually the same,
+        // or do we only need that they look exactly as they should?
+        // Most likely the latter, in which case we must modify these tests.
+        // In any case, we should ensure this choice is consistent.
         Assertions.assertEquals(k, board.getPieceAtAbsCoords(2, 7));
         Assertions.assertEquals(r, board.getPieceAtAbsCoords(3, 7));
+        Assertions.assertTrue(k.hasMadeFirstMove());
+        Assertions.assertTrue(r.hasMadeFirstMove());
         Assertions.assertNull(board.getPieceAtAbsCoords(4, 7));
         Assertions.assertNull(board.getPieceAtAbsCoords(0, 7));
     }

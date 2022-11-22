@@ -6,6 +6,7 @@ public class Piece {
     private int[] coords;
     private int pointValue;
     private MovesGenerator mg;
+    private boolean hasMoved = false;
 
     public Piece() {
         this.coords = new int[2];
@@ -39,6 +40,22 @@ public class Piece {
 
     public int getPointValue() {
         return this.pointValue;
+    }
+
+    /**
+     * Records that this piece has made its first move.
+     */
+    public void setHasMadeFirstMove() {
+        hasMoved = true;
+    }
+
+    /**
+     * Returns whether this piece has made its first move/
+     *
+     * @return whether this piece has made its first move
+     */
+    public boolean hasMadeFirstMove() {
+        return hasMoved;
     }
 
     public void setPlayer(Player p) {

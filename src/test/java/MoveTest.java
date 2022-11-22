@@ -48,6 +48,7 @@ public class MoveTest {
 
         Assertions.assertNull(board.getPieceAtAbsCoords(0, 0));
         Assertions.assertEquals(king, board.getPieceAtAbsCoords(0, 1));
+        Assertions.assertTrue(board.getPieceAtAbsCoords(0, 1).hasMadeFirstMove());
     }
 
     @Test
