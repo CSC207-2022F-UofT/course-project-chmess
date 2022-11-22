@@ -17,24 +17,23 @@ public class PlayerCopier {
     }
 
     public Player createCopy() {
-        //TODO!!!
-        // Don't entirely understand the use of mirror coordinates
-        // If still needed, will need to implement later
-
         String name = this.oldPlayer.getName();
         char color = this.oldPlayer.getColor();
-        int points = this.oldPlayer.getPoints();
+        this.newPlayer = new Player(name, color);
+        
+        // Points will autmatically be calculated when captured pieces are added
         List<Piece> capturedPieces = this.oldPlayer.getCapturedPieces();
-
-        return this.newPlayer;
-    }
-
-    public void addPiecesToCaptured() {
-        List<Piece> pieces = this.oldPlayer.getPieceList();
-        for (Piece piece : pieces) {
+        for (Piece piece : capturedPieces) {
             Piece newPiece = piece.copy();
             this.newPlayer.addCapturedPiece(newPiece);
         }
-    }
 
+        List<Piece> pieceList = this.oldPlayer.getPieceList();
+        for (Piece piece : pieceList) {
+            Piece newPiece = piece.copy();
+            this.newPlayer.addPiece(newPiece);
+        }
+        
+        return this.newPlayer;
+    }
 }

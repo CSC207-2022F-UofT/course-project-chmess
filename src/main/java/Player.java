@@ -46,4 +46,8 @@ public class Player {
         return this.pieces;
     }
 
+    public void addPiece(Piece piece) {
+        this.capturedPieces.add(piece);
+    }
+
 }
