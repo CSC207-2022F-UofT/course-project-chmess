@@ -16,12 +16,9 @@ public class Player {
      * Returns a deep copy of the player class
      */
     public Player copy() {
-        Player newPlayer = new Player(this.name, this.color);
+        // TODO
 
-        newPlayer.points = this.points;
-        newPlayer.capturedPieces = this.capturedPieces;
-        
-        return newPlayer;
+        return null;
     }
 
     public String getName() {
@@ -44,4 +41,13 @@ public class Player {
     public List<Piece> getCapturedPieces () {
         return this.capturedPieces;
     }
+
+    public List<Piece> getPieceList() {
+        return this.pieces;
+    }
+
+    public void addPiece(Piece piece) {
+        this.capturedPieces.add(piece);
+    }
+
 }
