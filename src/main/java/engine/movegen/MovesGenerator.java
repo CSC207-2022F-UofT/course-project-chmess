@@ -1,11 +1,4 @@
-package engine.movegen;
-
 import java.util.List;
-
-import engine.move.Move;
-import engine.entities.Board;
-import engine.entities.Piece;
-
 /**
  * Abstract class containing useful methods used in
  * its subclasses. Each subclass will generate a
@@ -29,22 +22,15 @@ public abstract class MovesGenerator {
      * board and is NOT occupied by friendly piece.
      */
     public boolean checkTile (Move move, Board board) {
-        // TODO: will use methods containsAbsCoords from board class and isOccupiedByFriendly and
+        // TODO: will use methods isOccupiedByFriendly and containsAbsCoords (the latter from board class)
         return true;
     }
     /**
      * Checks to see whether destination of move is already
-     * occupied by a friendly piece using absolute coordinates.
+     * occupied by a friendly piece.
      */
-    public boolean isOccupiedByFriendly (Move move, Board board) {
-        return true;
-    }
-
-    /**
-     * Checks to see whether destination of move is already
-     * occupied by an enemy piece using absolute coordinates.
-     */
-    public boolean isOccupiedByEnemy (Move move, Board board) {
+    public boolean isOccupiedByFriendly (Move move) {
+        // TODO
         return true;
     }
 }
