@@ -30,19 +30,19 @@ public class PromoteMove extends Move {
 
     /**
      * Returns the algebraic notation representing this move,
-     * provided some data external to the move.
+     * provided a board on which the move is being made.
+     * The game state (check, checkmate) is omitted.
      *
      * @param board     the board on which this move is made
-     * @param postGameState
      * @return the (expanded) algebraic notation for a given move
      */
     @Override
-    public String getAlgebraicNotation(Board board, String postGameState) {
+    public String getAlgebraicNotation(Board board) {
         String originCoords = getChessCoords(origin);
         String destCoords = getChessCoords(destination);
         Piece piece = board.getPieceAtAbsCoords(origin[0], origin[1]);
         char color = piece.getColor();
         char promotedPieceSymbol = getPieceChar(promotedType, color);
-        return originCoords + destCoords + promotedPieceSymbol + postGameState;
+        return originCoords + destCoords + promotedPieceSymbol;
     }
 }

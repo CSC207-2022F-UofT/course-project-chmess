@@ -26,20 +26,19 @@ public class EnPassantMove extends Move {
 
     /**
      * Returns the algebraic notation representing this move,
-     * provided some data external to the move.
+     * provided a board on which the move is being made.
+     * The game state (check, checkmate) is omitted.
      *
      * @param board     the board on which this move is made
-     * @param postGameState
      * @return the (expanded) algebraic notation for a given move
      */
     @Override
-    public String getAlgebraicNotation(Board board, String postGameState) {
+    public String getAlgebraicNotation(Board board) {
         StringBuilder sb = new StringBuilder();
         sb.append(getChessCoords(origin));
         // en passant is always a capture
         sb.append('x');
         sb.append(getChessCoords(destination));
-        sb.append(postGameState);
         return sb.toString();
     }
 }

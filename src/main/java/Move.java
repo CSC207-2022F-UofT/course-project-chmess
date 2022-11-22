@@ -57,18 +57,13 @@ public class Move {
 
     /**
      * Returns the algebraic notation representing this move,
-     * provided some data external to the move.
+     * provided a board on which the move is being made.
+     * The game state (check, checkmate) is omitted.
      *
      * @param board     the board on which this move is made
-     * @param postGameState
      * @return the (expanded) algebraic notation for a given move
      */
-    public String getAlgebraicNotation(Board board, String postGameState) {
-        // The game state is supplied externally, since
-        // computing it here would require a use case,
-        // which disagrees with Clean Architecture.
-        // It might make sense to store the postGameState in the board itself,
-        // in the same way that currentMove is stored in the board.
+    public String getAlgebraicNotation(Board board) {
         Piece movingPiece = board.getPieceAtAbsCoords(origin[0], origin[1]);
         boolean isCapture = board.getPieceAtAbsCoords(destination[0], destination[1]) != null;
 
@@ -79,7 +74,6 @@ public class Move {
             sb.append('x');
         }
         sb.append(getChessCoords(destination));
-        sb.append(postGameState);
         return sb.toString();
     }
 
