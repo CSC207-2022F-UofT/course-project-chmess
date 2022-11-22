@@ -11,18 +11,16 @@ public class MoveTest {
         return piece;
     }
 
-    /*
-    Actually, Move.execute() doesn't do this; this happens in MoveExecutor (?)
     @Test
     public void ExecuteAdvancesCurrentPlayer() {
         Board board = new Board();
-
         Player p1 = new Player("Player 1", 'W');
         Player p2 = new Player("Player 2", 'B');
         Player[] players = {p1, p2};
         board.setPlayers(players);
+        board.setCurrentPlayer(p1);
 
-        Piece king = createAndPlacePiece("king", p1, board, 0, 0);
+        createAndPlacePiece("king", p1, board, 0, 0);
 
         int[] origin = {0, 0};
         int[] dest = {0, 1};
@@ -31,7 +29,6 @@ public class MoveTest {
 
         Assertions.assertEquals(board.getCurrentPlayer().getColor(), 'B');
     }
-    */
 
     @Test
     public void ExecuteMovesPiece() {

@@ -9,7 +9,6 @@
 public class Move {
     protected int[] origin;
     protected int[] destination;
-    public boolean isCapture;
 
     /**
      * Creates a Move object with the given coordinate pairs.
@@ -47,12 +46,24 @@ public class Move {
      */
     public void execute(Board board) {
         Piece piece = board.getPieceAtAbsCoords(origin[0], origin[1]);
-        board.setPieceAtAbsCoords(origin[0], origin[1], null);
-        Piece captured = board.getPieceAtAbsCoords(destination[0], destination[1]);
+        Piece captured = removePiece(board, destination);
         if (captured != null) {
             piece.getPlayer().addCapturedPiece(captured);
         }
-        board.setPieceAtAbsCoords(destination[0], destination[1], piece);
+        movePiece(board, origin, destination);
+        board.advanceCurrentPlayer();
+    }
+
+    protected void movePiece(Board board, int[] pos1, int[] pos2) {
+        Piece piece = board.getPieceAtAbsCoords(pos1[0], pos1[1]);
+        board.setPieceAtAbsCoords(pos1[0], pos1[1], null);
+        board.setPieceAtAbsCoords(pos2[0], pos2[1], piece);
+    }
+
+    protected Piece removePiece(Board board, int[] pos) {
+        Piece removed = board.getPieceAtAbsCoords(pos[0], pos[1]);
+        board.setPieceAtAbsCoords(pos[0], pos[1], null);
+        return removed;
     }
 
     /**
