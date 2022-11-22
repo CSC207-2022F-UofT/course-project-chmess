@@ -51,10 +51,6 @@ public class Piece {
         return this.player;
     }
     */
-
-    /* TODO: boardcreator needs to be updated with new 
-     * method using color
-     */
     public void setColor(char color) {
         this.color = color;
     }
