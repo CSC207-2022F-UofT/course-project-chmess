@@ -66,4 +66,16 @@ class BoardTest {
         Assertions.assertEquals(board.getPieceAtMirrorCoords(0, 7 - 1), p1);
         Assertions.assertEquals(board.getPieceAtMirrorCoords(1, 7 - 3), p2);
     }
+
+    @Test
+    public void AdvanceCurrentPlayer() {
+        Board board = new Board();
+        Player p1 = new Player("Player 1", 'W');
+        Player p2 = new Player("Player 2", 'B');
+        Player[] players = {p1, p2};
+        board.setPlayers(players);
+        board.setCurrentPlayer(p1);
+        board.advanceCurrentPlayer();
+        Assertions.assertEquals(p2, board.getCurrentPlayer());
+    }
 }
