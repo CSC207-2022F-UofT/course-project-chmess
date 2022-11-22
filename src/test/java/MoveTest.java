@@ -5,7 +5,7 @@ public class MoveTest {
     protected final PieceFactory pf = new PieceFactory();
 
     @Test
-    public void ExecuteAdvancesCurrentPlayer() {
+    public void ExecuteAdvancesCurrentPlayerWhiteToBlack() {
         Board board = createEmptyBoard('W');
         Player p1 = board.getPlayers()[0];
 
@@ -16,7 +16,22 @@ public class MoveTest {
         Move move = new Move(origin, dest);
         move.execute(board);
 
-        Assertions.assertEquals(board.getCurrentPlayer().getColor(), 'B');
+        Assertions.assertEquals('B', board.getCurrentPlayer().getColor());
+    }
+
+    @Test
+    public void ExecuteAdvancesCurrentPlayerBlackToWhite() {
+        Board board = createEmptyBoard('B');
+        Player p2 = board.getPlayers()[1];
+
+        createAndPlacePiece("king", p2, board, 0, 0);
+
+        int[] origin = {0, 0};
+        int[] dest = {0, 1};
+        Move move = new Move(origin, dest);
+        move.execute(board);
+
+        Assertions.assertEquals('W', board.getCurrentPlayer().getColor());
     }
 
     @Test
