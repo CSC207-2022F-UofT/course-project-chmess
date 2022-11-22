@@ -4,12 +4,9 @@ import org.junit.jupiter.api.Test;
 public class EnPassantMoveTest extends MoveTest {
     @Test
     public void GetAlgebraicNotation() {
-        Board board = new Board();
-
-        Player p1 = new Player("Player 1", 'W');
-        Player p2 = new Player("Player 2", 'B');
-        Player[] players = {p1, p2};
-        board.setPlayers(players);
+        Board board = createEmptyBoard('B');
+        Player p1 = board.getPlayers()[0];
+        Player p2 = board.getPlayers()[1];
 
         createAndPlacePiece("pawn", p1, board, 0, 3);
         createAndPlacePiece("pawn", p2, board, 1, 3);

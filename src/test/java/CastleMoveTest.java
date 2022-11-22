@@ -4,12 +4,8 @@ import org.junit.jupiter.api.Test;
 public class CastleMoveTest extends MoveTest {
     @Test
     public void GetAlgebraicNotationWhiteKingSideCastle() {
-        Board board = new Board();
-
-        Player p1 = new Player("Player 1", 'W');
-        Player p2 = new Player("Player 2", 'B');
-        Player[] players = {p1, p2};
-        board.setPlayers(players);
+        Board board = createEmptyBoard('W');
+        Player p1 = board.getPlayers()[0];
 
         createAndPlacePiece("king", p1, board, 4, 0);
         createAndPlacePiece("rook", p1, board, 7, 0);
@@ -22,12 +18,9 @@ public class CastleMoveTest extends MoveTest {
 
     @Test
     public void GetAlgebraicNotationWhiteQueenSideCastle() {
-        Board board = new Board();
-
-        Player p1 = new Player("Player 1", 'W');
-        Player p2 = new Player("Player 2", 'B');
-        Player[] players = {p1, p2};
-        board.setPlayers(players);
+        Board board = createEmptyBoard('W');
+        Player p1 = board.getPlayers()[0];
+        Player p2 = board.getPlayers()[1];
 
         createAndPlacePiece("king", p1, board, 4, 0);
         createAndPlacePiece("rook", p1, board, 0, 0);
@@ -40,12 +33,9 @@ public class CastleMoveTest extends MoveTest {
 
     @Test
     public void GetAlgebraicNotationBlackQueenSideCastle() {
-        Board board = new Board();
-
-        Player p1 = new Player("Player 1", 'W');
-        Player p2 = new Player("Player 2", 'B');
-        Player[] players = {p1, p2};
-        board.setPlayers(players);
+        Board board = createEmptyBoard('B');
+        Player p1 = board.getPlayers()[0];
+        Player p2 = board.getPlayers()[1];
 
         createAndPlacePiece("king", p2, board, 4, 7);
         createAndPlacePiece("rook", p2, board, 0, 7);
