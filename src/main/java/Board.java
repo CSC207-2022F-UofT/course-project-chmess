@@ -25,8 +25,8 @@ public class Board {
      * @return a clone of the board
      */
     public Board copy() {
-        BoardCopier bc = new BoardCopier();
-        return bc.createCopy(this);
+        BoardCopier bc = new BoardCopier(this);
+        return bc.createCopy();
     }
 
     public void setPlayers(Player[] players) {
