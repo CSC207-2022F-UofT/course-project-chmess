@@ -19,14 +19,14 @@ public class BoardCreator {
      * @param player the player to which the piece belongs
      * @param c      the coordinates at which to place the piece
      */
-    private void placePiece(Board board, Piece piece, Player player, int[] c) {
-        piece.setPlayer(player);
+    private void placePiece(Board board, Piece piece, char color, int[] c) {
+        piece.setColor(color);
         piece.setCoords(c[0], c[1]);
         board.setPieceAtRelCoords(c[0], c[1], piece);
     }
 
-    private void placePawns(Board board, Player player) {
-        if (player == p1) {
+    private void placePawns(Board board, char color) {
+        if (color == p1.getColor()) {
             board.selectDefaultPov();
         } else {
             board.selectMirrorPov();
@@ -35,13 +35,14 @@ public class BoardCreator {
         for (int i = 0; i < 8; i++) {
             Piece pawn = pf.create("pawn");
             int[] coords = {i, 1};
-            placePiece(board, pawn, player, coords);
+            placePiece(board, pawn, color, coords);
         }
     }
 
     private void placeAllPieces(Board board, Player player) {
         // TODO: Finish implementing this method
-        this.placePawns(board, player);
+        char color = player.getColor();
+        this.placePawns(board, color);
     }
 
     /**
