@@ -21,7 +21,14 @@ public class EnPassantMove extends Move {
      */
     @Override
     public void execute(Board board) {
-        // TODO
+        Piece piece = board.getPieceAtAbsCoords(origin[0], origin[1]);
+        int[] capturedPos = {destination[0], origin[1]};
+        // With en passant, there will always be a captured piece
+        // More specifically, the captured piece will be a pawn
+        Piece captured = removePiece(board, capturedPos);
+        piece.getPlayer().addCapturedPiece(captured);
+        movePiece(board, origin, destination);
+        board.advanceCurrentPlayer();
     }
 
     /**

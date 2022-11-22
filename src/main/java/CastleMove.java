@@ -21,10 +21,21 @@ public class CastleMove extends Move {
      */
     @Override
     public void execute(Board board) {
-        // TODO
-        // one clever implementation might involve the creation and execution
-        // of two regular moves (one to move the king and one to move the rook)
-        // though, this might introduce subtle bugs is one is not careful
+        // No need to worry about a piece at the destination
+        // CastleMove objects are never created/used for this case
+        // Move king
+        movePiece(board, origin, destination);
+        // Move rook
+        if (destination[0] > origin[0]) {
+            int[] rookO = {7, origin[1]};
+            int[] rookD = {5, destination[1]};
+            movePiece(board, rookO, rookD);
+        } else {
+            int[] rookO = {0, origin[1]};
+            int[] rookD = {3, destination[1]};
+            movePiece(board, rookO, rookD);
+        }
+        board.advanceCurrentPlayer();
     }
 
     /**

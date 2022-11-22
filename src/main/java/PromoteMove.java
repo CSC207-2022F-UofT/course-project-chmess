@@ -25,7 +25,13 @@ public class PromoteMove extends Move {
      */
     @Override
     public void execute(Board board) {
-        // TODO
+        Piece pawn = board.getPieceAtAbsCoords(origin[0], origin[1]);
+        // (No captures)
+        // Move pawn to row
+        movePiece(board, origin, destination);
+        // Promote to new type
+        pawn.setType(promotedType);
+        board.advanceCurrentPlayer();
     }
 
     /**
