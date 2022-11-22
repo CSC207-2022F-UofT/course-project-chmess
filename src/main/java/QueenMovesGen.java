@@ -16,6 +16,7 @@ public class QueenMovesGen extends MovesGenerator {
      * @param queen the queen piece for which moves are generated
      * @return the list of possible moves
      */
+    @Override
     public List<Move> generate (Board board, Piece queen) {
         //creates list of moves to be returned and initializes with diagonal moves,
         //generated using BishopMovesGen class instance

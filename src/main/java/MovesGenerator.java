@@ -22,7 +22,7 @@ public abstract class MovesGenerator {
      * board and is NOT occupied by friendly piece.
      */
     public boolean checkTile (Move move, Board board) {
-        // TODO: will use methods isOccupiedByFriendly and containsAbsCoords from board class
+        // TODO: will use methods isOccupiedByFriendly and containsAbsCoords (the latter from board class)
         return true;
     }
     /**
