@@ -26,4 +26,27 @@ public class CastleMove extends Move {
         // of two regular moves (one to move the king and one to move the rook)
         // though, this might introduce subtle bugs is one is not careful
     }
+
+    /**
+     * Returns the algebraic notation representing this move,
+     * provided some data external to the move.
+     *
+     * @param board     the board on which this move is made
+     * @param postGameState
+     * @return the (expanded) algebraic notation for a given move
+     */
+    @Override
+    public String getAlgebraicNotation(Board board, String postGameState) {
+        String castleString;
+
+        if (destination[0] > origin[0]) {
+            // Moving right (toward H file) is a kingside castle
+            castleString = "0-0";
+        } else {
+            // Moving left (toward H file) is a queenside castle
+            castleString = "0-0-0";
+        }
+
+        return castleString + postGameState;
+    }
 }
