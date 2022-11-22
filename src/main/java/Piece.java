@@ -1,8 +1,9 @@
 import java.util.List;
 
 public class Piece {
+    private char color;
     private String type;
-    private Player player;
+    //private Player player;
     private int[] coords;
     private int pointValue;
     private MovesGenerator mg;
@@ -41,11 +42,25 @@ public class Piece {
         return this.pointValue;
     }
 
+    /*
     public void setPlayer(Player p) {
         this.player = p;
     }
+    
     public Player getPlayer() {
         return this.player;
+    }
+    */
+
+    /* TODO: boardcreator needs to be updated with new 
+     * method using color
+     */
+    public void setColor(char color) {
+        this.color = color;
+    }
+
+    public char getColor() {
+        return this.color;
     }
 
     public void setCoords(int x, int y) {
@@ -78,9 +93,5 @@ public class Piece {
 
     public MovesGenerator getMovesGenerator() {
         return this.mg;
-    }
-
-    public char getColor() {
-        return this.player.getColor();
     }
 }
