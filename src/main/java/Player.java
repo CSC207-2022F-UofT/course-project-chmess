@@ -1,4 +1,6 @@
 import java.util.List;
+import java.util.ArrayList;
+
 public class Player {
     public String name;
     private char color;
@@ -9,6 +11,7 @@ public class Player {
     public Player (String name, char color) {
         this.name = name;
         this.color = color;
+        this.capturedPieces = new ArrayList<Piece>();
         // implement: get players pieces from board.pieces and store in this.pieces
     }
 
