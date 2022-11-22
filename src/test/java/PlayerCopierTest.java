@@ -7,8 +7,8 @@ class PlayerCopierTest {
         Player p = new Player("Player 1", 'W');
         Player p2 = p.copy();
 
-        Assertions.assertTrue(p2.getName() == "Player 1");
-        Assertions.assertTrue(p2.getColor() == 'W');
+        Assertions.assertSame("Player 1", p2.getName());
+        Assertions.assertSame('W', p2.getColor());
     }
 
     @Test
@@ -16,7 +16,7 @@ class PlayerCopierTest {
         Player p = new Player("Player 1", 'W');
         Player p2 = p.copy();
 
-        Assertions.assertFalse(p == p2);
+        Assertions.assertNotSame(p, p2);
     }
 
     @Test
@@ -61,7 +61,7 @@ class PlayerCopierTest {
 
         Player p2 = p.copy();
 
-        Assertions.assertTrue(p2.getPoints() == p.getPoints());
+        Assertions.assertSame(p2.getPoints(), p.getPoints());
     }
 
     @Test
@@ -106,8 +106,8 @@ class PlayerCopierTest {
 
         Player p2 = p.copy();
 
-        Assertions.assertTrue(p2.getPieceList().size() == p.getPieceList().size());
-        Assertions.assertTrue(p2.getCapturedPieces().size() == p.getCapturedPieces().size());
+        Assertions.assertSame(p2.getPieceList().size(), p.getPieceList().size());
+        Assertions.assertSame(p2.getCapturedPieces().size(), p.getCapturedPieces().size());
     }
 
     @Test
@@ -152,10 +152,10 @@ class PlayerCopierTest {
 
         Player p2 = p.copy();
 
-        Assertions.assertFalse(p2.getPieceList().get(0) == p.getPieceList().get(0));
-        Assertions.assertFalse(p2.getPieceList().get(1) == p.getPieceList().get(1));
-        Assertions.assertFalse(p2.getCapturedPieces().get(0) == p.getCapturedPieces().get(0));
-        Assertions.assertFalse(p2.getCapturedPieces().get(1) == p.getCapturedPieces().get(1));
+        Assertions.assertNotSame(p2.getPieceList().get(0), p.getPieceList().get(0));
+        Assertions.assertNotSame(p2.getPieceList().get(1), p.getPieceList().get(1));
+        Assertions.assertNotSame(p2.getCapturedPieces().get(0), p.getCapturedPieces().get(0));
+        Assertions.assertNotSame(p2.getCapturedPieces().get(1), p.getCapturedPieces().get(1));
     }
     
 }

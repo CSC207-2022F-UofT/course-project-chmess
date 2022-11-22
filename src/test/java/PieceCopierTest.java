@@ -10,10 +10,10 @@ class PieceCopierTest {
         p.setCoords(0,0);
         Piece p2 = p.copy();
 
-        Assertions.assertTrue(p2.getType() == "pawn");
-        Assertions.assertTrue(p2.getColor() == 'W');
-        Assertions.assertTrue(p2.getCoords()[0] == 0);
-        Assertions.assertTrue(p2.getCoords()[1] == 0);
+        Assertions.assertSame("pawn", p2.getType());
+        Assertions.assertSame('W', p2.getColor());
+        Assertions.assertSame(0, p2.getCoords()[0]);
+        Assertions.assertSame(0, p2.getCoords()[1]);
     }
 
     @Test
@@ -24,7 +24,7 @@ class PieceCopierTest {
         p.setCoords(0,0);
         Piece p2 = p.copy();
 
-        Assertions.assertFalse(p == p2);
+        Assertions.assertNotSame(p, p2);
     }
 
 }

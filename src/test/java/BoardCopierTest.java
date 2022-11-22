@@ -11,7 +11,7 @@ class BoardCopierTest {
         Board board = bc.create();
 
         Board board2 = board.copy();
-        Assertions.assertFalse(board == board2);
+        Assertions.assertNotSame(board, board2);
     }
 
     @Test
@@ -28,11 +28,11 @@ class BoardCopierTest {
                 Piece p1Piece = board.getPieceAtAbsCoords(x, y);
                 Piece p2Piece = board2.getPieceAtAbsCoords(x, y);
                 if (p1Piece != null) {
-                    Assertions.assertTrue(p1Piece.getType() == p2Piece.getType());
-                    Assertions.assertTrue(p1Piece.getColor() == p2Piece.getColor());
-                    Assertions.assertTrue(p1Piece.getCoords()[0] == p2Piece.getCoords()[0]);
-                    Assertions.assertTrue(p1Piece.getCoords()[1] == p2Piece.getCoords()[1]);
-                    Assertions.assertFalse(p1Piece == p2Piece);
+                    Assertions.assertSame(p1Piece, p2Piece);
+                    Assertions.assertSame(p1Piece.getColor(), p2Piece.getColor());
+                    Assertions.assertSame(p1Piece.getCoords()[0], p2Piece.getCoords()[0]);
+                    Assertions.assertSame(p1Piece.getCoords()[1], p2Piece.getCoords()[1]);
+                    Assertions.assertNotSame(p1Piece, p2Piece);
                 }
             }
         }

@@ -9,8 +9,8 @@ class BoardCreatorTest {
         BoardCreator bc = new BoardCreator(p1, p2);
         Board board = bc.create();
         for (int x = 0; x < 8; x++) {
-            Assertions.assertTrue(board.getPieceAtAbsCoords(x, 1).getType() == "pawn");
-            Assertions.assertTrue(board.getPieceAtAbsCoords(x, 6).getType() == "pawn");
+            Assertions.assertSame("pawn", board.getPieceAtAbsCoords(x, 1).getType());
+            Assertions.assertSame("pawn", board.getPieceAtAbsCoords(x, 6).getType());
         }
     }
 
@@ -22,7 +22,7 @@ class BoardCreatorTest {
         Board board = bc.create();
         int[][] coordsPairs = {{1, 0}, {6, 0}, {1, 7}, {6, 7}};
         for (int[] coords : coordsPairs) {
-            Assertions.assertTrue(board.getPieceAtAbsCoords(coords[0], coords[1]).getType() == "knight");
+            Assertions.assertSame("knight", board.getPieceAtAbsCoords(coords[0], coords[1]).getType());
         }
     }
 
@@ -34,7 +34,7 @@ class BoardCreatorTest {
         Board board = bc.create();
         int[][] coordsPairs = {{2, 0}, {5, 0}, {2, 7}, {5, 7}};
         for (int[] coords : coordsPairs) {
-            Assertions.assertTrue(board.getPieceAtAbsCoords(coords[0], coords[1]).getType() == "bishop");
+            Assertions.assertSame("bishop", board.getPieceAtAbsCoords(coords[0], coords[1]).getType());
         }
     }
 
@@ -46,7 +46,7 @@ class BoardCreatorTest {
         Board board = bc.create();
         int[][] coordsPairs = {{0, 0}, {7, 0}, {0, 7}, {7, 7}};
         for (int[] coords : coordsPairs) {
-            Assertions.assertTrue(board.getPieceAtAbsCoords(coords[0], coords[1]).getType() == "rook");
+            Assertions.assertSame("rook", board.getPieceAtAbsCoords(coords[0], coords[1]).getType());
         }
     }
 
@@ -58,7 +58,7 @@ class BoardCreatorTest {
         Board board = bc.create();
         int[][] coordsPairs = {{3, 0}, {3, 7}};
         for (int[] coords : coordsPairs) {
-            Assertions.assertTrue(board.getPieceAtAbsCoords(coords[0], coords[1]).getType() == "queen");
+            Assertions.assertSame("queen", board.getPieceAtAbsCoords(coords[0], coords[1]).getType());
         }
     }
 
@@ -98,10 +98,10 @@ class BoardCreatorTest {
         Board board = bc.create();
 
         for (int x = 0; x < 8; x++) {
-            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 0).getColor(), 'W');
-            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 0).getColor(), 'W');
-            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 6).getColor(), 'B');
-            Assertions.assertEquals(board.getPieceAtAbsCoords(x, 7).getColor(), 'B');
+            Assertions.assertEquals('W', board.getPieceAtAbsCoords(x, 0).getColor());
+            Assertions.assertEquals('W', board.getPieceAtAbsCoords(x, 0).getColor());
+            Assertions.assertEquals('B', board.getPieceAtAbsCoords(x, 6).getColor());
+            Assertions.assertEquals('B', board.getPieceAtAbsCoords(x, 7).getColor());
         }
     }
 }
