@@ -44,8 +44,13 @@ public class Piece {
     public void setPlayer(Player p) {
         this.player = p;
     }
+
     public Player getPlayer() {
         return this.player;
+    }
+
+    public char getColor() {
+        return this.player.getColor();
     }
 
     public void setCoords(int x, int y) {
