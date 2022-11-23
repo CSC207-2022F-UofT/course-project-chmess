@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class KingMovesGen extends MovesGenerator {
     /**
      * Constructor creates list of possible moves a king
@@ -13,5 +15,9 @@ public class KingMovesGen extends MovesGenerator {
     public KingMovesGen (Board board, Piece king) {
         // implementation
         // calls removeInvalid method from parent class to remove invalid moves
+    }
+
+    public List<Move> generate (Board board, Piece piece) {
+        return null;
     }
 }

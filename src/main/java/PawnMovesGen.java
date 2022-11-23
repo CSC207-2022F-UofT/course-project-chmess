@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class PawnMovesGen extends MovesGenerator {
     /**
      * Constructor creates list of possible moves a pawn
@@ -11,5 +13,9 @@ public class PawnMovesGen extends MovesGenerator {
     public PawnMovesGen (Board board, Piece pawn) {
         // implementation
         // calls removeInvalid method from parent class to remove invalid moves
+    }
+
+    public List<Move> generate (Board board, Piece piece) {
+        return null;
     }
 }
