@@ -60,6 +60,7 @@ public class PieceFactory {
     public Piece create(String type, char color) {
         Piece piece = this.create(type);
         piece.setColor(color);
+        
         return piece;
     }
 }
