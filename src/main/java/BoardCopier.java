@@ -1,3 +1,6 @@
+/**
+ * A deep cloner for Board instances.
+ */
 public class BoardCopier {
     /**
      * Returns a deep clone of the given Board instance.
