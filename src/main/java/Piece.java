@@ -21,6 +21,7 @@ public class Piece {
      */
     public Piece copy() {
         //TODO
+        return null;
     }
 
     public void setType(String type) {
