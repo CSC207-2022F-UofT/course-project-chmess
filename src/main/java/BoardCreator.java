@@ -71,13 +71,13 @@ public class BoardCreator {
         Player player;
 
         if (Character.isUpperCase(c)) {
-            player = p1;
+            player = 'W';
         } else {
-            player = p2;
+            player = 'B';
         }
 
         Piece piece = pf.create(type);
-        piece.setPlayer(player);
+        piece.setColor(player);
         return piece;
     }
 
