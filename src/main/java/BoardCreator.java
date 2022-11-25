@@ -68,16 +68,16 @@ public class BoardCreator {
      */
     private Piece createPieceFromChar(char c) {
         String type = getTypeFromChar(c);
-        Player player;
+        char color;
 
         if (Character.isUpperCase(c)) {
-            player = p1;
+            color = 'W';
         } else {
-            player = p2;
+            color = 'B';
         }
 
         Piece piece = pf.create(type);
-        piece.setPlayer(player);
+        piece.setColor(color);
         return piece;
     }
 
