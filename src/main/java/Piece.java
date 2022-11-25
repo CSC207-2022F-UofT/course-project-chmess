@@ -3,7 +3,6 @@ import java.util.List;
 public class Piece {
     private char color;
     private String type;
-    //private Player player;
     private int[] coords;
     private int pointValue;
     private MovesGenerator mg;

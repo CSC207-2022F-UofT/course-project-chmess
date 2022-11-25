@@ -77,7 +77,7 @@ public class BoardCreator {
         }
 
         Piece piece = pf.create(type);
-        piece.setColor(player);
+        piece.setColor(color);
         return piece;
     }
 
