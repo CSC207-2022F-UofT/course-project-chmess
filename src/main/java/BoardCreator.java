@@ -68,7 +68,7 @@ public class BoardCreator {
      */
     private Piece createPieceFromChar(char c) {
         String type = getTypeFromChar(c);
-        Player player;
+        char player;
 
         if (Character.isUpperCase(c)) {
             player = 'W';
