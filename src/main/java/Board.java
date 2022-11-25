@@ -8,6 +8,7 @@ public class Board {
     private final Piece[][] mirror;
     private Piece[][] relativeBoard;
     private Player[] players = new Player[2];
+    private Player currentPlayer;
 
     /**
      * Creates an empty board with no players.
@@ -72,15 +73,38 @@ public class Board {
     }
 
     /**
+     * Sets current player to the given player.
+     *
+     * @param player the player whose turn it is to make a move
+     */
+    public void setCurrentPlayer(Player player) {
+        this.currentPlayer = player;
+    }
+
+    /**
      * Return the Player object corresponding to
      * the player whose turn it is to make a move.
      *
      * @return the Player object
      */
     public Player getCurrentPlayer() {
-        // TODO
-        // the Board probably needs to know about this too
-        return null;
+        return this.currentPlayer;
+    }
+
+    /**
+     * Sets the current player to the next one in
+     * the players array. If this is the "last" player,
+     * wrap back around to the first one.
+     * If the current player has yet to be set,
+     * set it to the first player in the array.
+     */
+    public void advanceCurrentPlayer() {
+        int i;
+        for (i = 0; i < players.length; i++) {
+            if (players[i] == currentPlayer) break;
+        }
+        int newIndex = (i + 1) % players.length;
+        this.currentPlayer = players[newIndex];
     }
 
     /**
