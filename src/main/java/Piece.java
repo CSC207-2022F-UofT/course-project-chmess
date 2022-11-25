@@ -1,8 +1,8 @@
 import java.util.List;
 
 public class Piece {
+    private char color;
     private String type;
-    private Player player;
     private int[] coords;
     private int pointValue;
     private MovesGenerator mg;
@@ -19,7 +19,7 @@ public class Piece {
      * @return a clone of this piece
      */
     public Piece copy() {
-        // TODO
+        //TODO
         return null;
     }
 
@@ -41,11 +41,12 @@ public class Piece {
         return this.pointValue;
     }
 
-    public void setPlayer(Player p) {
-        this.player = p;
+    public void setColor(char color) {
+        this.color = color;
     }
-    public Player getPlayer() {
-        return this.player;
+
+    public char getColor() {
+        return this.color;
     }
 
     public void setCoords(int x, int y) {
