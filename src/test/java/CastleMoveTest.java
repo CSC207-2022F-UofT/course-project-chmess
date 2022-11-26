@@ -5,10 +5,10 @@ public class CastleMoveTest extends MoveTest {
     @Test
     public void WhiteKingsideAdvancesCurrentPlayerWhiteToBlack() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("king", p1, board, 4, 0);
-        createAndPlacePiece("rook", p1, board, 7, 0);
+        createAndPlacePiece("king", 'W', board, 4, 0);
+        createAndPlacePiece("rook", 'W', board, 7, 0);
 
         int[] origin = {4, 0};
         int[] dest = {6, 0};
@@ -21,10 +21,10 @@ public class CastleMoveTest extends MoveTest {
     @Test
     public void BlackQueensideAdvancesCurrentPlayerBlackToWhite() {
         Board board = createEmptyBoard('B');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("king", p1, board, 4, 7);
-        createAndPlacePiece("rook", p1, board, 0, 7);
+        createAndPlacePiece("king", 'W', board, 4, 7);
+        createAndPlacePiece("rook", 'W', board, 0, 7);
 
         int[] origin = {4, 7};
         int[] dest = {2, 7};
@@ -37,10 +37,10 @@ public class CastleMoveTest extends MoveTest {
     @Test
     public void WhiteKingsideMovesKingAndRook() {
         Board board = createEmptyBoard('B');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        Piece k = createAndPlacePiece("king", p1, board, 4, 0);
-        Piece r = createAndPlacePiece("rook", p1, board, 7, 0);
+        Piece k = createAndPlacePiece("king", 'W', board, 4, 0);
+        Piece r = createAndPlacePiece("rook", 'W', board, 7, 0);
 
         int[] origin = {4, 0};
         int[] dest = {6, 0};
@@ -56,10 +56,10 @@ public class CastleMoveTest extends MoveTest {
     @Test
     public void BlackQueensideMovesKingAndRook() {
         Board board = createEmptyBoard('B');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        Piece k = createAndPlacePiece("king", p1, board, 4, 7);
-        Piece r = createAndPlacePiece("rook", p1, board, 0, 7);
+        Piece k = createAndPlacePiece("king", 'W', board, 4, 7);
+        Piece r = createAndPlacePiece("rook", 'W', board, 0, 7);
 
         int[] origin = {4, 7};
         int[] dest = {2, 7};
@@ -82,10 +82,10 @@ public class CastleMoveTest extends MoveTest {
     @Test
     public void GetAlgebraicNotationWhiteKingSideCastle() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("king", p1, board, 4, 0);
-        createAndPlacePiece("rook", p1, board, 7, 0);
+        createAndPlacePiece("king", 'W', board, 4, 0);
+        createAndPlacePiece("rook", 'W', board, 7, 0);
 
         int[] origin = {4, 0};
         int[] dest = {6, 0};
@@ -96,11 +96,11 @@ public class CastleMoveTest extends MoveTest {
     @Test
     public void GetAlgebraicNotationWhiteQueenSideCastle() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("king", p1, board, 4, 0);
-        createAndPlacePiece("rook", p1, board, 0, 0);
+        createAndPlacePiece("king", 'W', board, 4, 0);
+        createAndPlacePiece("rook", 'W', board, 0, 0);
 
         int[] origin = {4, 0};
         int[] dest = {2, 0};
@@ -111,11 +111,11 @@ public class CastleMoveTest extends MoveTest {
     @Test
     public void GetAlgebraicNotationBlackQueenSideCastle() {
         Board board = createEmptyBoard('B');
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("king", p2, board, 4, 7);
-        createAndPlacePiece("rook", p2, board, 0, 7);
+        createAndPlacePiece("king", 'B', board, 4, 7);
+        createAndPlacePiece("rook", 'B', board, 0, 7);
 
         int[] origin = {4, 7};
         int[] dest = {2, 7};

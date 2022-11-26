@@ -5,9 +5,9 @@ public class PromoteMoveTest extends MoveTest {
     @Test
     public void ExecuteAdvancesCurrentPlayerWhiteToBlack() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("pawn", p1, board, 5, 6);
+        createAndPlacePiece("pawn", 'W', board, 5, 6);
 
         int[] origin = {5, 6};
         int[] dest = {5, 7};
@@ -20,9 +20,9 @@ public class PromoteMoveTest extends MoveTest {
     @Test
     public void ExecuteAdvancesCurrentPlayerBlackToWhite() {
         Board board = createEmptyBoard('B');
-        Player p2 = board.getPlayers()[1];
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("pawn", p2, board, 2, 1);
+        createAndPlacePiece("pawn", 'B', board, 2, 1);
 
         int[] origin = {2, 1};
         int[] dest = {2, 0};
@@ -35,9 +35,9 @@ public class PromoteMoveTest extends MoveTest {
     @Test
     public void ExecuteRemovesPawn() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("pawn", p1, board, 0, 6);
+        createAndPlacePiece("pawn", 'W', board, 0, 6);
 
         int[] origin = {0, 6};
         int[] dest = {0, 7};
@@ -50,9 +50,9 @@ public class PromoteMoveTest extends MoveTest {
     @Test
     public void GetAlgebraicNotationBlackKnight() {
         Board board = createEmptyBoard('B');
-        Player p2 = board.getPlayers()[1];
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("pawn", p2, board, 2, 1);
+        createAndPlacePiece("pawn", 'B', board, 2, 1);
 
         int[] origin = {2, 1};
         int[] dest = {2, 0};
@@ -63,9 +63,9 @@ public class PromoteMoveTest extends MoveTest {
     @Test
     public void GetAlgebraicNotationWhiteQueen() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("pawn", p1, board, 5, 6);
+        createAndPlacePiece("pawn", 'W', board, 5, 6);
 
         int[] origin = {5, 6};
         int[] dest = {5, 7};

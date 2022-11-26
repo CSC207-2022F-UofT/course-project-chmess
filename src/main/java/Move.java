@@ -49,7 +49,7 @@ public class Move {
         Piece piece = board.getPieceAtAbsCoords(origin[0], origin[1]);
         Piece captured = removePiece(board, destination);
         if (captured != null) {
-            piece.getPlayer().addCapturedPiece(captured);
+            board.getPlayerOfPiece(piece).addCapturedPiece(captured);
         }
         movePiece(board, origin, destination);
         // Might want to refactor to avoid this repetition.

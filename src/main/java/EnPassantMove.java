@@ -26,7 +26,7 @@ public class EnPassantMove extends Move {
         // With en passant, there will always be a captured piece
         // More specifically, the captured piece will be a pawn
         Piece captured = removePiece(board, capturedPos);
-        pawn.getPlayer().addCapturedPiece(captured);
+        board.getPlayerOfPiece(pawn).addCapturedPiece(captured);
         movePiece(board, origin, destination);
         pawn.setHasMadeFirstMove();
         board.advanceCurrentPlayer();

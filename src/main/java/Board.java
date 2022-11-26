@@ -7,6 +7,8 @@ public class Board {
     private final Piece[][] board;
     private final Piece[][] mirror;
     private Piece[][] relativeBoard;
+    // the first player has color 'W' (white)
+    // the second player has color 'B' (black)
     private Player[] players = new Player[2];
     private Player currentPlayer;
 
@@ -50,6 +52,26 @@ public class Board {
      */
     public Player[] getPlayers() {
         return this.players;
+    }
+
+    /**
+     * Returns the player with the given color.
+     *
+     * @param color the color of the player in which we are interested
+     * @return the player with the given color
+     */
+    public Player getPlayerFromChar(char color) {
+        if (color == 'W') return players[0];
+        else return players[1];
+    }
+
+    /**
+     * Returns the player who owns the given piece.
+     * @param piece the piece in which we are interested
+     * @return the player object with the same color as the given piece
+     */
+    public Player getPlayerOfPiece(Piece piece) {
+        return getPlayerFromChar(piece.getColor());
     }
 
     /**

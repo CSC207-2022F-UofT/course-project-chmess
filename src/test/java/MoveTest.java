@@ -7,9 +7,9 @@ public class MoveTest {
     @Test
     public void ExecuteAdvancesCurrentPlayerWhiteToBlack() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("king", p1, board, 0, 0);
+        createAndPlacePiece("king", 'W', board, 0, 0);
 
         int[] origin = {0, 0};
         int[] dest = {0, 1};
@@ -22,9 +22,9 @@ public class MoveTest {
     @Test
     public void ExecuteAdvancesCurrentPlayerBlackToWhite() {
         Board board = createEmptyBoard('B');
-        Player p2 = board.getPlayers()[1];
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("king", p2, board, 0, 0);
+        createAndPlacePiece("king", 'B', board, 0, 0);
 
         int[] origin = {0, 0};
         int[] dest = {0, 1};
@@ -37,9 +37,9 @@ public class MoveTest {
     @Test
     public void ExecuteMovesPiece() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        Piece king = createAndPlacePiece("king", p1, board, 0, 0);
+        Piece king = createAndPlacePiece("king", 'W', board, 0, 0);
 
         int[] origin = {0, 0};
         int[] dest = {0, 1};
@@ -54,13 +54,13 @@ public class MoveTest {
     @Test
     public void ExecuteWithCaptureUpdatesCapturedPieces() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
         Assertions.assertEquals(p1.getCapturedPieces().size(), 0);
 
-        createAndPlacePiece("king", p1, board, 0, 0);
-        createAndPlacePiece("pawn", p2, board, 0, 1);
+        createAndPlacePiece("king", 'W', board, 0, 0);
+        createAndPlacePiece("pawn", 'B', board, 0, 1);
 
         int[] origin = {0, 0};
         int[] dest = {0, 1};
@@ -72,11 +72,11 @@ public class MoveTest {
     @Test
     public void GetAlgebraicNotation() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("king", p1, board, 0, 0);
-        createAndPlacePiece("pawn", p2, board, 0, 1);
+        createAndPlacePiece("king", 'W', board, 0, 0);
+        createAndPlacePiece("pawn", 'B', board, 0, 1);
 
         int[] origin = {0, 0};
         int[] dest = {0, 1};
@@ -84,9 +84,9 @@ public class MoveTest {
         Assertions.assertEquals("Ka1xa2", move.getAlgebraicNotation(board));
     }
 
-    protected Piece createAndPlacePiece(String type, Player player, Board board, int x, int y) {
+    protected Piece createAndPlacePiece(String type, char color, Board board, int x, int y) {
         Piece piece = pf.create(type);
-        piece.setPlayer(player);
+        piece.setColor(color);
         board.setPieceAtAbsCoords(x, y, piece);
         piece.setCoords(x, y);
         return piece;
@@ -132,15 +132,14 @@ public class MoveTest {
                 return;
         }
 
-        Player[] players = board.getPlayers();
-        Player player;
+        char color;
         if (Character.isUpperCase(c)) {
-            player = players[0];
+            color = 'W';
         } else {
-            player = players[1];
+            color = 'B';
         }
 
-        createAndPlacePiece(type, player, board, x, y);
+        createAndPlacePiece(type, color, board, x, y);
     }
 
     // Handy helper for building complicated boards

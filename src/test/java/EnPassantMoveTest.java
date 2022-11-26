@@ -5,9 +5,9 @@ public class EnPassantMoveTest extends MoveTest {
     @Test
     public void ExecuteAdvancesCurrentPlayerWhiteToBlack() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
+        Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("king", p1, board, 0, 0);
+        createAndPlacePiece("king", 'W', board, 0, 0);
 
         int[] origin = {0, 0};
         int[] dest = {0, 1};
@@ -20,11 +20,11 @@ public class EnPassantMoveTest extends MoveTest {
     @Test
     public void ExecuteMovesPawn() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
-        Piece pawn1 = createAndPlacePiece("pawn", p1, board, 1, 4);
-        createAndPlacePiece("pawn", p2, board, 0, 4);
+        Piece pawn1 = createAndPlacePiece("pawn", 'W', board, 1, 4);
+        createAndPlacePiece("pawn", 'B', board, 0, 4);
 
         int[] origin = {1, 4};
         int[] dest = {0, 5};
@@ -37,11 +37,11 @@ public class EnPassantMoveTest extends MoveTest {
     @Test
     public void ExecuteRemovesCapturedPawn() {
         Board board = createEmptyBoard('W');
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("pawn", p1, board, 6, 4);
-        createAndPlacePiece("pawn", p2, board, 7, 4);
+        createAndPlacePiece("pawn", 'W', board, 6, 4);
+        createAndPlacePiece("pawn", 'B', board, 7, 4);
 
         int[] origin = {6, 4};
         int[] dest = {7, 5};
@@ -53,11 +53,11 @@ public class EnPassantMoveTest extends MoveTest {
     @Test
     public void ExecuteWithCaptureUpdatesCapturedPieces() {
         Board board = createEmptyBoard('B');
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("pawn", p1, board, 0, 3);
-        createAndPlacePiece("pawn", p2, board, 1, 3);
+        createAndPlacePiece("pawn", 'W', board, 0, 3);
+        createAndPlacePiece("pawn", 'B', board, 1, 3);
 
         int[] origin = {1, 3};
         int[] dest = {0, 2};
@@ -69,11 +69,11 @@ public class EnPassantMoveTest extends MoveTest {
     @Test
     public void GetAlgebraicNotation() {
         Board board = createEmptyBoard('B');
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("pawn", p1, board, 0, 3);
-        createAndPlacePiece("pawn", p2, board, 1, 3);
+        createAndPlacePiece("pawn", 'W', board, 0, 3);
+        createAndPlacePiece("pawn", 'B', board, 1, 3);
 
         int[] origin = {1, 3};
         int[] dest = {0, 2};
