@@ -1,11 +1,11 @@
 import java.util.List;
 public class PlayerCopier {
     /**
-     * Returns a deep clone of the given Board instance.
+     * Returns a deep clone of the given Player instance.
      *
-     * @see Player#copy() Board.copy()
+     * @see Player#copy() Player.copy()
      *
-     * @param player the board to be cloned
+     * @param player the player to be cloned
      * @return a clone of the board
      */
 

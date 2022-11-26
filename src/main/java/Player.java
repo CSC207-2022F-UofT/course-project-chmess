@@ -13,8 +13,25 @@ public class Player {
     }
 
     public Player copy() {
-        PlayerCopier pc = new PlayerCopier(this);
-        return pc.createCopy();
+        //PlayerCopier pc = new PlayerCopier(this);
+        //return pc.createCopy();
+        String name = this.name;
+        char color = this.color;
+        Player newPlayer = new Player(name, color);
+        
+        // Points will autmatically be calculated when captured pieces are added
+        List<Piece> capturedPieces = this.oldPlayer.getCapturedPieces();
+        for (Piece piece : capturedPieces) {
+            Piece newPiece = piece.copy();
+            newPlayer.addCapturedPiece(newPiece);
+        }
+
+        List<Piece> pieceList = this.oldPlayer.getPieceList();
+        for (Piece piece : pieceList) {
+            Piece newPiece = piece.copy();
+            newPlayer.addPiece(newPiece);
+        }
+        return newPlayer;
     }
 
     public String getName() {
