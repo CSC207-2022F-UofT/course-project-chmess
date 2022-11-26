@@ -9,7 +9,7 @@ public class PlayerCopier {
      * @return a clone of the board
      */
 
-    private Player newPlayer;
+    private Player newPlayer = new Player();
     private Player oldPlayer;
 
     public PlayerCopier(Player oldPlayer) {
