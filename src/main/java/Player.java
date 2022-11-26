@@ -13,8 +13,8 @@ public class Player {
     }
 
     public Player copy() {
-        // TODO
-        return null;
+        PlayerCopier pc = new PlayerCopier(this);
+        return pc.createCopy();
     }
 
     public String getName() {
