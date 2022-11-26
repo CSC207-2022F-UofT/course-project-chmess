@@ -1,3 +1,4 @@
+import java.util.List;
 /**
  * A board of chess pieces.
  */
@@ -183,13 +184,41 @@ public class Board {
 
     /**
      * Returns the absolute coordinates corresponding to the relative coordinates
+     * or vice versa.
      *
      * @see Board#setPieceAtRelCoords(int, int, Piece) setPieceAtRelCoords
      */
-    public int[] getAbsCoordsFromRelCoords(int x, int y) {
-        int[] absCoords = {x, y};
-        if (relativeBoard != board) absCoords[1] = HEIGHT - 1 - y;
+    public int[] switchCoords(int[] coord) {
+        int[] absCoords = coord;
+        if (relativeBoard != board) absCoords[1] = HEIGHT - 1 - coord[1];
 
         return absCoords;
+    }
+    /**
+     * Returns list of all semivalid moves all pieces of given color
+     * can make.
+     */
+    public List<Move> semiValidMovesForColor(char color) {
+        List<Move> semiValidMoves = null;
+        for (Piece p : getAllPiecesForColor(color)) {
+            for (Move m : p.generateMoves()) {
+                semiValidMoves.add(m);
+            }
+        }
+        return semiValidMoves;
+    }
+    /**
+     * Returns list of pieces belonging to color passed in.
+     */
+    private List<Piece> getAllPiecesForColor(char color) {
+        List<Piece> piecesForColor = null;
+        for (int y = 0; y < HEIGHT; y++) {
+            for (int x = 0; x < WIDTH; x++) {
+                if (getPieceAtAbsCoords(x, y).getColor() == color) {
+                    piecesForColor.add(getPieceAtAbsCoords(x, y));
+                }
+            }
+        }
+        return piecesForColor;
     }
 }
