@@ -17,10 +17,10 @@ public class BoardCopier {
     public BoardCopier() {}
 
     public Board createCopy(Board oldBoard) {
-        private Board newBoard = new Board();
+        Board newBoard = new Board();
 
-        Board this.oldBoard = oldBoard;
-        Board this.newBoard = newBoard;
+        this.oldBoard = oldBoard;
+        this.newBoard = newBoard;
 
         Player[] oldPlayers = oldBoard.getPlayers();
         clonePlayer(oldPlayers);
