@@ -31,8 +31,7 @@ public class Board {
      * @return a clone of the board
      */
     public Board copy() {
-        BoardCopier bc = new BoardCopier(this);
-        return bc.createCopy();
+        return bc.createCopy(this);
     }
 
     /**
@@ -81,6 +80,18 @@ public class Board {
         // TODO
         // the Board probably needs to know about this too
         return null;
+    }
+
+    public Piece[][] getBoard() {
+        return this.board;
+    }
+
+    public Piece[][] getRelBoard() {
+        return this.relativeBoard;
+    }
+
+    public Piece[][] getMirrorBoard() {
+        return this.mirror;
     }
 
     /**

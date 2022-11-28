@@ -11,20 +11,21 @@ public class BoardCopier {
      * @return a clone of the board
      */
 
-    private Board newBoard = new Board();
     private Board oldBoard;
+    private Board newBoard;
+    
+    public BoardCopier() {}
 
-    public BoardCopier(Board board) {
-        this.oldBoard = board;
-    }
+    public Board createCopy(Board oldBoard) {
+        private Board newBoard = new Board();
 
-    public Board createCopy() {
-        Player[] oldPlayers = this.oldBoard.getPlayers();
+        this.oldBoard = oldBoard;
+        this.newBoard = newBoard;
+
+        Player[] oldPlayers = oldBoard.getPlayers();
         clonePlayer(oldPlayers);
+
         clonePieces();
-        //TODO!!!
-        // Don't entirely understand the use of mirror coordinates
-        // If still needed, will need to implement later
 
         return this.newBoard;
     }

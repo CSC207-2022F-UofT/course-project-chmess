@@ -1,7 +1,7 @@
 import java.util.List;
 public class Player {
     public String name;
-    private char color;
+    private char color; // 'w' or 'b'
     private List<Piece> pieces;
     private int points = 0;
     private List<Piece> capturedPieces;
@@ -12,26 +12,11 @@ public class Player {
         // implement: get players pieces from board.pieces and store in this.pieces
     }
 
+    /*
+     * Returns a deep copy of the player class
+     */
     public Player copy() {
-        //PlayerCopier pc = new PlayerCopier(this);
-        //return pc.createCopy();
-        String name = this.name;
-        char color = this.color;
-        Player newPlayer = new Player(name, color);
-        
-        // Points will autmatically be calculated when captured pieces are added
-        List<Piece> capturedPieces = this.oldPlayer.getCapturedPieces();
-        for (Piece piece : capturedPieces) {
-            Piece newPiece = piece.copy();
-            newPlayer.addCapturedPiece(newPiece);
-        }
-
-        List<Piece> pieceList = this.oldPlayer.getPieceList();
-        for (Piece piece : pieceList) {
-            Piece newPiece = piece.copy();
-            newPlayer.addPiece(newPiece);
-        }
-        return newPlayer;
+        return pc.createCopy(this);
     }
 
     public String getName() {
@@ -46,12 +31,20 @@ public class Player {
         return this.points;
     }
 
-    public void addCapturedPiece (Piece captured) {
+    public void addCapturedPiece(Piece captured) {
         this.points += captured.getPointValue();
         this.capturedPieces.add(captured);
     }
 
-    public List<Piece> getCapturedPieces () {
+    public List<Piece> getCapturedPieces() {
         return this.capturedPieces;
+    }
+
+    public List<Piece> getPieceList() {
+        return this.pieces;
+    }
+
+    public void addPiece(Piece piece) {
+        this.capturedPieces.add(piece);
     }
 }

@@ -19,8 +19,7 @@ public class Piece {
      * @return a clone of this piece
      */
     public Piece copy() {
-        PieceCopier pc = new PieceCopier(this);
-        return pc.createCopy();
+        return pc.createCopy(this);
     }
 
     public void setType(String type) {
