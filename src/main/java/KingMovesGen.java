@@ -28,12 +28,12 @@ public class KingMovesGen extends MovesGenerator {
         }
         Piece rook1 = board.getPieceAtRelCoords(7, 0);
         Piece rook2 = board.getPieceAtRelCoords(0, 0);
-        if (king.firstMoveAware && rook1.getType().equals("rook") && rook1.firstMoveAware()) { // TODO implement FirstMoveAware
+        if (king.hasMadeFirstMove() && rook1.getType().equals("rook") && rook1.hasMadeFirstMove()) { // TODO implement hasMadeFirstMove()
             if (notAttacked(new int[][]{{6, 0}, {5, 0}, {4, 0}}, board, color) && isEmpty(new int[][]{{6, 0}, {5, 0}}, board)) {
                 this.moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {6, 0})));
             }
         }
-        if (king.firstMoveAware && rook2.getType().equals("rook") && rook2.firstMoveAware()) {
+        if (king.hasMadeFirstMove() && rook2.getType().equals("rook") && rook2.hasMadeFirstMove()) {
             if (notAttacked(new int[][]{{1, 0}, {2, 0}, {3, 0}, {4, 0}}, board, color) && isEmpty(new int[][]{{1, 0}, {2, 0}, {3, 0}}, board)) {
                 this.moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {2, 0})));
             }
@@ -64,7 +64,7 @@ public class KingMovesGen extends MovesGenerator {
         boolean empty = true;
         for (int[] coord : coords) {
             Move testMove = new Move(new int[] {0, 0}, board.switchCoords(coord));
-            if (isOccupiedByFriendly(testMove) || isOccupiedByEnemy(testMove)) { empty = false; }
+            if (isOccupiedByFriendly(testMove, board) || isOccupiedByEnemy(testMove, board)) { empty = false; }
         }
         return empty;
     }

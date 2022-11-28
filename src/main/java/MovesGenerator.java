@@ -29,8 +29,15 @@ public abstract class MovesGenerator {
      * Checks to see whether destination of move is already
      * occupied by a friendly piece using absolute coordinates.
      */
-    public boolean isOccupiedByFriendly (Move move) {
+    public boolean isOccupiedByFriendly (Move move, Board board) {
+        return true;
+    }
 
+    /**
+     * Checks to see whether destination of move is already
+     * occupied by an enemy piece using absolute coordinates.
+     */
+    public boolean isOccupiedByEnemy (Move move, Board board) {
         return true;
     }
 }

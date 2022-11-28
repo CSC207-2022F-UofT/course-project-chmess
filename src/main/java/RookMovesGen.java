@@ -33,7 +33,7 @@ public class RookMovesGen extends MovesGenerator {
                 int[] destination = {origin[0] + i * coordChange[0], origin[1] + i * coordChange[1]};
                 Move toAdd = new Move(origin, destination);
                 //only add the move if it's valid.
-                if (this.checkTile(toAdd)) {
+                if (this.checkTile(toAdd, board)) {
                     moveList.add(toAdd);
                 }
                 else {break;}

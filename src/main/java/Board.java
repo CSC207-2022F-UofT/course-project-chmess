@@ -8,7 +8,10 @@ public class Board {
     private final Piece[][] board;
     private final Piece[][] mirror;
     private Piece[][] relativeBoard;
+    // the first player has color 'W' (white)
+    // the second player has color 'B' (black)
     private Player[] players = new Player[2];
+    private Player currentPlayer;
 
     /**
      * Creates an empty board with no players.
@@ -53,6 +56,26 @@ public class Board {
     }
 
     /**
+     * Returns the player with the given color.
+     *
+     * @param color the color of the player in which we are interested
+     * @return the player with the given color
+     */
+    public Player getPlayerFromChar(char color) {
+        if (color == 'W') return players[0];
+        else return players[1];
+    }
+
+    /**
+     * Returns the player who owns the given piece.
+     * @param piece the piece in which we are interested
+     * @return the player object with the same color as the given piece
+     */
+    public Player getPlayerOfPiece(Piece piece) {
+        return getPlayerFromChar(piece.getColor());
+    }
+
+    /**
      * Returns the Board object which immediately precedes this one in history.
      *
      * @return the preceding Board object
@@ -73,15 +96,38 @@ public class Board {
     }
 
     /**
+     * Sets current player to the given player.
+     *
+     * @param player the player whose turn it is to make a move
+     */
+    public void setCurrentPlayer(Player player) {
+        this.currentPlayer = player;
+    }
+
+    /**
      * Return the Player object corresponding to
      * the player whose turn it is to make a move.
      *
      * @return the Player object
      */
     public Player getCurrentPlayer() {
-        // TODO
-        // the Board probably needs to know about this too
-        return null;
+        return this.currentPlayer;
+    }
+
+    /**
+     * Sets the current player to the next one in
+     * the players array. If this is the "last" player,
+     * wrap back around to the first one.
+     * If the current player has yet to be set,
+     * set it to the first player in the array.
+     */
+    public void advanceCurrentPlayer() {
+        int i;
+        for (i = 0; i < players.length; i++) {
+            if (players[i] == currentPlayer) break;
+        }
+        int newIndex = (i + 1) % players.length;
+        this.currentPlayer = players[newIndex];
     }
 
     /**
