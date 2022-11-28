@@ -19,8 +19,8 @@ public class BoardCopier {
     public Board createCopy(Board oldBoard) {
         private Board newBoard = new Board();
 
-        this.oldBoard = oldBoard;
-        this.newBoard = newBoard;
+        Board this.oldBoard = oldBoard;
+        Board this.newBoard = newBoard;
 
         Player[] oldPlayers = oldBoard.getPlayers();
         clonePlayer(oldPlayers);
