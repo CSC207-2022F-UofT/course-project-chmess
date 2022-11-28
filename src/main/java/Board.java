@@ -31,6 +31,7 @@ public class Board {
      * @return a clone of the board
      */
     public Board copy() {
+        BoardCopier bc = new BoardCopier();
         return bc.createCopy(this);
     }
 
