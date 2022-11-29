@@ -28,11 +28,12 @@ public class PlayerCopier {
             newPlayer.addCapturedPiece(piece.copy());
         }
 
+        /* TODO: For some reason this breaks the code
         List<Piece> pieceList = oldPlayer.getPieceList();
         for (Piece piece : pieceList) {
             newPlayer.addPiece(piece.copy());
         }
-
+         */
         return newPlayer;
     }
 }
