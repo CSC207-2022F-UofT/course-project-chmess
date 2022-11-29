@@ -1,20 +1,14 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
-
 import engine.entities.Piece;
 import engine.entities.Player;
 import engine.entities.PieceFactory;
-
 class PlayerCopierTest {
     @Test
     public void PlayerDetailsCopied() {
         Player p = new Player("Player 1", 'W');
         Player p2 = p.copy();
-
-        System.out.println(p.getName());
-        System.out.println(p2.getName());
 
         Assertions.assertSame("Player 1", p2.getName());
         Assertions.assertSame('W', p2.getColor());
@@ -49,8 +43,6 @@ class PlayerCopierTest {
         Piece rook2 = pf.create("rook", 'B');
         rook2.setCoords(0,8);
 
-        //TODO: adding pieces to player.pieces is a breaking change
-        //For some reason this breaks the test
         p.addPiece(pawn1);
         p.addPiece(pawn2);
         p.addPiece(rook1);
@@ -61,7 +53,7 @@ class PlayerCopierTest {
 
         Assertions.assertEquals(p2.getPoints(), p.getPoints());
     }
-    // TODO: Fix this test before production
+    
     @Test
     public void PlayerPieceListPreserved(){
         Player p = new Player("Player 1", 'W');

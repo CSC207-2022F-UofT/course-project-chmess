@@ -21,14 +21,11 @@ public class PlayerCopier {
         char color = oldPlayer.getColor();
         Player newPlayer = new Player(name, color);
 
-        // Points will automatically be calculated when captured pieces are added
         List<Piece> capturedPieces = oldPlayer.getCapturedPieces();
-
         for (Piece piece : capturedPieces) {
             newPlayer.addCapturedPiece(piece.copy());
         }
 
-        // TODO: For some reason this breaks the code
         List<Piece> pieceList = oldPlayer.getPieceList();
         for (Piece piece : pieceList) {
             newPlayer.addPiece(piece.copy());
