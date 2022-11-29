@@ -1,5 +1,6 @@
 package engine.move;
 
+import engine.entities.Piece;
 import engine.entities.Board;
 
 /**

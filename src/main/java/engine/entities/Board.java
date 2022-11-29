@@ -1,4 +1,7 @@
+import java.util.List;
+
 import engine.entities.copy.BoardCopier;
+import engine.move.Move;
 
 /**
  * A board of chess pieces.
