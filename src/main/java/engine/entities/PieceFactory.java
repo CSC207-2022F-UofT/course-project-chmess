@@ -1,5 +1,3 @@
-package engine.entities;
-
 public class PieceFactory {
     public PieceFactory() {}
 

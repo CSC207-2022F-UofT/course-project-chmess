@@ -1,6 +1,3 @@
-package engine.entities;
-
-import java.util.List;
 /**
  * A board of chess pieces.
  */
@@ -10,10 +7,7 @@ public class Board {
     private final Piece[][] board;
     private final Piece[][] mirror;
     private Piece[][] relativeBoard;
-    // the first player has color 'W' (white)
-    // the second player has color 'B' (black)
     private Player[] players = new Player[2];
-    private Player currentPlayer;
 
     /**
      * Creates an empty board with no players.
@@ -37,8 +31,8 @@ public class Board {
      * @return a clone of the board
      */
     public Board copy() {
-        // TODO
-        return null;
+        BoardCopier bc = new BoardCopier();
+        return bc.createCopy(this);
     }
 
     /**
@@ -55,26 +49,6 @@ public class Board {
      */
     public Player[] getPlayers() {
         return this.players;
-    }
-
-    /**
-     * Returns the player with the given color.
-     *
-     * @param color the color of the player in which we are interested
-     * @return the player with the given color
-     */
-    public Player getPlayerFromChar(char color) {
-        if (color == 'W') return players[0];
-        else return players[1];
-    }
-
-    /**
-     * Returns the player who owns the given piece.
-     * @param piece the piece in which we are interested
-     * @return the player object with the same color as the given piece
-     */
-    public Player getPlayerOfPiece(Piece piece) {
-        return getPlayerFromChar(piece.getColor());
     }
 
     /**
@@ -98,38 +72,27 @@ public class Board {
     }
 
     /**
-     * Sets current player to the given player.
-     *
-     * @param player the player whose turn it is to make a move
-     */
-    public void setCurrentPlayer(Player player) {
-        this.currentPlayer = player;
-    }
-
-    /**
      * Return the Player object corresponding to
      * the player whose turn it is to make a move.
      *
      * @return the Player object
      */
     public Player getCurrentPlayer() {
-        return this.currentPlayer;
+        // TODO
+        // the Board probably needs to know about this too
+        return null;
     }
 
-    /**
-     * Sets the current player to the next one in
-     * the players array. If this is the "last" player,
-     * wrap back around to the first one.
-     * If the current player has yet to be set,
-     * set it to the first player in the array.
-     */
-    public void advanceCurrentPlayer() {
-        int i;
-        for (i = 0; i < players.length; i++) {
-            if (players[i] == currentPlayer) break;
-        }
-        int newIndex = (i + 1) % players.length;
-        this.currentPlayer = players[newIndex];
+    public Piece[][] getBoard() {
+        return this.board;
+    }
+
+    public Piece[][] getRelBoard() {
+        return this.relativeBoard;
+    }
+
+    public Piece[][] getMirrorBoard() {
+        return this.mirror;
     }
 
     /**
@@ -232,41 +195,13 @@ public class Board {
 
     /**
      * Returns the absolute coordinates corresponding to the relative coordinates
-     * or vice versa.
      *
      * @see Board#setPieceAtRelCoords(int, int, Piece) setPieceAtRelCoords
      */
-    public int[] switchCoords(int[] coord) {
-        int[] absCoords = coord;
-        if (relativeBoard != board) absCoords[1] = HEIGHT - 1 - coord[1];
+    public int[] getAbsCoordsFromRelCoords(int x, int y) {
+        int[] absCoords = {x, y};
+        if (relativeBoard != board) absCoords[1] = HEIGHT - 1 - y;
 
         return absCoords;
-    }
-    /**
-     * Returns list of all semivalid moves all pieces of given color
-     * can make.
-     */
-    public List<Move> semiValidMovesForColor(char color) {
-        List<Move> semiValidMoves = null;
-        for (Piece p : getAllPiecesForColor(color)) {
-            for (Move m : p.generateMoves()) {
-                semiValidMoves.add(m);
-            }
-        }
-        return semiValidMoves;
-    }
-    /**
-     * Returns list of pieces belonging to color passed in.
-     */
-    private List<Piece> getAllPiecesForColor(char color) {
-        List<Piece> piecesForColor = null;
-        for (int y = 0; y < HEIGHT; y++) {
-            for (int x = 0; x < WIDTH; x++) {
-                if (getPieceAtAbsCoords(x, y).getColor() == color) {
-                    piecesForColor.add(getPieceAtAbsCoords(x, y));
-                }
-            }
-        }
-        return piecesForColor;
     }
 }

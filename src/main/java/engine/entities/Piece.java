@@ -1,7 +1,4 @@
-package engine.entities;
-
 import java.util.List;
-import engine.movegen.MovesGenerator;
 
 public class Piece {
     private char color;
@@ -9,7 +6,6 @@ public class Piece {
     private int[] coords;
     private int pointValue;
     private MovesGenerator mg;
-    private boolean hasMoved = false;
 
     public Piece() {
         this.coords = new int[2];
@@ -23,8 +19,8 @@ public class Piece {
      * @return a clone of this piece
      */
     public Piece copy() {
-        //TODO
-        return null;
+        PieceCopier pc = new PieceCopier();
+        return pc.createCopy(this);
     }
 
     public void setType(String type) {
@@ -51,22 +47,6 @@ public class Piece {
 
     public char getColor() {
         return this.color;
-    }
-
-    /**
-     * Records that this piece has made its first move.
-     */
-    public void setHasMadeFirstMove() {
-        hasMoved = true;
-    }
-
-    /**
-     * Returns whether this piece has made its first move/
-     *
-     * @return whether this piece has made its first move
-     */
-    public boolean hasMadeFirstMove() {
-        return hasMoved;
     }
 
     public void setCoords(int x, int y) {

@@ -1,5 +1,3 @@
-package engine.entities;
-
 /**
  * A creator for the "typical" Board instance.
  * The created Board object will have new pieces placed
