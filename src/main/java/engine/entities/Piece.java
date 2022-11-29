@@ -25,8 +25,8 @@ public class Piece {
      * @return a clone of this piece
      */
     public Piece copy() {
-        //TODO
-        return null;
+        PieceCopier pc = new PieceCopier();
+        return pc.createCopy(this);
     }
 
     public void setType(String type) {
