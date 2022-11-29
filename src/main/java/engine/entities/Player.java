@@ -16,6 +16,7 @@ public class Player {
         this.name = name;
         this.color = color;
         this.capturedPieces = new ArrayList<Piece>();
+        this.pieces = new ArrayList<Piece>();
         // implement: get players pieces from board.pieces and store in this.pieces
     }
 
