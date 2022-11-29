@@ -50,6 +50,6 @@ public class Player {
     }
 
     public void addPiece(Piece piece) {
-        this.pieces.add(piece)
+        this.pieces.add(piece);
     }
 }
