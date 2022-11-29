@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import engine.entities.Board;
 import engine.entities.Piece;
 import engine.entities.Player;
 import engine.entities.PieceFactory;

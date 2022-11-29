@@ -1,7 +1,6 @@
 package engine.entities.copy;
 
 import java.util.List;
-import engine.entities.Board;
 import engine.entities.Piece;
 import engine.entities.Player;
 
