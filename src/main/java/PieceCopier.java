@@ -1,15 +1,13 @@
 public class PieceCopier {
+    public PieceCopier() {}
+
     /**
      * Returns a deep clone of the given Board instance.
      *
      * @see Piece#copy() Board.copy()
      *
-     * @param piece the board to be cloned
-     * @return a clone of the board
+     * @return a clone of the piece
      */
-
-    public PieceCopier() {}
-
     public Piece createCopy(Piece oldPiece) {
         Piece newPiece = new Piece();
 
@@ -25,6 +23,6 @@ public class PieceCopier {
         newPiece.setPointValue(pointValue);
         newPiece.setMovesGenerator(mg);
 
-        return this.newPiece;
+        return newPiece;
     }
 }
