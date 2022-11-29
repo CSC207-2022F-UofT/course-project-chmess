@@ -60,6 +60,8 @@ class PlayerCopierTest {
     public void PlayerPieceListPreserved(){
         Player p = new Player("Player 1", 'W');
 
+        PieceFactory pf = new PieceFactory();
+
         Piece pawn1 = pf.create("pawn", 'W');
         pawn1.setCoords(0,1);
 
@@ -90,6 +92,8 @@ class PlayerCopierTest {
     @Test
     public void PlayerPiecesDeepCopied() {
         Player p = new Player("Player 1", 'W');
+
+        PieceFactory pf = new PieceFactory();
 
         Piece pawn1 = pf.create("pawn", 'W');
         pawn1.setCoords(0,1);
