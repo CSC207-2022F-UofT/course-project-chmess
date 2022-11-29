@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import engine.entities.Board;
 import engine.entities.Piece;
 import engine.entities.Player;
-import engine.entities.copy.PieceFactory;
+import engine.entities.PieceFactory;
 
 class PlayerCopierTest {
     @Test

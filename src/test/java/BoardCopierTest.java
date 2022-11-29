@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import engine.entities.Board;
 import engine.entities.Piece;
-import engine.entities.copy.PieceFactory;
+import engine.entities.PieceFactory;
 
 class BoardCopierTest {
 
