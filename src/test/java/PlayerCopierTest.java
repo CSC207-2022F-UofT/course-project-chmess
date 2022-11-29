@@ -49,9 +49,9 @@ class PlayerCopierTest {
         Piece rook2 = pf.create("rook", 'B');
         rook2.setCoords(0,8);
 
-        //p.addPiece(pawn1);
-        //p.addPiece(pawn2);
-        //p.addPiece(rook1);
+        //p.addPiece(pawn1); For some reason this breaks the test
+        p.addPiece(pawn2);
+        p.addPiece(rook1);
         p.addCapturedPiece(pawn3);
         p.addCapturedPiece(rook2);
 

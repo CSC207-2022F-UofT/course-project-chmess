@@ -27,13 +27,12 @@ public class PlayerCopier {
         for (Piece piece : capturedPieces) {
             newPlayer.addCapturedPiece(piece.copy());
         }
-        /*
+
         List<Piece> pieceList = oldPlayer.getPieceList();
         for (Piece piece : pieceList) {
-            Piece newPiece = piece.copy();
-            newPlayer.addPiece(newPiece);
+            newPlayer.addPiece(piece.copy());
         }
-        */
+
         return newPlayer;
     }
 }
