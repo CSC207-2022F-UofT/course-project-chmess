@@ -2,7 +2,7 @@ package engine.movegen;
 
 import java.util.List;
 
-import engine.move.Move;
+import engine.move.*;
 import engine.entities.Board;
 import engine.entities.Piece;
 

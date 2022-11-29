@@ -1,6 +1,9 @@
 package engine.entities;
 
 import java.util.List;
+
+import engine.move.Move;
+
 /**
  * A board of chess pieces.
  */

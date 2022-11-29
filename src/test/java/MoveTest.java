@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import engine.entities.*;
+import engine.move.*;
+
 public class MoveTest {
     protected final PieceFactory pf = new PieceFactory();
 

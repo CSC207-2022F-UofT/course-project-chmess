@@ -5,7 +5,6 @@ import java.util.List;
 import engine.entities.Board;
 import engine.move.Move;
 
-package engine;
 public class PostMoveValidator {
     public List<Move> validMoves;
     /**

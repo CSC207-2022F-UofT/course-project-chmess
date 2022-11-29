@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import engine.entities.*;
+
 class GameTest {
     @Test
     public void GameConstructorNoBoard() {

@@ -1,6 +1,8 @@
 package engine.entities;
 
 import java.util.List;
+
+import engine.move.Move;
 import engine.movegen.MovesGenerator;
 
 public class Piece {
