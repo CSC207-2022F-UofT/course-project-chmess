@@ -49,7 +49,7 @@ public class Player {
         return this.pieces;
     }
 
-    public void addPiece(Piece piece) {
-        this.pieces.add(piece);
+    public void addPiece(Piece newPiece) {
+        this.pieces.add(newPiece);
     }
 }
