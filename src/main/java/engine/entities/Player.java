@@ -44,4 +44,12 @@ public class Player {
     public List<Piece> getCapturedPieces () {
         return this.capturedPieces;
     }
+
+    public List<Piece> getPieceList () {
+        return this.pieces;
+    }
+
+    public void addPiece(Piece piece) {
+        this.pieces.add(piece)
+    }
 }
