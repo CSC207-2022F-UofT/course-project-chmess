@@ -1,13 +1,18 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import engine.entities.Board;
+import engine.entities.Piece;
+import engine.entities.copy.PieceFactory;
+
 class PieceCopierTest {
     @Test
     public void PieceDetailsCopied() {
-        Piece p = new Piece();
-        p.setType("pawn");
-        p.setColor('W');
+        PieceFactory pf = new PieceFactory();
+
+        Piece p = pf.create("pawn", 'W');
         p.setCoords(0,0);
+
         Piece p2 = p.copy();
 
         Assertions.assertSame("pawn", p2.getType());
@@ -18,10 +23,11 @@ class PieceCopierTest {
 
     @Test
     public void PieceMemoryDifferent() {
-        Piece p = new Piece();
-        p.setType("pawn");
-        p.setColor('W');
+        PieceFactory pf = new PieceFactory();
+
+        Piece p = pf.create("pawn", 'W');
         p.setCoords(0,0);
+
         Piece p2 = p.copy();
 
         Assertions.assertNotSame(p, p2);

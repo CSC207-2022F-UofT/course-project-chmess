@@ -1,3 +1,5 @@
+import engine.entities.copy.BoardCopier;
+
 /**
  * A board of chess pieces.
  */

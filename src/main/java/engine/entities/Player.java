@@ -1,4 +1,6 @@
 import java.util.List;
+import engine.entities.copy.PlayerCopier;
+
 public class Player {
     public String name;
     private char color; // 'w' or 'b'

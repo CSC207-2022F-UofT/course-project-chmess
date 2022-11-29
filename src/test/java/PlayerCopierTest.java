@@ -1,6 +1,11 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import engine.entities.Board;
+import engine.entities.Piece;
+import engine.entities.Player;
+import engine.entities.copy.PieceFactory;
+
 class PlayerCopierTest {
     @Test
     public void PlayerDetailsCopied() {
@@ -23,35 +28,22 @@ class PlayerCopierTest {
     public void PlayerPointValuePreserved() {
         Player p = new Player("Player 1", 'W');
 
-        Piece pawn1 = new Piece();
-        pawn1.setType("pawn");
-        pawn1.setColor('W');
+        PieceFactory pf = new PieceFactory();
+
+        Piece pawn1 = pf.create("pawn", 'W');
         pawn1.setCoords(0,1);
-        pawn1.setPointValue(1);
 
-        Piece pawn2 = new Piece();
-        pawn2.setType("pawn");
-        pawn2.setColor('W');
+        Piece pawn2 = pf.create("pawn", 'W');
         pawn2.setCoords(1,1);
-        pawn2.setPointValue(1);
 
-        Piece pawn3 = new Piece();
-        pawn3.setType("pawn");
-        pawn3.setColor('B');
+        Piece pawn3 = pf.create("pawn", 'B');
         pawn3.setCoords(1,7);
-        pawn3.setPointValue(1);
 
-        Piece rook1 = new Piece();
-        rook1.setType("rook");
-        rook1.setColor('W');
+        Piece rook1 = pf.create("rook", 'W');
         rook1.setCoords(0,0);
-        rook1.setPointValue(5);
 
-        Piece rook2 = new Piece();
-        rook2.setType("rook");
-        rook2.setColor('B');
+        Piece rook2 = pf.create("rook", 'B');
         rook2.setCoords(0,8);
-        rook2.setPointValue(5);
 
         p.addPiece(pawn1);
         p.addPiece(pawn2);
@@ -68,35 +60,20 @@ class PlayerCopierTest {
     public void PlayerPieceListPreserved(){
         Player p = new Player("Player 1", 'W');
 
-        Piece pawn1 = new Piece();
-        pawn1.setType("pawn");
-        pawn1.setColor('W');
+        Piece pawn1 = pf.create("pawn", 'W');
         pawn1.setCoords(0,1);
-        pawn1.setPointValue(1);
 
-        Piece pawn2 = new Piece();
-        pawn2.setType("pawn");
-        pawn2.setColor('W');
+        Piece pawn2 = pf.create("pawn", 'W');
         pawn2.setCoords(1,1);
-        pawn2.setPointValue(1);
 
-        Piece pawn3 = new Piece();
-        pawn3.setType("pawn");
-        pawn3.setColor('B');
+        Piece pawn3 = pf.create("pawn", 'B');
         pawn3.setCoords(1,7);
-        pawn3.setPointValue(1);
 
-        Piece rook1 = new Piece();
-        rook1.setType("rook");
-        rook1.setColor('W');
+        Piece rook1 = pf.create("rook", 'W');
         rook1.setCoords(0,0);
-        rook1.setPointValue(5);
 
-        Piece rook2 = new Piece();
-        rook2.setType("rook");
-        rook2.setColor('B');
+        Piece rook2 = pf.create("rook", 'B');
         rook2.setCoords(0,8);
-        rook2.setPointValue(5);
 
         p.addPiece(pawn1);
         p.addPiece(pawn2);
@@ -114,35 +91,20 @@ class PlayerCopierTest {
     public void PlayerPiecesDeepCopied() {
         Player p = new Player("Player 1", 'W');
 
-        Piece pawn1 = new Piece();
-        pawn1.setType("pawn");
-        pawn1.setColor('W');
+        Piece pawn1 = pf.create("pawn", 'W');
         pawn1.setCoords(0,1);
-        pawn1.setPointValue(1);
 
-        Piece pawn2 = new Piece();
-        pawn2.setType("pawn");
-        pawn2.setColor('W');
+        Piece pawn2 = pf.create("pawn", 'W');
         pawn2.setCoords(1,1);
-        pawn2.setPointValue(1);
 
-        Piece pawn3 = new Piece();
-        pawn3.setType("pawn");
-        pawn3.setColor('B');
+        Piece pawn3 = pf.create("pawn", 'B');
         pawn3.setCoords(1,7);
-        pawn3.setPointValue(1);
 
-        Piece rook1 = new Piece();
-        rook1.setType("rook");
-        rook1.setColor('W');
+        Piece rook1 = pf.create("rook", 'W');
         rook1.setCoords(0,0);
-        rook1.setPointValue(5);
 
-        Piece rook2 = new Piece();
-        rook2.setType("rook");
-        rook2.setColor('B');
+        Piece rook2 = pf.create("rook", 'B');
         rook2.setCoords(0,8);
-        rook2.setPointValue(5);
 
         p.addPiece(pawn1);
         p.addPiece(pawn2);

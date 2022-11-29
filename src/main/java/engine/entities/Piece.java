@@ -1,4 +1,5 @@
 import java.util.List;
+import engine.entities.copy.PieceCopier;
 
 public class Piece {
     private char color;

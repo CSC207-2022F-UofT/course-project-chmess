@@ -1,4 +1,7 @@
+package engine.entities.copy;
+
 import java.util.List;
+
 public class PlayerCopier {
     /**
      * Returns a deep clone of the given Board instance.

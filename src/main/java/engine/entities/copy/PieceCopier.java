@@ -1,3 +1,5 @@
+package engine.entities.copy;
+
 public class PieceCopier {
     public PieceCopier() {}
 
