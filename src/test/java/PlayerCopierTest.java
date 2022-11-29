@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.*;
+
 import engine.entities.Board;
 import engine.entities.Piece;
 import engine.entities.Player;
@@ -11,6 +13,9 @@ class PlayerCopierTest {
     public void PlayerDetailsCopied() {
         Player p = new Player("Player 1", 'W');
         Player p2 = p.copy();
+
+        System.out.println(p.getName());
+        System.out.println(p2.getName());
 
         Assertions.assertSame("Player 1", p2.getName());
         Assertions.assertSame('W', p2.getColor());
