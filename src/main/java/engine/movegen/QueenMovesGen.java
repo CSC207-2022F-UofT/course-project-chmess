@@ -1,5 +1,12 @@
+package engine.movegen;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import engine.move.Move;
+import engine.entities.Board;
+import engine.entities.Piece;
+
 /**
  * Contains a single method which creates list of possible moves
  * a queen can make which is later refined by PostMoveValidator.

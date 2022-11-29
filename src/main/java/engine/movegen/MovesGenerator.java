@@ -1,4 +1,11 @@
+package engine.movegen;
+
 import java.util.List;
+
+import engine.move.Move;
+import engine.entities.Board;
+import engine.entities.Piece;
+
 /**
  * Abstract class containing useful methods used in
  * its subclasses. Each subclass will generate a

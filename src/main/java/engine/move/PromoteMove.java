@@ -1,33 +1,40 @@
+package engine.move;
+
+import engine.entities.Board;
+
 /**
- * A representation of an en passant move.
+ * A representation of a (pawn) promotion move.
  */
-public class EnPassantMove extends Move {
+public class PromoteMove extends Move {
+    private String promotedType;
+
     /**
-     * Creates an EnPassantMove object with the given coordinate pairs.
+     * Creates a PromoteMove object with the given coordinate pairs.
+     * The provided string is the type the moved piece should have.
      *
      * @param origin      the origin of the piece to be moved
      * @param destination the destination of the piece to be moved
      */
-    public EnPassantMove(int[] origin, int[] destination) {
+    public PromoteMove(int[] origin, int[] destination, String promotedType) {
         super(origin, destination);
+        this.promotedType = promotedType;
     }
 
     /**
      * Mutates the given board (as well as players and pieces within the board)
      * to reflect the state of the board after this move is made.
-     * Removes the captured pawn, despite its unusual location.
+     * The moved piece should be replaced with a piece of the new type.
      *
      * @param board the board on which this move should be executed
      */
     @Override
     public void execute(Board board) {
         Piece pawn = board.getPieceAtAbsCoords(origin[0], origin[1]);
-        int[] capturedPos = {destination[0], origin[1]};
-        // With en passant, there will always be a captured piece
-        // More specifically, the captured piece will be a pawn
-        Piece captured = removePiece(board, capturedPos);
-        board.getPlayerOfPiece(pawn).addCapturedPiece(captured);
+        // (No captures)
+        // Move pawn to row
         movePiece(board, origin, destination);
+        // Promote to new type
+        pawn.setType(promotedType);
         pawn.setHasMadeFirstMove();
         board.advanceCurrentPlayer();
     }
@@ -42,11 +49,11 @@ public class EnPassantMove extends Move {
      */
     @Override
     public String getAlgebraicNotation(Board board) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getChessCoords(origin));
-        // en passant is always a capture
-        sb.append('x');
-        sb.append(getChessCoords(destination));
-        return sb.toString();
+        String originCoords = getChessCoords(origin);
+        String destCoords = getChessCoords(destination);
+        Piece piece = board.getPieceAtAbsCoords(origin[0], origin[1]);
+        char color = piece.getColor();
+        char promotedPieceSymbol = getPieceChar(promotedType, color);
+        return originCoords + destCoords + promotedPieceSymbol;
     }
 }

@@ -1,4 +1,11 @@
+package engine.movegen;
+
 import java.util.List;
+
+import engine.move.Move;
+import engine.entities.Board;
+import engine.entities.Piece;
+
 public class KnightMovesGen extends MovesGenerator {
     /**
      * Creates a list of possible moves a knight

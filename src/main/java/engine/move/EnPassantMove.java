@@ -1,36 +1,39 @@
-/**
- * A representation of a (pawn) promotion move.
- */
-public class PromoteMove extends Move {
-    private String promotedType;
+package engine.move;
 
+import engine.entities.Board;
+import engine.entities.Player;
+import engine.entities.Piece;
+
+/**
+ * A representation of an en passant move.
+ */
+public class EnPassantMove extends Move {
     /**
-     * Creates a PromoteMove object with the given coordinate pairs.
-     * The provided string is the type the moved piece should have.
+     * Creates an EnPassantMove object with the given coordinate pairs.
      *
      * @param origin      the origin of the piece to be moved
      * @param destination the destination of the piece to be moved
      */
-    public PromoteMove(int[] origin, int[] destination, String promotedType) {
+    public EnPassantMove(int[] origin, int[] destination) {
         super(origin, destination);
-        this.promotedType = promotedType;
     }
 
     /**
      * Mutates the given board (as well as players and pieces within the board)
      * to reflect the state of the board after this move is made.
-     * The moved piece should be replaced with a piece of the new type.
+     * Removes the captured pawn, despite its unusual location.
      *
      * @param board the board on which this move should be executed
      */
     @Override
     public void execute(Board board) {
         Piece pawn = board.getPieceAtAbsCoords(origin[0], origin[1]);
-        // (No captures)
-        // Move pawn to row
+        int[] capturedPos = {destination[0], origin[1]};
+        // With en passant, there will always be a captured piece
+        // More specifically, the captured piece will be a pawn
+        Piece captured = removePiece(board, capturedPos);
+        board.getPlayerOfPiece(pawn).addCapturedPiece(captured);
         movePiece(board, origin, destination);
-        // Promote to new type
-        pawn.setType(promotedType);
         pawn.setHasMadeFirstMove();
         board.advanceCurrentPlayer();
     }
@@ -45,11 +48,11 @@ public class PromoteMove extends Move {
      */
     @Override
     public String getAlgebraicNotation(Board board) {
-        String originCoords = getChessCoords(origin);
-        String destCoords = getChessCoords(destination);
-        Piece piece = board.getPieceAtAbsCoords(origin[0], origin[1]);
-        char color = piece.getColor();
-        char promotedPieceSymbol = getPieceChar(promotedType, color);
-        return originCoords + destCoords + promotedPieceSymbol;
+        StringBuilder sb = new StringBuilder();
+        sb.append(getChessCoords(origin));
+        // en passant is always a capture
+        sb.append('x');
+        sb.append(getChessCoords(destination));
+        return sb.toString();
     }
 }

@@ -1,3 +1,7 @@
+package engine;
+
+import engine.entities.Game;
+
 class GameStringManager {
     public GameStringManager() {}
 

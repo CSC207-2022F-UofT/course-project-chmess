@@ -1,4 +1,10 @@
+package engine.movegen;
+
 import java.util.List;
+
+import engine.move.Move;
+import engine.entities.Board;
+import engine.entities.Piece;
 
 public class KingMovesGen extends MovesGenerator {
     public KingMovesGen (Board board, Piece king) {

@@ -1,3 +1,5 @@
+package engine.entities;
+
 import java.util.List;
 /**
  * A board of chess pieces.

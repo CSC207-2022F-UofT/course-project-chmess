@@ -1,4 +1,7 @@
+package engine.entities;
+
 import java.util.List;
+import engine.movegen.MovesGenerator;
 
 public class Piece {
     private char color;

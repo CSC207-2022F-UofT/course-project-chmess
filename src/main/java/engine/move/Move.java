@@ -1,3 +1,8 @@
+package engine.move;
+
+import engine.entities.Board;
+import engine.entities.Piece;
+
 /**
  * A representation of the most common move type.
  * Contrast with the anomalies

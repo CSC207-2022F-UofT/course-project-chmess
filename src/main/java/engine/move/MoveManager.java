@@ -1,3 +1,7 @@
+package engine.move;
+
+import engine.entities.Game;
+
 class MoveManager {
     public MoveManager() {}
 
