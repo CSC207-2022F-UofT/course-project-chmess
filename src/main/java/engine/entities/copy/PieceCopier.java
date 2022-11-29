@@ -3,6 +3,7 @@ package engine.entities.copy;
 import engine.entities.Board;
 import engine.entities.Piece;
 import engine.entities.Player;
+import engine.movegen.MovesGenerator;
 
 public class PieceCopier {
     public PieceCopier() {}

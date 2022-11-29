@@ -3,6 +3,8 @@ package engine.entities;
 import java.util.List;
 import java.util.ArrayList;
 
+import engine.entities.copy.PlayerCopier;
+
 public class Player {
     public String name;
     private char color;

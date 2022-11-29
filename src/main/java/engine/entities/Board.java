@@ -3,7 +3,7 @@ package engine.entities;
 import java.util.List;
 
 import engine.move.Move;
-
+import engine.entities.copy.BoardCopier;
 /**
  * A board of chess pieces.
  */

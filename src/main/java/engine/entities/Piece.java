@@ -5,6 +5,8 @@ import java.util.List;
 import engine.move.Move;
 import engine.movegen.MovesGenerator;
 
+import engine.entities.copy.PieceCopier;
+
 public class Piece {
     private char color;
     private String type;
