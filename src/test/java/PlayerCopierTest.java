@@ -57,7 +57,7 @@ class PlayerCopierTest {
 
         Player p2 = p.copy();
 
-        Assertions.assertSame(p2.getPoints(), p.getPoints());
+        Assertions.assertEquals(p2.getPoints(), p.getPoints());
     }
 
     @Test

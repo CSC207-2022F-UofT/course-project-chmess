@@ -20,20 +20,20 @@ public class PlayerCopier {
         String name = oldPlayer.getName();
         char color = oldPlayer.getColor();
         Player newPlayer = new Player(name, color);
-        /*
+
         // Points will automatically be calculated when captured pieces are added
         List<Piece> capturedPieces = oldPlayer.getCapturedPieces();
-        for (Piece piece : capturedPieces) {
-            Piece newPiece = piece.copy();
-            newPlayer.addCapturedPiece(newPiece);
-        }
 
+        for (Piece piece : capturedPieces) {
+            newPlayer.addCapturedPiece(piece.copy());
+        }
+        /*
         List<Piece> pieceList = oldPlayer.getPieceList();
         for (Piece piece : pieceList) {
             Piece newPiece = piece.copy();
             newPlayer.addPiece(newPiece);
         }
-         */
+        */
         return newPlayer;
     }
 }
