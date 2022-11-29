@@ -1,5 +1,9 @@
 package engine.entities.copy;
 
+import engine.entities.Board;
+import engine.entities.Piece;
+import engine.entities.Player;
+
 /**
  * A deep cloner for Board instances.
  */
