@@ -11,7 +11,8 @@ class BoardCopierTest {
         Board board = new Board();
         PieceFactory pf = new PieceFactory();
 
-        Piece piece = pf.create("P", 'w', 0, 0);
+        Piece piece = pf.create("P", 'w');
+        piece.setCoords(0,0);
         board.setPieceAtAbsCoords(0, 0, piece);
 
         Board copy = board.copy();
@@ -27,7 +28,8 @@ class BoardCopierTest {
         Board board = new Board();
         PieceFactory pf = new PieceFactory();
 
-        Piece piece = pf.create("P", 'w', 0, 0);
+        Piece piece = pf.create("P", 'w');
+        piece.setCoords(0,0);
         board.setPieceAtAbsCoords(0, 0, piece);
 
         Board copy = board.copy();
@@ -40,7 +42,8 @@ class BoardCopierTest {
         Board board = new Board();
         PieceFactory pf = new PieceFactory();
 
-        Piece piece = pf.create("P", 'w', 0, 0);
+        Piece piece = pf.create("P", 'w');
+        piece.setCoords(0,0);
         board.setPieceAtAbsCoords(0, 0, piece);
 
         Board copy = board.copy();
