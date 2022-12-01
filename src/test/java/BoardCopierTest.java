@@ -20,7 +20,7 @@ class BoardCopierTest {
         Piece piece_original = board.getPieceAtAbsCoords(0, 0);
         Piece piece_copy = copy.getPieceAtAbsCoords(0, 0);
 
-        Assertions.assertEquals(piece_original.getCoords(), piece_copy.getCoords());
+        Assertions.assertSame(piece_original.getCoords(), piece_copy.getCoords());
     }
 
     @Test
