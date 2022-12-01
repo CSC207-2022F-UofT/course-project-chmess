@@ -1,32 +1,29 @@
 package engine.entities.copy;
 
 import engine.entities.Piece;
+import engine.entities.PieceFactory;
 import engine.movegen.MovesGenerator;
 
 public class PieceCopier {
     public PieceCopier() {}
 
     /**
-     * Returns a deep clone of the given Board instance.
+     * Returns a deep clone of the given Piece instance.
      *
-     * @see Piece#copy() Board.copy()
-     *
-     * @return a clone of the piece
+     * @param oldPiece the piece to be cloned
+     * @return a (deep) clone of the piece
      */
     public Piece createCopy(Piece oldPiece) {
-        Piece newPiece = new Piece();
+        PieceFactory pf = new PieceFactory();
 
         String type = oldPiece.getType();
         char color = oldPiece.getColor();
         int[] coords = oldPiece.getCoords();
-        int pointValue = oldPiece.getPointValue();
-        MovesGenerator mg = oldPiece.getMovesGenerator();
 
-        newPiece.setType(type);
-        newPiece.setColor(color);
+        // This is the minimum amount of information needed
+        // to build a copy with all the same values.
+        Piece newPiece = pf.create(type, color);
         newPiece.setCoords(coords[0], coords[1]);
-        newPiece.setPointValue(pointValue);
-        newPiece.setMovesGenerator(mg);
 
         return newPiece;
     }

@@ -10,16 +10,17 @@ import engine.entities.Player;
  * A deep cloner for Board instances.
  */
 public class BoardCopier {
+    public BoardCopier() {}
+
     /**
      * Returns a deep clone of the given Board instance.
+     * The given Board object should contain player objects.
      *
      * @see Board#copy() Board.copy()
      *
-     * @param board the board to be cloned
+     * @param oldBoard the board to be cloned
      * @return a clone of the board
-     */    
-    public BoardCopier() {}
-
+     */
     public Board createCopy(Board oldBoard) {
         Board newBoard = new Board();
 
