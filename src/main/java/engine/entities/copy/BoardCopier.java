@@ -1,5 +1,7 @@
 package engine.entities.copy;
 
+import java.util.List;
+
 import engine.entities.Board;
 import engine.entities.Piece;
 import engine.entities.Player;
@@ -27,16 +29,12 @@ public class BoardCopier {
         Player[] newPlayers = {player1, player2};
         newBoard.setPlayers(newPlayers);
 
+        List<Piece> oldPieces = oldBoard.getAllPieces();
 
-        for (int i=0; i<Board.HEIGHT; i++) {
-            for (int j=0; j<Board.WIDTH; j++) {
-                Piece relPiece = oldBoard.getPieceAtRelCoords(i, j);
-
-                if (relPiece != null) {
-                    Piece newPiece = relPiece.copy();
-                    newBoard.setPieceAtRelCoords(i, j, newPiece);
-                }
-            }
+        for (Piece piece : oldPieces) {
+            Piece newPiece = piece.copy();
+            int[] coords = piece.getCoords();
+            newBoard.setPieceAtAbsCoords(coords[0], coords[1], newPiece);
         }
 
         return newBoard;

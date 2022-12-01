@@ -272,4 +272,16 @@ public class Board {
         }
         return piecesForColor;
     }
+
+    public List<Piece> getAllPieces() {
+        List<Piece> pieces = new ArrayList<Piece>();
+        for (int y = 0; y < HEIGHT; y++) {
+            for (int x = 0; x < WIDTH; x++) {
+                if (getPieceAtAbsCoords(x, y) != null) {
+                    pieces.add(getPieceAtAbsCoords(x, y));
+                }
+            }
+        }
+        return pieces;
+    }
 }
