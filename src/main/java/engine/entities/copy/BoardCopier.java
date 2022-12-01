@@ -22,7 +22,9 @@ public class BoardCopier {
         Board newBoard = new Board();
 
         Player[] oldPlayers = oldBoard.getPlayers();
-        Player[] newPlayers = clonePlayer(oldPlayers);
+        Player player1 = oldPlayers[0].copy();
+        Player player2 = oldPlayers[1].copy();
+        Player[] newPlayers = {player1, player2};
         newBoard.setPlayers(newPlayers);
 
         for (int i=0; i<Board.HEIGHT; i++) {
@@ -49,12 +51,5 @@ public class BoardCopier {
         }
 
         return newBoard;
-    }
-
-    private Player[] clonePlayer(Player[] players) {
-        Player player1 = players[0].copy();
-        Player player2 = players[1].copy();
-        Player[] newPlayers = {player1, player2};
-        return newPlayers;
     }
 }
