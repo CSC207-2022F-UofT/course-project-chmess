@@ -27,26 +27,15 @@ public class BoardCopier {
         Player[] newPlayers = {player1, player2};
         newBoard.setPlayers(newPlayers);
 
+
         for (int i=0; i<Board.HEIGHT; i++) {
             for (int j=0; j<Board.WIDTH; j++) {
-                Piece absPiece = oldBoard.getPieceAtAbsCoords(i, j);
                 Piece relPiece = oldBoard.getPieceAtRelCoords(i, j);
-                Piece mirrorPiece = oldBoard.getPieceAtMirrorCoords(i, j);
 
-                if (absPiece != null) {
-                    Piece newPiece = absPiece.copy();
-                    newBoard.setPieceAtAbsCoords(i, j, newPiece);
-                }
-                
                 if (relPiece != null) {
                     Piece newPiece = relPiece.copy();
                     newBoard.setPieceAtRelCoords(i, j, newPiece);
                 }
-                 
-                if (mirrorPiece != null) {
-                    Piece newPiece = mirrorPiece.copy();
-                    newBoard.setPieceAtMirrorCoords(i, j, newPiece);
-                } 
             }
         }
 
