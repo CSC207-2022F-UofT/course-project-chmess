@@ -51,6 +51,36 @@ public class PromoteMoveTest extends MoveTest {
     }
 
     @Test
+    public void PromotedPieceExists() {
+        Board board = createEmptyBoard('W');
+        Player p1 = board.getPlayerFromChar('W');;
+
+        createAndPlacePiece("pawn", 'W', board, 0, 6);
+
+        int[] origin = {0, 6};
+        int[] dest = {0, 7};
+        Move move = new PromoteMove(origin, dest, "rook");
+        move.execute(board);
+
+        Assertions.assertNotNull(board.getPieceAtAbsCoords(dest[0], dest[1]));
+    }
+
+    @Test
+    public void PromotedPieceHasCorrectPointValue() {
+        Board board = createEmptyBoard('W');
+        Player p1 = board.getPlayerFromChar('W');;
+
+        createAndPlacePiece("pawn", 'W', board, 0, 6);
+
+        int[] origin = {0, 6};
+        int[] dest = {0, 7};
+        Move move = new PromoteMove(origin, dest, "rook");
+        move.execute(board);
+
+        Assertions.assertEquals(5, board.getPieceAtAbsCoords(dest[0], dest[1]).getPointValue());
+    }
+
+    @Test
     public void GetAlgebraicNotationBlackKnight() {
         Board board = createEmptyBoard('B');
         Player p2 = board.getPlayerFromChar('B');;
