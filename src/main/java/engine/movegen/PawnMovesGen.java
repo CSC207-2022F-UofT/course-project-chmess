@@ -24,14 +24,14 @@ public class PawnMovesGen extends MovesGenerator {
 //        Move move1Rel = new Move(pos, new int[]{pos[0], pos[1] + 1});
         Move move1 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0], pos[1] + 1}));
         if (pos[0] == 6 && !(isOccupiedByPiece(move1, board))) { // checks if pawn can promote
-            addPromoteMoves(pos, new int[]{pos[0], 7}, pawn, board);
+            addPromoteMoves(pos, new int[]{pos[0], 7}, board);
             Move moveCapPro1 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0] - 1, 7}));
             Move moveCapPro2 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0] + 1, 7}));
             if (isOccupiedByEnemy(moveCapPro1, board)) {
-                addPromoteMoves(pos, new int[]{pos[0] - 1, 7}, pawn, board);
+                addPromoteMoves(pos, new int[]{pos[0] - 1, 7}, board);
             }
             if (isOccupiedByEnemy(moveCapPro2, board)) {
-                addPromoteMoves(pos, new int[]{pos[0] + 1, 7}, pawn, board);
+                addPromoteMoves(pos, new int[]{pos[0] + 1, 7}, board);
             }
         }
         if (pos[0] == 1 && !(this.isOccupiedByPiece(move1, board))) { // checks if pawn is in starting position and not jumping over piece
@@ -74,14 +74,14 @@ public class PawnMovesGen extends MovesGenerator {
      * occupied by any piece. Takes in absolute coordinates.
      */
     private boolean isOccupiedByPiece (Move move, Board board) {
-        return isOccupiedByFriendly(move, board) && isOccupiedByEnemy(move, board);
+        return isOccupiedByFriendly(move, board) || isOccupiedByEnemy(move, board);
     }
     /**
      * Mutates list moves by adding all possible
      * promotion moves with destination dest. Takes
      * in relative coordinates.
      */
-    private void addPromoteMoves (int[] pos, int[] dest, Piece pawn, Board board) {
+    private void addPromoteMoves (int[] pos, int[] dest, Board board) {
         String[] pieces = {"knight", "bishop", "rook", "queen"};
         for (String p : pieces) { // creates move instance for each promotion option
             int[] destAbs = board.switchCoords(dest);

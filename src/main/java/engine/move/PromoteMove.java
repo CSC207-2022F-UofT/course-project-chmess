@@ -2,6 +2,7 @@ package engine.move;
 
 import engine.entities.Piece;
 import engine.entities.Board;
+import engine.entities.PieceFactory;
 
 /**
  * A representation of a (pawn) promotion move.
@@ -30,13 +31,15 @@ public class PromoteMove extends Move {
      */
     @Override
     public void execute(Board board) {
-        Piece pawn = board.getPieceAtAbsCoords(origin[0], origin[1]);
         // (No captures)
-        // Move pawn to row
-        movePiece(board, origin, destination);
-        // Promote to new type
-        pawn.setType(promotedType);
-        pawn.setHasMadeFirstMove();
+        // Remove promoted pawn from board
+        removePiece(board, origin);
+        PieceFactory pf = new PieceFactory();
+        // Create new piece to which the pawn appears to promote
+        Piece promoted = pf.create(promotedType);
+        promoted.setHasMadeFirstMove();
+        placePiece(promoted, board, destination);
+
         board.advanceCurrentPlayer();
     }
 
