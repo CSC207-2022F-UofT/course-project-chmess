@@ -48,7 +48,10 @@ public class Player {
      * Returns all moves a player can make.
      */
     public List<Move> generatePlayerMoves () {
-        // TODO
-        return null;
+        List<Move> moves = new ArrayList<Move>();
+        for (Piece piece : this.pieces) {
+            moves.addAll(piece.generateMoves());
+        }
+        return moves;
     }
 }

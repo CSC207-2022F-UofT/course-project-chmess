@@ -4,6 +4,10 @@ import engine.entities.Game;
 import engine.entities.Board;
 import engine.entities.Piece;
 import engine.entities.Player;
+import engine.move.Move;
+
+import java.util.List;
+import java.util.ArrayList;
 
 public class DisplayGame implements DisplayGameInt{
     /**
@@ -53,11 +57,31 @@ public class DisplayGame implements DisplayGameInt{
             }
         System.out.print("\n");
         }
+
+        Player[] players = game.getPlayers();
+        Player player1 = players[0];
+        Player player2 = players[1];
+        
+        System.out.println(player1.getColor() + ": " + player1.getName() + " " + player1.getPoints());
+        System.out.println(player2.getColor() + ": " + player2.getName() + " " + player2.getPoints());
+        
         Player currentPlayer = board.getCurrentPlayer();
-        if (currentPlayer.getColor()=='W') {
+        
+        if (currentPlayer.getColor() == 'W') {
             System.out.println("White to move...");
         } else {
             System.out.println("Black to move...");
         }
+
+        List<Move> moves = currentPlayer.generatePlayerMoves();
+
+        System.out.println("Possible moves:");
+        for (Move move : moves) {
+            System.out.print(move + " ");
+        }
+
+
+
+
     }
 }
