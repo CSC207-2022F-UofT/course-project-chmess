@@ -6,11 +6,9 @@ import engine.move.Move;
 import engine.movegen.BishopMovesGen;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.testng.asserts.Assertion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 class BishopMovesGenTest {
