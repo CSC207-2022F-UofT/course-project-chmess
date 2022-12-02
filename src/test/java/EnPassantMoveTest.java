@@ -9,11 +9,13 @@ public class EnPassantMoveTest extends MoveTest {
     public void ExecuteAdvancesCurrentPlayerWhiteToBlack() {
         Board board = createEmptyBoard('W');
         Player p1 = board.getPlayerFromChar('W');;
+        Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("king", 'W', board, 0, 0);
+        Piece pawn1 = createAndPlacePiece("pawn", 'W', board, 1, 4);
+        createAndPlacePiece("pawn", 'B', board, 0, 4);
 
-        int[] origin = {0, 0};
-        int[] dest = {0, 1};
+        int[] origin = {1, 4};
+        int[] dest = {0, 5};
         Move move = new EnPassantMove(origin, dest);
         move.execute(board);
 

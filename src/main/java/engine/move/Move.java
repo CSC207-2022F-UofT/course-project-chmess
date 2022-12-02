@@ -65,10 +65,14 @@ public class Move {
         board.advanceCurrentPlayer();
     }
 
+    protected void placePiece(Piece piece, Board board, int[] dest) {
+        piece.setCoords(dest[0], dest[1]);
+        board.setPieceAtAbsCoords(dest[0], dest[1], piece);
+    }
+
     protected void movePiece(Board board, int[] pos1, int[] pos2) {
-        Piece piece = board.getPieceAtAbsCoords(pos1[0], pos1[1]);
-        board.setPieceAtAbsCoords(pos1[0], pos1[1], null);
-        board.setPieceAtAbsCoords(pos2[0], pos2[1], piece);
+        Piece piece = removePiece(board, pos1);
+        placePiece(piece, board, pos2);
     }
 
     protected Piece removePiece(Board board, int[] pos) {
