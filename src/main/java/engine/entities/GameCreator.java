@@ -1,5 +1,10 @@
 package engine.entities;
 
+import engine.entities.Game;
+import engine.entities.Board;
+import engine.entities.BoardCreator;
+import engine.entities.Player;
+
 /**
  * A creator for a new Game instance, representing
  * a chess match in which no moves have been made.

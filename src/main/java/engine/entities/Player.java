@@ -1,5 +1,7 @@
 package engine.entities;
 
+import engine.move.Move;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -41,5 +43,12 @@ public class Player {
 
     public List<Piece> getCapturedPieces () {
         return this.capturedPieces;
+    }
+    /**
+     * Returns all moves a player can make.
+     */
+    public List<Move> generatePlayerMoves () {
+        // TODO
+        return null;
     }
 }
