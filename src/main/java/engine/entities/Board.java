@@ -142,6 +142,7 @@ public class Board {
      */
     public void setPieceAtAbsCoords(int x, int y, Piece piece) {
         board[y][x] = piece;
+        piece.setCoords(x, y);
     }
 
     public Piece getPieceAtAbsCoords(int x, int y) {
@@ -185,8 +186,7 @@ public class Board {
      * @return whether the coordinates are on the Board
      */
     public boolean containsAbsCoords(int x, int y) {
-        // TODO
-        return true;
+        return(0 <= x && 0 <= y && x < Board.WIDTH && y < Board.HEIGHT);
     }
 
     /**

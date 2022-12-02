@@ -1,5 +1,11 @@
-import java.util.ArrayList;
+package engine.movegen;
+
 import java.util.List;
+import java.util.ArrayList;
+
+import engine.move.Move;
+import engine.entities.Board;
+import engine.entities.Piece;
 
 /**
  * Abstract class containing useful methods used in
@@ -57,7 +63,7 @@ public abstract class MovesGenerator {
             Piece movingPiece = board.getPieceAtAbsCoords(move.origin[0], move.origin[1]);
             Piece destPiece = board.getPieceAtAbsCoords(move.destination[0], move.destination[1]);
             //returns true if moving and destination pieces have same colours
-            return(movingPiece.getPlayer().getColor() == destPiece.getPlayer().getColor());
+            return(movingPiece.getColor() == destPiece.getColor());
         }
         //destination tile is not occupied
         return false;
@@ -76,7 +82,7 @@ public abstract class MovesGenerator {
             Piece movingPiece = board.getPieceAtAbsCoords(move.origin[0], move.origin[1]);
             Piece destPiece = board.getPieceAtAbsCoords(move.destination[0], move.destination[1]);
             //returns true if moving and destination pieces have different colours
-            return(movingPiece.getPlayer().getColor() != destPiece.getPlayer().getColor());
+            return(movingPiece.getColor() != destPiece.getColor());
         }
         //destination tile is not occupied
         return false;
