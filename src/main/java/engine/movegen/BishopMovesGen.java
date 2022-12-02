@@ -1,3 +1,9 @@
+package engine.movegen;
+
+import engine.entities.Board;
+import engine.entities.Piece;
+import engine.move.Move;
+
 import java.util.List;
 /**
  * Contains a single method which creates list of possible moves
