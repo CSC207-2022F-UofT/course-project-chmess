@@ -1,8 +1,10 @@
+package engine.entities;
+
 /**
  * A creator for a new Game instance, representing
  * a chess match in which no moves have been made.
  */
-class GameCreator {
+public class GameCreator {
     public GameCreator() {}
 
     /**

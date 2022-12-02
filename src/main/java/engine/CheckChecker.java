@@ -1,3 +1,8 @@
+package engine;
+
+import engine.entities.Board;
+import engine.entities.Player;
+
 class CheckChecker {
     public CheckChecker() {}
 

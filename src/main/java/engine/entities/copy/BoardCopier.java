@@ -1,3 +1,7 @@
+package engine.entities.copy;
+
+import engine.entities.Board;
+
 /**
  * A deep cloner for Board instances.
  */

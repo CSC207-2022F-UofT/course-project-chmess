@@ -1,3 +1,5 @@
+package engine.entities;
+
 /**
  * A game of chess.
  */

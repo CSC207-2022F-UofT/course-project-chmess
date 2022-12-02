@@ -1,3 +1,7 @@
+package engine.move;
+
+import engine.entities.Board;
+
 public class MoveTryer {
     public Board newBoard;
     /**

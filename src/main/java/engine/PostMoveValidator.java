@@ -1,4 +1,10 @@
+package engine;
+
 import java.util.List;
+
+import engine.entities.Board;
+import engine.move.Move;
+
 public class PostMoveValidator {
     public List<Move> validMoves;
     /**
