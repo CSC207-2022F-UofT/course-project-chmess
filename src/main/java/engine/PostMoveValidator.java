@@ -16,7 +16,8 @@ public class PostMoveValidator {
      * @param move a move to be validated
      */
     public boolean moveIsValid(Board board, Move move) {
-        return false;
+        // TODO
+        throw new java.lang.UnsupportedOperationException();
     }
 
     /**
@@ -33,6 +34,7 @@ public class PostMoveValidator {
         // every move. Calls MovesGenerator on this cloned board for
         // every piece belonging to opposing player, and if any of these
         // moves capture the King, the original move is invalid and is removed.
-        return null;
+        // TODO
+        throw new java.lang.UnsupportedOperationException();
     }
 }
