@@ -13,6 +13,6 @@ public class MoveExecutor {
      * @param move the move to execute
      */
     public void execute(Board board, Move move) {
-
+        move.execute(board);
     }
 }

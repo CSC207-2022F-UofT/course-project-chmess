@@ -6,26 +6,27 @@ import engine.entities.Piece;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class CheckChecker {
     public CheckChecker() {}
 
     private List<Piece> getAllPieces(Board board) {
         List<Piece> pieceList = new ArrayList<>();
-        for (int i = 0; i < Board.HEIGHT; i++) {
-            for (int j = 0; j < Board.WIDTH; j++) {
-                Piece piece = board.getPieceAtAbsCoords(i, j);
+        for (int x = 0; x < Board.WIDTH; x++) {
+            for (int y = 0; y < Board.HEIGHT; y++) {
+                Piece piece = board.getPieceAtAbsCoords(x, y);
                 if (piece != null) pieceList.add(piece);
             }
         }
         return pieceList;
     }
 
-    private int[] findKing(List<Piece> pieceList, char playerColor) {
+    private int[] findKing(List<Piece> pieceList, char playerColor) throws NoSuchElementException {
         for (Piece piece : pieceList)
             if (piece.getColor() == playerColor && piece.getType().equals("king"))
                 return piece.getCoords();
-        return new int[]{-1, -1};
+        throw new NoSuchElementException();
     }
 
     /**
@@ -35,17 +36,28 @@ public class CheckChecker {
      * @return whether the given player is in check
      */
     public boolean isPlayerInCheck(Board board, char playerColor) {
-        List<Piece> pieceList = getAllPieces(board);
-        int[] kingCoords = findKing(pieceList, playerColor);
-        for (Piece piece: pieceList) {
-            if (piece.getColor() != playerColor) {
-                List<Move> moves = piece.generateMoves();
-                if (moves == null) continue;
-                for (Move possibleMove : moves) {
-                    if (possibleMove.destination[0] == kingCoords[0]
-                            && possibleMove.destination[1] == kingCoords[1]) return true;
+        try {
+            List<Piece> pieceList = getAllPieces(board);
+            int[] kingCoords = findKing(pieceList, playerColor);
+            for (Piece piece : pieceList) {
+                if (piece.getColor() != playerColor) {
+                    List<Move> moves = piece.generateMoves(board);
+                    if (moves == null) continue;
+
+                    boolean containsDestCoords = movesContainsDestCoords(moves, kingCoords);
+                    if (containsDestCoords) return true;
                 }
             }
+            return false;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    protected boolean movesContainsDestCoords(List<Move> moves, int[] coords) {
+        for (Move move : moves) {
+            if (move.destination[0] == coords[0] && move.destination[1] == coords[1])
+                return true;
         }
         return false;
     }
