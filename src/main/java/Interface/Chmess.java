@@ -1,8 +1,8 @@
 package Interface;
 
-import Interface.Import;
-import Interface.ImportInt;
-import Interface.PlayGame;
+//import Interface.Import;
+//import Interface.ImportInt;
+//import Interface.PlayGame;
 import engine.entities.Game;
 import engine.entities.GameCreator;
 
@@ -14,7 +14,7 @@ import java.util.Scanner;
  * Run to start Interface.Chmess program.
  */
 public class Chmess {
-    public static void main () {
+    public static void main (String[] args) {
         runGame();
     }
     /**
@@ -52,7 +52,7 @@ public class Chmess {
         }
         else {
             System.out.println("Invalid input. Please try again: ");
-            main();
+            //main();
         }
 
 

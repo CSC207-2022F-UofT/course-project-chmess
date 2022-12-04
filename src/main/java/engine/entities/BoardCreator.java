@@ -140,6 +140,7 @@ public class BoardCreator {
     public Board create() {
         Board board = new Board();
         placeAllPieces(board);
+        board.setCurrentPlayer(board.getPlayerFromChar('W'));
         return board;
     }
 }

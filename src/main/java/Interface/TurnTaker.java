@@ -4,6 +4,7 @@ import engine.entities.Game;
 import engine.move.Move;
 import engine.move.MoveManager;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
 public class TurnTaker {
     public static void takeTurn(Game game) {
         List<Move> moves = game.getBoard().getCurrentPlayer().generatePlayerMoves();
-        List<String> movesString = null;
+        List<String> movesString = new ArrayList<>();
         for (Move m: moves) {
             movesString.add(m.getAlgebraicNotation(game.getBoard()));
         }
