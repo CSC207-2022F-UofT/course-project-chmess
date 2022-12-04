@@ -1,7 +1,5 @@
 package Interface;
-import engine.entities.GameCreator;
 
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -10,7 +8,7 @@ public class DisplayEnd implements DisplayEndInt {
     /**
      * Displays ending screen based on gameState. If checkmate,
      * displays curPlayer as winner. After user inputs (C) to
-     * continue, calls Chmess to return to main screen.
+     * continue, calls Interface.Chmess to return to main screen.
      */
     public void display(String curPlayer, char gameState) {
         Scanner reader = new Scanner(System.in);
@@ -25,7 +23,7 @@ public class DisplayEnd implements DisplayEndInt {
         }
         String c = reader.next();
         if (Objects.equals(c, "C")) {
-            // TODO: run Chmess program again
+            Chmess.runGame();
         }
     }
 }

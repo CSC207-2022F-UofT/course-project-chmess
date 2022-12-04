@@ -1,3 +1,5 @@
+package Interface;
+
 import Interface.Import;
 import Interface.ImportInt;
 import Interface.PlayGame;
@@ -9,12 +11,28 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 /**
- * Run to start Chmess program.
+ * Run to start Interface.Chmess program.
  */
 public class Chmess {
     public static void main () {
+        runGame();
+    }
+    /**
+     * Asks user to input player names.
+     */
+    private static ArrayList<String> askPlayers() {
+        ArrayList<String> l = new ArrayList<>();
         Scanner reader = new Scanner(System.in);
-        System.out.println("Welcome to Chmess! Press (N) for new game, (L) for load custom starting position from file, or (Q) to exit program: ");
+        System.out.println("Enter Player 1 name: ");
+        l.add(reader.next());
+        System.out.println("Enter Player 2 name: ");
+        l.add(reader.next());
+        return l;
+    }
+
+    public static void runGame() {
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Welcome to Interface.Chmess! Press (N) for new game, (L) for load custom starting position from file, or (Q) to exit program: ");
         String c = reader.next();
         if (Objects.equals(c, "N")) {
             ArrayList<String> players = askPlayers();
@@ -37,17 +55,6 @@ public class Chmess {
             main();
         }
 
-    }
-    /**
-     * Asks user to input player names.
-     */
-    private static ArrayList<String> askPlayers() {
-        ArrayList<String> l = new ArrayList<>();
-        Scanner reader = new Scanner(System.in);
-        System.out.println("Enter Player 1 name: ");
-        l.add(reader.next());
-        System.out.println("Enter Player 2 name: ");
-        l.add(reader.next());
-        return l;
+
     }
 }
