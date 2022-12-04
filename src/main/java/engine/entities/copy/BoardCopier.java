@@ -16,7 +16,7 @@ public class BoardCopier {
      * @param board the board to be cloned
      * @return a clone of the board
      */
-    public Board createCopy(Board board) {
+    public static Board createCopy(Board board) {
         // TODO
         return null;
     }

@@ -2,6 +2,7 @@ package Interface;
 
 import engine.entities.Game;
 import engine.entities.Player;
+import engine.move.MoveManager;
 
 /**
  * Plays the current game. Calls TurnTaker to have users take turns
@@ -11,14 +12,17 @@ import engine.entities.Player;
 public class PlayGame {
     Player curPlayer;
     public static void play(Game game) {
-        // calls TurnTaker until game.gamestate is either $ or #
-        // calls EndScreen
-        // TODO
-    }
+        while (game.getGameState() != '$' && game.getGameState() != '#') {
+            TurnTaker.takeTurn(game);
+            }
+        DisplayEndInt dis = new DisplayEnd();
+        dis.display(game.getBoard().getCurrentPlayer().name, game.getGameState());
+        }
     /**
      * Reverts game to before the latest move was made.
      */
-    public void undoMove() {
-        // TODO
+    public static void undoMove(Game game) {
+        MoveManager.undoLastMove(game);
+        PlayGame.play(game);
     }
 }

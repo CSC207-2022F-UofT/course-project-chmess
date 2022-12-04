@@ -14,7 +14,7 @@ public class DisplayGame implements DisplayGameInt{
      * Displays board, game state, which player's turn it is, and
      * list of possible moves
      */
-    public void display(Game game) {
+    public void display(Game game, List<String> moves) {
         Board board = game.getBoard();
         board.selectDefaultPov();
         for (int y=0; y<Board.HEIGHT; y++) {
@@ -73,11 +73,10 @@ public class DisplayGame implements DisplayGameInt{
             System.out.println("Black to move...");
         }
 
-        List<Move> moves = currentPlayer.generatePlayerMoves();
 
         System.out.println("Possible moves:");
-        for (Move move : moves) {
-            System.out.print(move + " ");
+        for (String move : moves) {
+            System.out.print(move + ", ");
         }
 
 

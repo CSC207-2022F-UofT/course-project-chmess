@@ -1,5 +1,6 @@
 package engine.entities;
 
+
 /**
  * A creator for the "typical" Board instance.
  * The created Board object will have new pieces placed
@@ -11,7 +12,7 @@ public class BoardCreator {
     private final Player p1;
     private final Player p2;
     // Board.getPieceAtAbsCoords(0,0) is the bottom-left square a1
-    private final String boardString =
+    private String boardString =
             "RNBQKBNR"
             + "PPPPPPPP"
             + "........"
@@ -32,6 +33,16 @@ public class BoardCreator {
     public BoardCreator(Player p1, Player p2) {
         this.p1 = p1;
         this.p2 = p2;
+    }
+
+    /**
+     * Changes default starting position to board
+     * as represented in startingPosition.
+     *
+     * @param startingPosition List of strings where each string represents one row of the board
+     */
+    public void changeStartingPosition(String startingPosition) {
+        this.boardString = startingPosition;
     }
 
     /**

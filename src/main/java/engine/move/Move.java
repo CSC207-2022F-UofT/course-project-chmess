@@ -102,6 +102,19 @@ public class Move {
         sb.append(getChessCoords(destination));
         return sb.toString();
     }
+    /**
+     * Converts algebraic notation to move instance and returns
+     * that move instance.
+     *
+     * @param moveString String representing algebraic notation of move
+     * @return move instance
+     */
+    public static Move getMoveFromNotation(String moveString) {
+        // TODO
+        // calls Move constructor to create new instance of move
+        return null;
+    }
+
 
     protected String getChessCoords(int[] coords) {
         int x = coords[0];

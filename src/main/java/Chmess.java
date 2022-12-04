@@ -1,3 +1,5 @@
+import Interface.Import;
+import Interface.ImportInt;
 import Interface.PlayGame;
 import engine.entities.Game;
 import engine.entities.GameCreator;
@@ -12,7 +14,7 @@ import java.util.Scanner;
 public class Chmess {
     public static void main () {
         Scanner reader = new Scanner(System.in);
-        System.out.println("Welcome to Chmess! Press (N) for new game, (L) for load game, or (Q) to exit program: ");
+        System.out.println("Welcome to Chmess! Press (N) for new game, (L) for load custom starting position from file, or (Q) to exit program: ");
         String c = reader.next();
         if (Objects.equals(c, "N")) {
             ArrayList<String> players = askPlayers();
@@ -20,14 +22,19 @@ public class Chmess {
             PlayGame.play(gameCreate.create(players.get(0), players.get(1)));
         }
         else if (Objects.equals(c, "L")) {
-            return;
+            System.out.println("Enter file name: ");
+            String fileName = reader.next();
+            ImportInt importStarting = new Import();
+            ArrayList<String> players = askPlayers();
+            GameCreator gameCreate = new GameCreator();
+            PlayGame.play(gameCreate.createImport(players.get(0), players.get(1), importStarting.importGame(fileName)));
         }
         else if (Objects.equals(c, "Q")) {
             return;
         }
         else {
             System.out.println("Invalid input. Please try again: ");
-            //
+            main();
         }
 
     }
