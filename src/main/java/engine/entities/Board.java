@@ -139,9 +139,16 @@ public class Board {
      * Assigns the given piece to the tile with the given absolute coordinates.
      * Absolute coordinates have "white" in row y=0 and "black" in row y=7.
      * The x-coordinate is from left-to-right as usual.
+     * If piece is not null, also sets the coordinates of piece to match
+     * the coordinates of the board tile on which it is placed.
+     * (Ideally, this method should be abstracted away as it has multiple
+     * responsibilities).
      */
     public void setPieceAtAbsCoords(int x, int y, Piece piece) {
         board[y][x] = piece;
+        if(piece != null) {
+            piece.setCoords(x, y);
+        }
     }
 
     public Piece getPieceAtAbsCoords(int x, int y) {
@@ -185,8 +192,7 @@ public class Board {
      * @return whether the coordinates are on the Board
      */
     public boolean containsAbsCoords(int x, int y) {
-        // TODO
-        return true;
+        return(0 <= x && 0 <= y && x < Board.WIDTH && y < Board.HEIGHT);
     }
 
     /**
