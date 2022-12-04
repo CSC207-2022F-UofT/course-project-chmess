@@ -1,5 +1,7 @@
 package engine.entities;
 
+import engine.movegen.*;
+
 public class PieceFactory {
     public PieceFactory() {}
 
@@ -24,22 +26,28 @@ public class PieceFactory {
         switch (type) {
             case "pawn":
                 piece.setPointValue(1);
+                piece.setMovesGenerator(new PawnMovesGen());
                 break;
             case "knight":
                 piece.setPointValue(3);
+                piece.setMovesGenerator(new KnightMovesGen());
                 break;
             case "bishop":
                 piece.setPointValue(3);
+                piece.setMovesGenerator(new BishopMovesGen());
                 break;
             case "rook":
                 piece.setPointValue(5);
+                piece.setMovesGenerator(new RookMovesGen());
                 break;
             case "queen":
                 piece.setPointValue(9);
+                piece.setMovesGenerator(new QueenMovesGen());
                 break;
             case "king":
                 // King can never be captured so whatever
                 piece.setPointValue(0);
+                piece.setMovesGenerator(new KingMovesGen());
                 break;
             default:
                 throw new IllegalArgumentException("Invalid piece type: " + type);

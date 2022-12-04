@@ -2,10 +2,15 @@ package engine;
 
 import java.util.List;
 
+import engine.entities.Piece;
+import engine.entities.Player;
 import engine.entities.Board;
 import engine.move.Move;
 
 public class PostMoveValidator {
+    private MoveExecutor mex = new MoveExecutor();
+    private CheckChecker cc = new CheckChecker();
+
     public PostMoveValidator () {}
 
     /**
@@ -16,8 +21,18 @@ public class PostMoveValidator {
      * @param move a move to be validated
      */
     public boolean moveIsValid(Board board, Move move) {
-        // TODO
-        throw new java.lang.UnsupportedOperationException();
+        // Need to figure this out before the board mutates
+        char currentPlayerColor = getCurrentPlayerColor(board, move);
+        Board shadowBoard = board.copy();
+        mex.execute(shadowBoard, move);
+        return cc.isPlayerInCheck(board, currentPlayerColor);
+        //throw new java.lang.UnsupportedOperationException();
+    }
+
+    private char getCurrentPlayerColor(Board board, Move move) {
+        int[] origin = move.getOrigin();
+        Piece movingPiece = board.getPieceAtAbsCoords(origin[0], origin[1]);
+        return movingPiece.getColor();
     }
 
     /**

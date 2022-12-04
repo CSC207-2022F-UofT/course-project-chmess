@@ -7,10 +7,7 @@ import engine.entities.Board;
 import engine.entities.Piece;
 
 public class KingMovesGen extends MovesGenerator {
-    public KingMovesGen (Board board, Piece king) {
-
-
-    }
+    public KingMovesGen () {}
     /**
      * Creates list of possible moves a king can
      * make which is later refined by PostMoveValidator.
