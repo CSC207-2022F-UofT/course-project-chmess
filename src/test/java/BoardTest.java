@@ -2,7 +2,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import engine.entities.*;
-import engine.move.*;
 
 class BoardTest {
     PieceFactory pf = new PieceFactory();

@@ -3,6 +3,8 @@ package engine.entities;
 import java.util.List;
 import java.util.ArrayList;
 
+import engine.entities.copy.PlayerCopier;
+
 public class Player {
     public String name;
     private char color;
@@ -14,12 +16,13 @@ public class Player {
         this.name = name;
         this.color = color;
         this.capturedPieces = new ArrayList<Piece>();
+        this.pieces = new ArrayList<Piece>();
         // implement: get players pieces from board.pieces and store in this.pieces
     }
 
     public Player copy() {
-        // TODO
-        return null;
+        PlayerCopier pc = new PlayerCopier();
+        return pc.createCopy(this);
     }
 
     public String getName() {
@@ -41,5 +44,13 @@ public class Player {
 
     public List<Piece> getCapturedPieces () {
         return this.capturedPieces;
+    }
+
+    public List<Piece> getPieceList () {
+        return this.pieces;
+    }
+
+    public void addPiece(Piece newPiece) {
+        this.pieces.add(newPiece);
     }
 }
