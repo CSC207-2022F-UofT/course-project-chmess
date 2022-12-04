@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import engine.move.*;
 import engine.entities.*;
 
-public class PostMoveValidatorTest extends MoveTest {
+public class PostMoveValidatorTest {
+    protected PieceFactory pf = new PieceFactory();
     private PostMoveValidator pmv = new PostMoveValidator();
 
     @Test
@@ -87,5 +88,28 @@ public class PostMoveValidatorTest extends MoveTest {
         Move move = new Move(new int[]{0, 0}, new int[]{1, 1});
 
         Assertions.assertTrue(pmv.moveIsValid(board, move));
+    }
+
+    protected Piece createAndPlacePiece(String type, char color, Board board, int x, int y) {
+        Piece piece = pf.create(type);
+        piece.setColor(color);
+        board.setPieceAtAbsCoords(x, y, piece);
+        piece.setCoords(x, y);
+        return piece;
+    }
+
+    protected Board createEmptyBoard(char currentPlayerColor) {
+        Board board = new Board();
+        Player p1 = new Player("Player 1", 'W');
+        Player p2 = new Player("Player 2", 'B');
+        Player[] players = {p1, p2};
+        board.setPlayers(players);
+        if (currentPlayerColor == 'W') {
+            board.setCurrentPlayer(p1);
+        } else {
+            board.setCurrentPlayer(p2);
+        }
+
+        return board;
     }
 }

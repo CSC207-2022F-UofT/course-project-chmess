@@ -1,6 +1,7 @@
 import engine.entities.Board;
 import engine.entities.BoardCreator;
 import engine.entities.Piece;
+import engine.entities.PieceFactory;
 import engine.entities.Player;
 import engine.move.Move;
 import engine.movegen.RookMovesGen;
@@ -12,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 class RookMovesGenTest {
+    protected PieceFactory pf = new PieceFactory();
+
     @Test
     public void rookCantMoveInitially() {
         Player p1 = new Player("Player 1", 'W');
@@ -27,7 +30,7 @@ class RookMovesGenTest {
     }
     @Test
     public void rookBottomLeftCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece rook = new Piece();
         rook.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(0, 0, rook);
@@ -61,7 +64,7 @@ class RookMovesGenTest {
     }
     @Test
     public void rookTopLeftCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece rook = new Piece();
         rook.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(0, 7, rook);
@@ -96,7 +99,7 @@ class RookMovesGenTest {
     }
     @Test
     public void rookTopRightCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece rook = new Piece();
         rook.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(7, 7, rook);
@@ -131,7 +134,7 @@ class RookMovesGenTest {
     }
     @Test
     public void rookBottomRightCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece rook = new Piece();
         rook.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(7, 0, rook);
@@ -166,7 +169,7 @@ class RookMovesGenTest {
     }
     @Test
     public void rookNearTopLeftCornerEnemyBlockingRight() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece rook = new Piece();
         rook.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(1, 6, rook);
@@ -204,7 +207,7 @@ class RookMovesGenTest {
     }
     @Test
     public void rookNearBottomRightCornerFriendlyBlockingBottomAndLeft() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece rook = new Piece();
         rook.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(6, 1, rook);
@@ -246,7 +249,7 @@ class RookMovesGenTest {
     }
     @Test
     public void rookRandomMiddleNoBlockers() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece rook = new Piece();
         rook.setColor(board.getPlayers()[1].getColor());
         board.setPieceAtAbsCoords(4, 3, rook);
@@ -279,7 +282,56 @@ class RookMovesGenTest {
             Assertions.assertTrue(isMatch);
         }
     }
-    private Board CreateEmptyBoard() {
+
+    @Test
+    public void CapturesNonKing() {
+        Board board = createEmptyBoard();
+        Piece wRook = createAndPlacePiece("rook", 'W', board, 0, 0);
+        createAndPlacePiece("rook", 'B', board, 0, 7);
+        RookMovesGen mg = new RookMovesGen();
+        List<Move> moves = mg.generate(board, wRook);
+
+        int[] expected = {0, 7};
+        boolean contained = false;
+        for (Move move : moves) {
+            int[] dest = move.getDestination();
+            if (dest[0] == expected[0] && dest[1] == expected[1]) {
+                contained = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(contained);
+    }
+
+    @Test
+    public void CapturesKing() {
+        Board board = createEmptyBoard();
+        Piece wRook = createAndPlacePiece("rook", 'W', board, 0, 0);
+        createAndPlacePiece("king", 'B', board, 0, 7);
+        RookMovesGen mg = new RookMovesGen();
+        List<Move> moves = mg.generate(board, wRook);
+
+        int[] expected = {0, 7};
+        boolean contained = false;
+        for (Move move : moves) {
+            int[] dest = move.getDestination();
+            if (dest[0] == expected[0] && dest[1] == expected[1]) {
+                contained = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(contained);
+    }
+
+    protected Piece createAndPlacePiece(String type, char color, Board board, int x, int y) {
+        Piece piece = pf.create(type);
+        piece.setColor(color);
+        board.setPieceAtAbsCoords(x, y, piece);
+        piece.setCoords(x, y);
+        return piece;
+    }
+
+    private Board createEmptyBoard() {
         Player p1 = new Player("Player 1", 'W');
         Player p2 = new Player("Player 2", 'B');
         Board board = new Board();

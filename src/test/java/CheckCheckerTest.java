@@ -7,6 +7,7 @@ import engine.entities.*;
 class CheckCheckerTest {
     private PieceFactory pf = new PieceFactory();
     private CheckChecker cc = new CheckChecker();
+    /*
     @Test
     public void DefaultBoard() {
         Player p1 = new Player("p1", 'W');
@@ -17,6 +18,7 @@ class CheckCheckerTest {
         Assertions.assertFalse(cc.isPlayerInCheck(board, 'W'));
         Assertions.assertFalse(cc.isPlayerInCheck(board, 'B'));
     }
+    */
 
     @Test
     public void SimpleCheck() {

@@ -27,7 +27,7 @@ class BishopMovesGenTest {
     }
     @Test
     public void bishopBottomLeftCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece bishop = new Piece();
         bishop.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(0, 0, bishop);
@@ -60,7 +60,7 @@ class BishopMovesGenTest {
     }
     @Test
     public void bishopTopLeftCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece bishop = new Piece();
         bishop.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(0, 7, bishop);
@@ -94,7 +94,7 @@ class BishopMovesGenTest {
     }
     @Test
     public void bishopTopRightCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece bishop = new Piece();
         bishop.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(7, 7, bishop);
@@ -128,7 +128,7 @@ class BishopMovesGenTest {
     }
     @Test
     public void bishopBottomRightCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece bishop = new Piece();
         bishop.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(7, 0, bishop);
@@ -162,7 +162,7 @@ class BishopMovesGenTest {
     }
     @Test
     public void bishopNearBottomLeftCornerEnemyBlockingTopRight() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece bishop = new Piece();
         bishop.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(1, 1, bishop);
@@ -200,7 +200,7 @@ class BishopMovesGenTest {
     }
     @Test
     public void bishopNearTopRightCornerFriendlyBlockingBottomLeft() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece bishop = new Piece();
         bishop.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(6, 6, bishop);
@@ -238,7 +238,7 @@ class BishopMovesGenTest {
     }
     @Test
     public void bishopRandomMiddleNoBlockers() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece bishop = new Piece();
         bishop.setColor(board.getPlayers()[1].getColor());
         board.setPieceAtAbsCoords(3, 4, bishop);
@@ -271,7 +271,7 @@ class BishopMovesGenTest {
             Assertions.assertTrue(isMatch);
         }
     }
-    private Board CreateEmptyBoard() {
+    private Board createEmptyBoard() {
         Player p1 = new Player("Player 1", 'W');
         Player p2 = new Player("Player 2", 'B');
         Board board = new Board();
