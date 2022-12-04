@@ -4,7 +4,7 @@ import engine.entities.Board;
 import engine.entities.Game;
 import engine.move.*;
 
-class MoveManager {
+public class MoveManager {
     public MoveManager() {}
 
     /**
@@ -17,7 +17,7 @@ class MoveManager {
      * @param game
      * @param move
      */
-    public void makeMove(Game game, Move move) {
+    public static void makeMove(Game game, Move move) {
         // TODO
     }
 
@@ -30,7 +30,7 @@ class MoveManager {
      *
      * @param game
      */
-    public void undoLastMove(Game game) {
+    public static void undoLastMove(Game game) {
         // TODO
     }
 
