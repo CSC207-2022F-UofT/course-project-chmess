@@ -19,7 +19,7 @@ The main features on which our implementation was focused by the end of the term
   - The ability to undo moves.
   - The ability to import a game in progress, in the form of a text file, allowing the user to continue the game from where it left off.
 
-The final implementation of the game includes all of the above mentioned features. The game was implemented with a text-based UI; as such one of the main features  originally planned and since removed was a GUI. This was seen as unimportant as the user could still experience a fully functional game and it left more time to implement more crucial aspects of the program. Unfortunately, we also had to dismiss the ability to import/export games from text files. Again, our focus was on implementing Chess functionality and this took priority until the last days of development. These two features are the most obvious candidates for work that could be done in the future.
+The final implementation of the game includes most of the above mentioned features. The game was implemented with a text-based UI; as such one of the main features  originally planned and since removed was a GUI. This was seen as unimportant as the user could still experience a fully functional game and it left more time to implement more crucial aspects of the program. Unfortunately, we also had to dismiss the ability to import/export games from text files. Again, our focus was on implementing Chess functionality and this took priority until the last days of development. These two features are the most obvious candidates for work that could be done in the future.
 
 As of now, possibly with slight variation in execution, the pizza party will still occur.
 
