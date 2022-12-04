@@ -72,4 +72,22 @@ public class PieceFactory {
         piece.setColor(color);
         return piece;
     }
+
+    /**
+     * Returns a Piece object based on the provided type, color, and coordinates.
+     * The resulting object should have appropriate:
+     * - type attribute,
+     * - color attribute,
+     * - point value,
+     * - moves generator.
+     * 
+     * @param type  the type of piece to be created
+     * @param color the color of the piece to be created
+     * @param coords the coordinates of the piece to be created
+     */
+    public Piece create(String type, char color, int x, int y) {
+        Piece piece = this.create(type, color);
+        piece.setCoords(x, y);
+        return piece;
+    }
 }

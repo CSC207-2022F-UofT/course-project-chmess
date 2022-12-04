@@ -271,6 +271,7 @@ class BishopMovesGenTest {
             Assertions.assertTrue(isMatch);
         }
     }
+
     private Board createEmptyBoard() {
         Player p1 = new Player("Player 1", 'W');
         Player p2 = new Player("Player 2", 'B');
