@@ -112,6 +112,26 @@ public class Move {
     public static Move getMoveFromNotation(String moveString) {
         // TODO
         // calls Move constructor to create new instance of move
+
+        String[] pieceStrings = {"k", "q", "r", "b", "n"};
+        String[] moveParams = moveString.split("");
+
+        if ("O-O".equals(moveString)) {
+            CastleMove castle = new CastleMove();
+        } else if ("O-O-O".equals(moveString)) {
+            // TODO
+            // castling
+        } else if (moveString.contains("=")) {
+            // TODO
+            // promotion
+        } else if (moveString.contains("x")) {
+            // TODO
+            // capture
+        } else {
+            // TODO
+            // normal move
+        }
+
         return null;
     }
 
