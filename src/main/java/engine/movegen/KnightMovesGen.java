@@ -1,6 +1,7 @@
 package engine.movegen;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import engine.move.Move;
 import engine.entities.Board;
@@ -17,12 +18,13 @@ public class KnightMovesGen extends MovesGenerator {
      */
     @Override
     public List<Move> generate (Board board, Piece knight) {
+        List<Move> moves = new ArrayList<>();
         int[] pos = knight.getCoords(); // get position of knight
         int[][] add = {{2, 1}, {2, -1}, {1, 2}, {1, -2}, {-1, 2}, {-1, -2}, {-2, 1}, {-2, -1}}; // to be added to pos
         for (int i = 0; i <= 7; i++) {
-            this.moves.add(new Move(pos, new int[]{pos[0] + add[i][0], pos[1] + add[i][1]})); // adds new Move instance to moves
+            moves.add(new Move(pos, new int[]{pos[0] + add[i][0], pos[1] + add[i][1]})); // adds new Move instance to moves
         }
-        super.removeInvalid(this.moves, board);
+        removeInvalid(moves, board);
         return this.moves;
     }
 }
