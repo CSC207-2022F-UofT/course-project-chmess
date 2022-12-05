@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.move.Move;
-
+import engine.entities.copy.BoardCopier;
 /**
  * A board of chess pieces.
  */
@@ -41,8 +41,8 @@ public class Board {
      * @return a clone of the board
      */
     public Board copy() {
-        // TODO
-        return null;
+        BoardCopier bc = new BoardCopier();
+        return bc.createCopy(this);
     }
 
     /**
@@ -280,5 +280,17 @@ public class Board {
             }
         }
         return piecesForColor;
+    }
+
+    public List<Piece> getAllPieces() {
+        List<Piece> pieces = new ArrayList<Piece>();
+        for (int y = 0; y < HEIGHT; y++) {
+            for (int x = 0; x < WIDTH; x++) {
+                if (getPieceAtAbsCoords(x, y) != null) {
+                    pieces.add(getPieceAtAbsCoords(x, y));
+                }
+            }
+        }
+        return pieces;
     }
 }
