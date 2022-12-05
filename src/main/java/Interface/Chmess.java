@@ -37,7 +37,8 @@ public class Chmess {
         if (Objects.equals(c, "N")) {
             ArrayList<String> players = askPlayers();
             GameCreator gameCreate = new GameCreator();
-            PlayGame.play(gameCreate.create(players.get(0), players.get(1)));
+            Game game = gameCreate.create(players.get(0), players.get(1));
+            PlayGame.play(game);
         }
         else if (Objects.equals(c, "L")) {
             System.out.println("Enter file name: ");

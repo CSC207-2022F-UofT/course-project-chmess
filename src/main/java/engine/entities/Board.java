@@ -1,5 +1,6 @@
 package engine.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import engine.move.Move;
@@ -256,7 +257,7 @@ public class Board {
      * can make.
      */
     public List<Move> semiValidMovesForColor(char color) {
-        List<Move> semiValidMoves = null;
+        List<Move> semiValidMoves = new ArrayList<>();
         for (Piece p : getAllPiecesForColor(color)) {
             for (Move m : p.generateMoves()) {
                 semiValidMoves.add(m);
@@ -267,12 +268,14 @@ public class Board {
     /**
      * Returns list of pieces belonging to color passed in.
      */
-    private List<Piece> getAllPiecesForColor(char color) {
-        List<Piece> piecesForColor = null;
+    public List<Piece> getAllPiecesForColor(char color) {
+        List<Piece> piecesForColor = new ArrayList<>();
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
-                if (getPieceAtAbsCoords(x, y).getColor() == color) {
-                    piecesForColor.add(getPieceAtAbsCoords(x, y));
+                if (getPieceAtAbsCoords(x, y) != null) {
+                    if (getPieceAtAbsCoords(x, y).getColor() == color) {
+                        piecesForColor.add(getPieceAtAbsCoords(x, y));
+                    }
                 }
             }
         }

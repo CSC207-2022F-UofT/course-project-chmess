@@ -49,31 +49,30 @@ public class MoveManager {
         String[] moveParams = moveString.split("");
 
         Board board = game.getBoard();
-        // AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        // HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        // HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        // HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 
         if ("O-O".equals(moveString)) {
             if (board.getCurrentPlayer().getColor() == 'W') {
-                CastleMove castle = new CastleMove({4, 7} , {6, 7});
+                CastleMove castle = new CastleMove(new int[]{4, 7}, new int[]{6, 7});
             } else {
-                CastleMove castle = new CastleMove({4, 0}, {6, 0});
+                CastleMove castle = new CastleMove(new int[]{4, 0}, new int[]{6, 0});
             }
         } else if ("O-O-O".equals(moveString)) {
             if (board.getCurrentPlayer().getColor() == 'W') {
-                CastleMove castle = new CastleMove({4, 7} , {6, 7});
+                CastleMove castle = new CastleMove(new int[]{4, 7}, new int[]{6, 7});
             } else {
-                CastleMove castle = new CastleMove({4, 0}, {6, 0});
+                CastleMove castle = new CastleMove(new int[]{4, 0}, new int[]{6, 0});
             }
         } else if (moveString.contains("=")) {
-            Move move = new PromotionMove();
+            throw new java.lang.UnsupportedOperationException("Not supported yet.");
+            //Move move = new PromoteMove();
 
         } else if (moveString.contains("x")) {
-            Move move = new Move();
+            throw new java.lang.UnsupportedOperationException("Not supported yet.");
+            //Move move = new Move();
 
         } else {
-            Move move = new Move();
+            throw new java.lang.UnsupportedOperationException("Not supported yet.");
+            //Move move = new Move();
         }
 
         return null;

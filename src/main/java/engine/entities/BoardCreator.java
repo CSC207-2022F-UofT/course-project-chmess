@@ -140,7 +140,12 @@ public class BoardCreator {
     public Board create() {
         Board board = new Board();
         placeAllPieces(board);
-        board.setCurrentPlayer(board.getPlayerFromChar('W'));
+
+        p1.setPieces(board.getAllPiecesForColor(p1.getColor()));
+        p2.setPieces(board.getAllPiecesForColor(p2.getColor()));
+
+        board.setPlayers(new Player[]{p1, p2});
+        board.setCurrentPlayer(p1);
         return board;
     }
 }

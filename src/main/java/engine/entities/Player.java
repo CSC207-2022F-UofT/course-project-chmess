@@ -36,6 +36,10 @@ public class Player {
         return this.points;
     }
 
+    public void setPieces(List<Piece> pieces) {
+        this.pieces = pieces;
+    }
+
     public void addCapturedPiece (Piece captured) {
         this.points += captured.getPointValue();
         this.capturedPieces.add(captured);
