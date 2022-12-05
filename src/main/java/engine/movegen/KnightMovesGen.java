@@ -25,6 +25,6 @@ public class KnightMovesGen extends MovesGenerator {
             moves.add(new Move(pos, new int[]{pos[0] + add[i][0], pos[1] + add[i][1]})); // adds new Move instance to moves
         }
         removeInvalid(moves, board);
-        return this.moves;
+        return moves;
     }
 }
