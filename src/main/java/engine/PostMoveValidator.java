@@ -25,7 +25,7 @@ public class PostMoveValidator {
         char currentPlayerColor = getCurrentPlayerColor(board, move);
         Board shadowBoard = board.copy();
         mex.execute(shadowBoard, move);
-        return cc.isPlayerInCheck(board, currentPlayerColor);
+        return !cc.isPlayerInCheck(shadowBoard, currentPlayerColor);
         //throw new java.lang.UnsupportedOperationException();
     }
 
