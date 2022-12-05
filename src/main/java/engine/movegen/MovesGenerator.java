@@ -24,9 +24,13 @@ public abstract class MovesGenerator {
      * @param board the board on which these moves exist
      */
     public void removeInvalid (List<Move> moves, Board board) {
-        for(Move move : moves){
-            if(!(checkTile(move, board))){
-                moves.remove(move);
+        int i = 0;
+        while (i < moves.size()) {
+            Move move = moves.get(i);
+            if (!(checkTile(move, board))) {
+                moves.remove(i);
+            } else {
+                i++;
             }
         }
     }

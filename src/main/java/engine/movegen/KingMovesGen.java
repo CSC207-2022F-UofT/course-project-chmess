@@ -1,6 +1,7 @@
 package engine.movegen;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import engine.move.*;
 import engine.entities.Board;
@@ -21,28 +22,29 @@ public class KingMovesGen extends MovesGenerator {
      */
     @Override
     public List<Move> generate (Board board, Piece king) {
+        List<Move> moves = new ArrayList<Move>();
         char color = king.getColor();
         if (color == 'W') { board.selectDefaultPov(); }
         else if (color == 'B') { board.selectMirrorPov(); }
         int[] pos = board.switchCoords(king.getCoords()); // get position of king in relative coords
         int[][] add = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
         for (int i = 0; i <= 7; i++) {
-            this.moves.add(new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0] + add[i][0], pos[1] + add[i][1]}))); // adds new Move instance to moves
+            moves.add(new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0] + add[i][0], pos[1] + add[i][1]}))); // adds new Move instance to moves
         }
         Piece rook1 = board.getPieceAtRelCoords(7, 0);
         Piece rook2 = board.getPieceAtRelCoords(0, 0);
         if (king.hasMadeFirstMove() && rook1.getType().equals("rook") && rook1.hasMadeFirstMove()) { // TODO implement hasMadeFirstMove()
             if (notAttacked(new int[][]{{6, 0}, {5, 0}, {4, 0}}, board, color) && isEmpty(new int[][]{{6, 0}, {5, 0}}, board)) {
-                this.moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {6, 0})));
+                moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {6, 0})));
             }
         }
         if (king.hasMadeFirstMove() && rook2.getType().equals("rook") && rook2.hasMadeFirstMove()) {
             if (notAttacked(new int[][]{{1, 0}, {2, 0}, {3, 0}, {4, 0}}, board, color) && isEmpty(new int[][]{{1, 0}, {2, 0}, {3, 0}}, board)) {
-                this.moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {2, 0})));
+                moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {2, 0})));
             }
         }
-        super.removeInvalid(this.moves, board);
-        return this.moves;
+        super.removeInvalid(moves, board);
+        return moves;
 
     }
     /**
