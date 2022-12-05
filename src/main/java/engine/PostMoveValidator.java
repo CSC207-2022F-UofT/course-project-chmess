@@ -1,6 +1,7 @@
 package engine;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import engine.entities.Piece;
 import engine.entities.Player;
@@ -23,10 +24,11 @@ public class PostMoveValidator {
     public boolean moveIsValid(Board board, Move move) {
         // Need to figure this out before the board mutates
         char currentPlayerColor = getCurrentPlayerColor(board, move);
+        // Execute on the board copy (the "shadow board") to see whether
+        // the moving player will be in check after this is made
         Board shadowBoard = board.copy();
         mex.execute(shadowBoard, move);
         return !cc.isPlayerInCheck(shadowBoard, currentPlayerColor);
-        //throw new java.lang.UnsupportedOperationException();
     }
 
     private char getCurrentPlayerColor(Board board, Move move) {
@@ -44,12 +46,10 @@ public class PostMoveValidator {
      * @param semiValidMoves a collection of semivalid moves to be validated
      */
     public List<Move> getValidMoves(Board board, List<Move> semiValidMoves) {
-        // due to King checks. In more detail, calls MoveTryer for
-        // each move in semiValidMoves, creating a cloned board for
-        // every move. Calls MovesGenerator on this cloned board for
-        // every piece belonging to opposing player, and if any of these
-        // moves capture the King, the original move is invalid and is removed.
-        // TODO
-        throw new java.lang.UnsupportedOperationException();
+        List<Move> validMoves = new ArrayList<>();
+        for (Move move : semiValidMoves) {
+            if (moveIsValid(board, move)) validMoves.add(move);
+        }
+        return validMoves;
     }
 }

@@ -1,8 +1,12 @@
 import engine.PostMoveValidator;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import engine.move.*;
+import engine.movegen.*;
 import engine.entities.*;
 
 public class PostMoveValidatorTest {
@@ -40,6 +44,18 @@ public class PostMoveValidatorTest {
         createAndPlacePiece("rook", 'B', board, 7, 0);
         createAndPlacePiece("rook", 'B', board, 1, 7);
         Move move = new Move(new int[]{0, 0}, new int[]{1, 1});
+
+        Assertions.assertFalse(pmv.moveIsValid(board, move));
+    }
+
+    @Test
+    public void DirectCheckDoNothingRelevantIsInvalid() {
+        Board board = createEmptyBoard('W');
+
+        createAndPlacePiece("king", 'W', board, 0, 0);
+        createAndPlacePiece("knight", 'W', board, 7, 0);
+        createAndPlacePiece("rook", 'B', board, 0, 7);
+        Move move = new Move(new int[]{7, 0}, new int[]{5, 1});
 
         Assertions.assertFalse(pmv.moveIsValid(board, move));
     }
@@ -88,6 +104,19 @@ public class PostMoveValidatorTest {
         Move move = new Move(new int[]{0, 0}, new int[]{1, 1});
 
         Assertions.assertTrue(pmv.moveIsValid(board, move));
+    }
+
+    @Test
+    public void KingInStalemateHasNoValidMove() {
+        Board board = createEmptyBoard('W');
+
+        Piece king = createAndPlacePiece("king", 'W', board, 0, 0);
+        createAndPlacePiece("queen", 'B', board, 2, 1);
+
+        MovesGenerator kg = new KingMovesGen();
+        List<Move> semiValidMoves = kg.generate(board, king);
+        List<Move> validMoves = pmv.getValidMoves(board, semiValidMoves);
+        Assertions.assertEquals(0, validMoves.size());
     }
 
     protected Piece createAndPlacePiece(String type, char color, Board board, int x, int y) {
