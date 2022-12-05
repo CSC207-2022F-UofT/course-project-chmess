@@ -89,12 +89,12 @@ public class Piece {
      *
      * @return list of semivalid moves
      */
-    public List<Move> generateMoves() {
+    public List<Move> generateMoves(Board board) {
         // TODO. Note: Should use mg.
         // mg probably needs to take at least the board
         // and the coordinates of this piece (a priori
         // it knows nothing except *how* to generate moves)
-        return null;
+        return mg.generate(board, this);
     }
 
     public void setMovesGenerator(MovesGenerator mg) {

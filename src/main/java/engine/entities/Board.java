@@ -5,6 +5,7 @@ import java.util.List;
 
 import engine.move.Move;
 import engine.entities.copy.BoardCopier;
+
 /**
  * A board of chess pieces.
  */
@@ -259,7 +260,7 @@ public class Board {
     public List<Move> semiValidMovesForColor(char color) {
         List<Move> semiValidMoves = new ArrayList<>();
         for (Piece p : getAllPiecesForColor(color)) {
-            for (Move m : p.generateMoves()) {
+            for (Move m : p.generateMoves(this)) {
                 semiValidMoves.add(m);
             }
         }
