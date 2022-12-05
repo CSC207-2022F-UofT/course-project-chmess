@@ -25,7 +25,7 @@ public class PawnMovesGen extends MovesGenerator {
         int[] pos = board.switchCoords(pawn.getCoords()); // get position of pawn in relative coordinates
 //        Move move1Rel = new Move(pos, new int[]{pos[0], pos[1] + 1});
         Move move1 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0], pos[1] + 1}));
-        if (pos[0] == 6 && !(isOccupiedByPiece(move1, board))) { // checks if pawn can promote
+/*        if (pos[0] == 6 && !(isOccupiedByPiece(move1, board))) { // checks if pawn can promote
             addPromoteMoves(moves, pos, new int[]{pos[0], 7}, board);
             Move moveCapPro1 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0] - 1, 7}));
             Move moveCapPro2 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0] + 1, 7}));
@@ -35,7 +35,7 @@ public class PawnMovesGen extends MovesGenerator {
             if (isOccupiedByEnemy(moveCapPro2, board)) {
                 addPromoteMoves(moves, pos, new int[]{pos[0] + 1, 7}, board);
             }
-        }
+        }*/
         if (pos[0] == 1 && !(this.isOccupiedByPiece(move1, board))) { // checks if pawn is in starting position and not jumping over piece
             Move move2 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0], pos[1] + 2})); // absolute pawn double move
             moves.add(move2);

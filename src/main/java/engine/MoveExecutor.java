@@ -12,7 +12,7 @@ public class MoveExecutor {
      * @param board the board on which the move is to be executed
      * @param move the move to execute
      */
-    public void execute(Board board, Move move) {
+    public static void execute(Board board, Move move) {
         move.execute(board);
     }
 }

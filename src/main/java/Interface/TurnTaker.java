@@ -13,7 +13,10 @@ import java.util.Objects;
  */
 public class TurnTaker {
     public static void takeTurn(Game game) {
-        List<Move> moves = game.getBoard().getCurrentPlayer().generatePlayerMoves();
+        if (game.getBoard() != null) {
+            List<Move> moves = game.getBoard().getCurrentPlayer().generatePlayerMoves(game.getBoard());
+        }
+        List<Move> moves = game.getBoard().getCurrentPlayer().generatePlayerMoves(game.getBoard());
         List<String> movesString = new ArrayList<>();
         for (Move m: moves) {
             movesString.add(m.getAlgebraicNotation(game.getBoard()));

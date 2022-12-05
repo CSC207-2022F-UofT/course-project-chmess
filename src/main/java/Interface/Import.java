@@ -7,15 +7,18 @@ public class Import implements ImportInt{
     /**
      * Imports starting position from given file.
      *
-     * @param fileName name of file from which to take starting position (must be located in Interface folder)
+     * @param fileName name of file from which to take starting position (must be located in project folder)
      */
     public String importGame (String fileName) {
-        StringBuilder data = null;
+        StringBuilder data = new StringBuilder();
         try {
             File myObj = new File(fileName);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
-                data.append(myReader.nextLine().strip());
+                String l = myReader.nextLine().strip();
+                if (l != null) {
+                    data.append(l);
+                }
             }
             myReader.close();
         } catch (FileNotFoundException e) {

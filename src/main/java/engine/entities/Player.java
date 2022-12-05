@@ -51,16 +51,6 @@ public class Player {
     public List<Piece> getCapturedPieces () {
         return this.capturedPieces;
     }
-    /**
-     * Returns all moves a player can make.
-     */
-    public List<Move> generatePlayerMoves () {
-        List<Move> moves = new ArrayList<Move>();
-        for (Piece piece : this.pieces) {
-            moves.addAll(piece.generateMoves());
-        }
-        return moves;
-    }
 
     public List<Piece> getPieceList () {
         return this.pieces;
@@ -69,4 +59,15 @@ public class Player {
     public void addPiece(Piece newPiece) {
         this.pieces.add(newPiece);
     }
+    /**
+     * Returns all moves a player can make.
+     */
+    public List<Move> generatePlayerMoves (Board board) {
+        List<Move> moves = new ArrayList<Move>();
+        for (Piece piece : this.pieces) {
+            moves.addAll(piece.generateMoves(board));
+        }
+        return moves;
+    }
+
 }

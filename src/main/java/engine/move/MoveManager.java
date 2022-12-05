@@ -1,7 +1,9 @@
 package engine.move;
 
+import engine.MoveExecutor;
 import engine.entities.Board;
 import engine.entities.Game;
+import engine.entities.copy.BoardCopier;
 import engine.move.*;
 
 public class MoveManager {
@@ -18,7 +20,14 @@ public class MoveManager {
      * @param move
      */
     public static void makeMove(Game game, Move move) {
-        // TODO
+        // make new board
+        Board oldBoard = game.getBoard();
+        game.setBoard(BoardCopier.createCopy(oldBoard));
+        game.getBoard().setPreviousBoard(oldBoard);
+        // mutate board with move
+        MoveExecutor.execute(game.getBoard(), move);
+        // TODO update gamestate
+        // TODO update points, pieces captured
     }
 
     /**
@@ -31,7 +40,8 @@ public class MoveManager {
      * @param game
      */
     public static void undoLastMove(Game game) {
-        // TODO
+        game.setBoard(game.getBoard().getPreviousBoard());
+        // TODO update points, pieces, gamestate?
     }
 
     /**
@@ -44,7 +54,14 @@ public class MoveManager {
     public static Move getMoveFromNotation(Game game, String moveString) {
         // TODO
         // calls Move constructor to create new instance of move
-
+        int[] ori = new int[2];
+        int[] dest = new int[2];
+        ori[0] = moveString.charAt(0);
+        ori[1] = moveString.charAt(1);
+        dest[0] = moveString.charAt(3);
+        dest[1] = moveString.charAt(4);
+        return new Move (ori, dest);
+/*
         String[] pieceStrings = {"k", "q", "r", "b", "n"};
         String[] moveParams = moveString.split("");
 
@@ -75,6 +92,7 @@ public class MoveManager {
             //Move move = new Move();
         }
 
-        return null;
+        return null; */
+
     }
 }

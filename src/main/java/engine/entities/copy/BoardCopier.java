@@ -21,7 +21,7 @@ public class BoardCopier {
      * @param oldBoard the board to be cloned
      * @return a clone of the board
      */
-    public Board createCopy(Board oldBoard) {
+    public static Board createCopy(Board oldBoard) {
         Board newBoard = new Board();
 
         Player[] oldPlayers = oldBoard.getPlayers();

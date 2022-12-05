@@ -19,6 +19,7 @@ public class Board {
     // the second player has color 'B' (black)
     private Player[] players = new Player[2];
     private Player currentPlayer;
+    private Board prevBoard;
 
     /**
      * Creates an empty board with no players.
@@ -88,8 +89,10 @@ public class Board {
      * @return the preceding Board object
      */
     public Board getPreviousBoard() {
-        // TODO
-        return null;
+        return this.prevBoard;
+    }
+    public void setPreviousBoard(Board board) {
+        this.prevBoard = board;
     }
 
     /**
@@ -154,7 +157,10 @@ public class Board {
     }
 
     public Piece getPieceAtAbsCoords(int x, int y) {
-        return board[y][x];
+        if (!(x < 0 || x > WIDTH - 1 || y < 0 || y > HEIGHT - 1)) {
+            return board[y][x];
+        }
+        return null;
     }
 
     /**
@@ -249,7 +255,7 @@ public class Board {
      */
     public int[] switchCoords(int[] coord) {
         int[] absCoords = coord;
-        if (relativeBoard != board) absCoords[1] = HEIGHT - 1 - coord[1];
+        if (this.relativeBoard != this.board) absCoords[1] = HEIGHT - 1 - coord[1];
 
         return absCoords;
     }
