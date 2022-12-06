@@ -32,30 +32,27 @@ public class Chmess {
 
     public static void runGame() {
         Scanner reader = new Scanner(System.in);
-        System.out.println("Welcome to Interface.Chmess! Press (N) for new game, (L) for load custom starting position from file, or (Q) to exit program: ");
-        String c = reader.next();
-        if (Objects.equals(c, "N")) {
-            ArrayList<String> players = askPlayers();
-            GameCreator gameCreate = new GameCreator();
-            Game game = gameCreate.create(players.get(0), players.get(1));
-            PlayGame.play(game);
+        String c = null;
+        while(!Objects.equals(c, "N") && !Objects.equals(c, "L") && !Objects.equals(c, "Q")){
+            System.out.println("Welcome to Chmess! Press (N) for new game, (L) for load custom starting position from file, or (Q) to exit program: ");
+            c = reader.next();
+            if (Objects.equals(c, "N")) {
+                ArrayList<String> players = askPlayers();
+                GameCreator gameCreate = new GameCreator();
+                Game game = gameCreate.create(players.get(0), players.get(1));
+                PlayGame.play(game);
+            } else if (Objects.equals(c, "L")) {
+                System.out.println("Enter file name: ");
+                String fileName = reader.next();
+                ImportInt importStarting = new Import();
+                ArrayList<String> players = askPlayers();
+                GameCreator gameCreate = new GameCreator();
+                PlayGame.play(gameCreate.createImport(players.get(0), players.get(1), importStarting.importGame(fileName)));
+            } else if (Objects.equals(c, "Q")) {
+                return;
+            } else {
+                System.out.println("Invalid input. Please enter one of the listed options.");
+            }
         }
-        else if (Objects.equals(c, "L")) {
-            System.out.println("Enter file name: ");
-            String fileName = reader.next();
-            ImportInt importStarting = new Import();
-            ArrayList<String> players = askPlayers();
-            GameCreator gameCreate = new GameCreator();
-            PlayGame.play(gameCreate.createImport(players.get(0), players.get(1), importStarting.importGame(fileName)));
-        }
-        else if (Objects.equals(c, "Q")) {
-            return;
-        }
-        else {
-            System.out.println("Invalid input. Please try again: ");
-            //main();
-        }
-
-
     }
 }
