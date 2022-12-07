@@ -145,7 +145,7 @@ public class BoardCreator {
         p2.setPieces(board.getAllPiecesForColor(p2.getColor()));
 
         board.setPlayers(new Player[]{p1, p2});
-        board.setCurrentPlayer(p1);
+        board.setCurrentPlayer(0);
         return board;
     }
 }

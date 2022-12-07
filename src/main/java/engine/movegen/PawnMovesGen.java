@@ -23,6 +23,7 @@ public class PawnMovesGen extends MovesGenerator {
         if (color == 'W') { board.selectDefaultPov(); }
         else if (color == 'B') { board.selectMirrorPov(); }
         int[] pos = board.switchCoords(pawn.getCoords()); // get position of pawn in relative coordinates
+
 //        Move move1Rel = new Move(pos, new int[]{pos[0], pos[1] + 1});
         Move move1 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0], pos[1] + 1}));
 /*        if (pos[0] == 6 && !(isOccupiedByPiece(move1, board))) { // checks if pawn can promote
@@ -36,11 +37,11 @@ public class PawnMovesGen extends MovesGenerator {
                 addPromoteMoves(moves, pos, new int[]{pos[0] + 1, 7}, board);
             }
         }*/
-        if (pos[0] == 1 && !(this.isOccupiedByPiece(move1, board))) { // checks if pawn is in starting position and not jumping over piece
+        if (pos[1] == 1 && !(this.isOccupiedByPiece(move1, board))) { // checks if pawn is in starting position and not jumping over piece
             Move move2 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0], pos[1] + 2})); // absolute pawn double move
             moves.add(move2);
         }
-        if (pos[1] == 4) { // checks en passant
+        if (pos[1] == 5) { // checks en passant    y=4 for another player's relboard
             Move prevMove = board.getPreviousMove();
             int[] origin1 = new int[]{pos[0] + 1, 6};
             int[] origin2 = new int[]{pos[0] - 1, 6};
@@ -55,15 +56,36 @@ public class PawnMovesGen extends MovesGenerator {
                 moves.add(new EnPassantMove(board.switchCoords(pos), board.switchCoords(new int[]{dest2[0], dest2[1] + 1})));
             }
         }
+        System.out.print("FFFFFFFFFlag");
+        System.out.print(color);
+        System.out.print(" ");
+        System.out.print(pawn.getCoords()[0]);
+        System.out.print(" ");
+        System.out.print(pawn.getCoords()[1]);
+        System.out.print(", ");
+        System.out.print(pawn.getType());
+        System.out.print(", ");
+        System.out.print(move1.origin[0]);
+        System.out.print(" ");
+        System.out.print(move1.origin[1]);
+        System.out.print(", ");
+        System.out.print(move1.destination[0]);
+        System.out.print(" ");
+        System.out.print(move1.destination[1]);
+        System.out.println(" ");
+
+
         if (!(isOccupiedByPiece(move1, board))) { // move one tile
             moves.add(move1); // move1 is already absolute move
         }
         Move destCap1 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0]-1, pos[1]+1})); // absolute moves
         Move destCap2 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0]+1, pos[1]+1}));
         if (isOccupiedByEnemy(destCap1, board)) { // capture
+
             moves.add(destCap1);
         }
         if (isOccupiedByEnemy(destCap2, board)) {
+
             moves.add(destCap2);
         }
 

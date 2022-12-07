@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 public class CheckChecker {
     public CheckChecker() {}
 
-    private List<Piece> getAllPieces(Board board) {
+    private static List<Piece> getAllPieces(Board board) {
         List<Piece> pieceList = new ArrayList<>();
         for (int x = 0; x < Board.WIDTH; x++) {
             for (int y = 0; y < Board.HEIGHT; y++) {
@@ -22,7 +22,7 @@ public class CheckChecker {
         return pieceList;
     }
 
-    private int[] findKing(List<Piece> pieceList, char playerColor) throws NoSuchElementException {
+    private static int[] findKing(List<Piece> pieceList, char playerColor) throws NoSuchElementException {
         for (Piece piece : pieceList)
             if (piece.getColor() == playerColor && piece.getType().equals("king"))
                 return piece.getCoords();
@@ -35,7 +35,7 @@ public class CheckChecker {
      * @param playerColor
      * @return whether the given player is in check
      */
-    public boolean isPlayerInCheck(Board board, char playerColor) {
+    public static boolean isPlayerInCheck(Board board, char playerColor) {
         try {
             List<Piece> pieceList = getAllPieces(board);
             int[] kingCoords = findKing(pieceList, playerColor);
@@ -54,7 +54,7 @@ public class CheckChecker {
         }
     }
 
-    protected boolean movesContainsDestCoords(List<Move> moves, int[] coords) {
+    protected static boolean movesContainsDestCoords(List<Move> moves, int[] coords) {
         for (Move move : moves) {
             if (move.destination[0] == coords[0] && move.destination[1] == coords[1])
                 return true;

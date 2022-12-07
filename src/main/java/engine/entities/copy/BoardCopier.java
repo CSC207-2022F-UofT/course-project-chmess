@@ -30,14 +30,23 @@ public class BoardCopier {
         Player[] newPlayers = {player1, player2};
         newBoard.setPlayers(newPlayers);
 
-        List<Piece> oldPieces = oldBoard.getAllPieces();
+        /*List<Piece> oldPieces = oldBoard.getAllPieces();
 
         for (Piece piece : oldPieces) {
             Piece newPiece = piece.copy();
             int[] coords = piece.getCoords();
             newBoard.setPieceAtAbsCoords(coords[0], coords[1], newPiece);
+        }*/
+        for (Piece piece : player1.getPieceList()) {
+            int[] coords = piece.getCoords();
+            newBoard.setPieceAtAbsCoords(coords[0], coords[1], piece);
+        }
+        for (Piece piece : player2.getPieceList()) {
+            int[] coords = piece.getCoords();
+            newBoard.setPieceAtAbsCoords(coords[0], coords[1], piece);
         }
 
+        newBoard.setCurrentPlayer(oldBoard.getIndexOfCurplayer());
         return newBoard;
     }
 }

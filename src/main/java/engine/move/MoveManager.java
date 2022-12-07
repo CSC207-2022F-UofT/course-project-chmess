@@ -1,14 +1,41 @@
 package engine.move;
 
+import engine.CheckChecker;
 import engine.MoveExecutor;
 import engine.entities.Board;
 import engine.entities.Game;
+import engine.entities.Piece;
+import engine.entities.Player;
 import engine.entities.copy.BoardCopier;
+
+import java.util.ArrayList;
+import java.util.List;
 import engine.move.*;
+
+import javax.swing.border.Border;
 
 public class MoveManager {
     public MoveManager() {}
 
+    private static void updateGamestate(Game game) {
+        Player player=game.getBoard().getCurrentPlayer();
+        if (CheckChecker.isPlayerInCheck(game.getBoard(), player.getColor())) {
+            boolean canBreak=false;
+            List<Piece> pieces=game.getBoard().getAllPiecesForColor(player.getColor());
+            for (Piece p:pieces) {
+                for (Move trymove:p.generateMoves(game.getBoard())) {
+                    Board tryBreak=BoardCopier.createCopy(game.getBoard());
+                    MoveExecutor.execute(tryBreak, trymove);
+                    if (!CheckChecker.isPlayerInCheck(tryBreak, player.getColor())) {
+                        canBreak=true;
+                        break;
+                    }
+                }
+                if (canBreak) break;
+            }
+            if (!canBreak) game.setGameState('#');
+        }
+    }
     /**
      * Makes the given move on the given game.
      * This includes updating the board reference in Game,
@@ -25,7 +52,20 @@ public class MoveManager {
         game.setBoard(BoardCopier.createCopy(oldBoard));
         game.getBoard().setPreviousBoard(oldBoard);
         // mutate board with move
+        System.out.print("oldbd  mamkemmkmkmk: ");
+        System.out.println(oldBoard.getCurrentPlayer().getColor());
+        System.out.print("befo  mamkemmkmkmk: ");
+        System.out.println(game.getBoard().getCurrentPlayer().getColor());
+
         MoveExecutor.execute(game.getBoard(), move);
+
+        System.out.print("afte mamkemmkmkmk: ");
+        System.out.println(game.getBoard().getCurrentPlayer().getColor());
+
+
+
+        updateGamestate(game);
+
         // TODO update gamestate
         // TODO update points, pieces captured
     }

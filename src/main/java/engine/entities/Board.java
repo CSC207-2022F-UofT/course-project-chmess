@@ -18,7 +18,9 @@ public class Board {
     // the first player has color 'W' (white)
     // the second player has color 'B' (black)
     private Player[] players = new Player[2];
-    private Player currentPlayer;
+    //private Player currentPlayer;
+    //private Player lastPlayer;
+    private int indexOfCurPlayer;
     private Board prevBoard;
 
     /**
@@ -110,10 +112,16 @@ public class Board {
      *
      * @param player the player whose turn it is to make a move
      */
-    public void setCurrentPlayer(Player player) {
-        this.currentPlayer = player;
+    public void setCurrentPlayer(int index) {
+        //this.currentPlayer = players[index];
+        //this.lastPlayer = lastp;
+        indexOfCurPlayer=index;
     }
 
+    public int getIndexOfCurplayer() {
+        //return this.currentPlayer;
+        return indexOfCurPlayer;
+    }
     /**
      * Return the Player object corresponding to
      * the player whose turn it is to make a move.
@@ -121,7 +129,8 @@ public class Board {
      * @return the Player object
      */
     public Player getCurrentPlayer() {
-        return this.currentPlayer;
+        //return this.currentPlayer;
+        return this.players[indexOfCurPlayer];
     }
 
     /**
@@ -132,12 +141,23 @@ public class Board {
      * set it to the first player in the array.
      */
     public void advanceCurrentPlayer() {
-        int i;
+        /*int i;
         for (i = 0; i < players.length; i++) {
             if (players[i] == currentPlayer) break;
         }
-        int newIndex = (i + 1) % players.length;
-        this.currentPlayer = players[newIndex];
+        int newIndex = (i + 1) % players.length;*/
+        indexOfCurPlayer=(indexOfCurPlayer+1)% players.length;
+        System.out.print("CCCCCCCCCCCCCCCCCC; ");
+        //System.out.print(players[0] == currentPlayer);
+        //System.out.print(players[1] == currentPlayer);
+        System.out.print(indexOfCurPlayer);
+        System.out.print( players.length);
+        System.out.print(players[indexOfCurPlayer].getColor());
+        System.out.print(players[0].getColor());
+        System.out.println(players[1].getColor());
+        /*Player temp=this.lastPlayer;
+        this.lastPlayer=this.currentPlayer;*/
+        //this.currentPlayer = players[newIndex];
     }
 
     /**
@@ -168,12 +188,12 @@ public class Board {
      * Mirror coordinates have "white" in row y=7 and "black" in row y=0.
      * The x-coordinate is from left-to-right as usual.
      */
-    public void setPieceAtMirrorCoords(int x, int y, Piece piece) {
-        mirror[y][x] = piece;
+    public void setPieceAtRelativeCoords(int x, int y, Piece piece) {
+        relativeBoard[y][x] = piece;
     }
 
-    public Piece getPieceAtMirrorCoords(int x, int y) {
-        return mirror[y][x];
+    public Piece getPieceAtRelativeCoords(int x, int y) {
+        return relativeBoard[y][x];
     }
 
     /**
@@ -246,7 +266,6 @@ public class Board {
     public void selectMirrorPov() {
         this.relativeBoard = mirror;
     }
-
     /**
      * Returns the absolute coordinates corresponding to the relative coordinates
      * or vice versa.
@@ -254,10 +273,12 @@ public class Board {
      * @see Board#setPieceAtRelCoords(int, int, Piece) setPieceAtRelCoords
      */
     public int[] switchCoords(int[] coord) {
-        int[] absCoords = coord;
-        if (this.relativeBoard != this.board) absCoords[1] = HEIGHT - 1 - coord[1];
-
-        return absCoords;
+        int[] newCoords = new int[2];
+        newCoords[0]=coord[0];
+        newCoords[1]=coord[1];
+        if (this.relativeBoard != this.board) newCoords[1] = HEIGHT - 1 - coord[1];
+        //if (this.currentPlayer.getColor() == 'B') relCoords[1] = HEIGHT - 1 - coord[1];
+        return newCoords;
     }
     /**
      * Returns list of all semivalid moves all pieces of given color
@@ -300,4 +321,14 @@ public class Board {
         }
         return pieces;
     }
+
+    public List<Move> generatePlayerMoves (Player player) {
+        List<Move> moves = new ArrayList<Move>();
+        for (Piece piece : getAllPiecesForColor(player.getColor())) {
+            //System.out.println("HaHAHAHAHAA");
+            moves.addAll(piece.generateMoves(this));
+        }
+        return moves;
+    }
+
 }
