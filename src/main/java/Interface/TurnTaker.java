@@ -14,25 +14,12 @@ import java.util.Objects;
 public class TurnTaker {
     public static void takeTurn(Game game) {
         if (game.getBoard() != null) {
-            System.out.println("flag to momomo");
             List<Move> moves = game.getBoard().getCurrentPlayer().generatePlayerMoves(game.getBoard());
             //List<Move> moves = game.getBoard().generatePlayerMoves(game.getBoard().getCurrentPlayer());
         }
         List<Move> moves = game.getBoard().getCurrentPlayer().generatePlayerMoves(game.getBoard());
         List<String> movesString = new ArrayList<>();
         for (Move m: moves) {
-
-            System.out.println("move and movestring: ");
-            System.out.print(m.origin[0]);
-            System.out.print(", ");
-            System.out.print(m.origin[1]);
-            System.out.print(". ");
-            System.out.print(m.destination[0]);
-            System.out.print(", ");
-            System.out.print(m.destination[1]);
-            System.out.print(" ");
-            System.out.print(m.getAlgebraicNotation(game.getBoard()));
-            System.out.println(".");
 
 
             movesString.add(m.getAlgebraicNotation(game.getBoard()));

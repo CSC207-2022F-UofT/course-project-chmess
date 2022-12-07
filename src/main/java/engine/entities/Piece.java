@@ -14,6 +14,7 @@ public class Piece {
     private int pointValue;
     private MovesGenerator mg;
     private boolean hasMoved = false;
+    private boolean isOnBoard = true;
 
     public Piece() {
         this.coords = new int[2];
@@ -72,6 +73,9 @@ public class Piece {
     public boolean hasMadeFirstMove() {
         return hasMoved;
     }
+
+    public void remove() {isOnBoard=false;}
+    public boolean isOnBoard() {return isOnBoard;}
 
     public void setCoords(int x, int y) {
         this.coords[0] = x;

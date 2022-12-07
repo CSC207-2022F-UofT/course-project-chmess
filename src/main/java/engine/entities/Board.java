@@ -147,14 +147,7 @@ public class Board {
         }
         int newIndex = (i + 1) % players.length;*/
         indexOfCurPlayer=(indexOfCurPlayer+1)% players.length;
-        System.out.print("CCCCCCCCCCCCCCCCCC; ");
-        //System.out.print(players[0] == currentPlayer);
-        //System.out.print(players[1] == currentPlayer);
-        System.out.print(indexOfCurPlayer);
-        System.out.print( players.length);
-        System.out.print(players[indexOfCurPlayer].getColor());
-        System.out.print(players[0].getColor());
-        System.out.println(players[1].getColor());
+
         /*Player temp=this.lastPlayer;
         this.lastPlayer=this.currentPlayer;*/
         //this.currentPlayer = players[newIndex];
@@ -188,12 +181,12 @@ public class Board {
      * Mirror coordinates have "white" in row y=7 and "black" in row y=0.
      * The x-coordinate is from left-to-right as usual.
      */
-    public void setPieceAtRelativeCoords(int x, int y, Piece piece) {
-        relativeBoard[y][x] = piece;
+    public void setPieceAtMirrorCoords(int x, int y, Piece piece) {
+        mirror[y][x] = piece;
     }
 
-    public Piece getPieceAtRelativeCoords(int x, int y) {
-        return relativeBoard[y][x];
+    public Piece getPieceAtMirrorCoords(int x, int y) {
+        return mirror[y][x];
     }
 
     /**

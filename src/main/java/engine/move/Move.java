@@ -58,6 +58,7 @@ public class Move {
         Piece captured = removePiece(board, destination);
 
         if (captured != null) {
+            captured.remove();
             board.getPlayerOfPiece(piece).addCapturedPiece(captured);
         }
         movePiece(board, origin, destination);

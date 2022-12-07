@@ -67,7 +67,6 @@ public class MoveManager {
     private static void updateGamestate(Game game) {
         Player player=game.getBoard().getCurrentPlayer();
         if (CheckChecker.isPlayerInCheck(game.getBoard(), player.getColor())) {
-            System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCKKKKKKKKKKKK");
             boolean canBreak=false;
             List<Piece> pieces=game.getBoard().getAllPiecesForColor(player.getColor());
             for (Piece p:pieces) {
@@ -76,7 +75,7 @@ public class MoveManager {
                     MoveExecutor.execute(tryBreak, trymove);
                     if (!CheckChecker.isPlayerInCheck(tryBreak, player.getColor())) {
 
-                        display(tryBreak);
+                        //display(tryBreak);
                         canBreak=true;
                         break;
                     }
@@ -102,15 +101,11 @@ public class MoveManager {
         game.setBoard(BoardCopier.createCopy(oldBoard));
         game.getBoard().setPreviousBoard(oldBoard);
         // mutate board with move
-        System.out.print("oldbd  mamkemmkmkmk: ");
-        System.out.println(oldBoard.getCurrentPlayer().getColor());
-        System.out.print("befo  mamkemmkmkmk: ");
-        System.out.println(game.getBoard().getCurrentPlayer().getColor());
+
 
         MoveExecutor.execute(game.getBoard(), move);
 
-        System.out.print("afte mamkemmkmkmk: ");
-        System.out.println(game.getBoard().getCurrentPlayer().getColor());
+
 
 
 

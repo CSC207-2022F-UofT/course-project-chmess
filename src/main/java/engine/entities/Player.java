@@ -64,13 +64,8 @@ public class Player {
      */
     public List<Move> generatePlayerMoves (Board board) {
         List<Move> moves = new ArrayList<Move>();
-        for (Piece piece : this.pieces) {
-            System.out.print("HaHAHAHAHAA: ");
-            System.out.print(piece.getCoords()[0]);
-            System.out.print(piece.getCoords()[1]);
-            System.out.print(piece.getType());
-            System.out.print(color);
-            System.out.println("");
+        for (Piece piece : this.pieces) if (piece.isOnBoard()) {
+
 
             moves.addAll(piece.generateMoves(board));
         }

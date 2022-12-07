@@ -134,9 +134,9 @@ public class PostMoveValidatorTest {
         Player[] players = {p1, p2};
         board.setPlayers(players);
         if (currentPlayerColor == 'W') {
-            board.setCurrentPlayer(p1);
+            board.setCurrentPlayer(0);
         } else {
-            board.setCurrentPlayer(p2);
+            board.setCurrentPlayer(1);
         }
 
         return board;

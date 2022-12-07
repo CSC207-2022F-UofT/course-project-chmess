@@ -57,23 +57,6 @@ public class PawnMovesGen extends MovesGenerator {
                 moves.add(new EnPassantMove(board.switchCoords(pos), board.switchCoords(new int[]{dest2[0], dest2[1] + 1})));
             }
         }
-        System.out.print("FFFFFFFFFlag");
-        System.out.print(color);
-        System.out.print(" ");
-        System.out.print(pawn.getCoords()[0]);
-        System.out.print(" ");
-        System.out.print(pawn.getCoords()[1]);
-        System.out.print(", ");
-        System.out.print(pawn.getType());
-        System.out.print(", ");
-        System.out.print(move1.origin[0]);
-        System.out.print(" ");
-        System.out.print(move1.origin[1]);
-        System.out.print(", ");
-        System.out.print(move1.destination[0]);
-        System.out.print(" ");
-        System.out.print(move1.destination[1]);
-        System.out.println(" ");
 
 
         if (!(isOccupiedByPiece(move1, board))) { // move one tile

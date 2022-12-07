@@ -64,35 +64,6 @@ public abstract class MovesGenerator {
     public boolean isOccupiedByFriendly (Move move, Board board) {
         //ensure destination tile is occupied
         if(board.getPieceAtAbsCoords(move.destination[0], move.destination[1]) != null){
-            System.out.print(move.origin[0]);
-            System.out.print(", ");
-            System.out.print(move.origin[1]);
-            System.out.println(". ");
-            System.out.print(move.destination[0]);
-            System.out.print(", ");
-            System.out.print(move.destination[1]);
-            System.out.println(". ");
-            for (Piece pp:board.getAllPieces()) {
-                System.out.print(pp.getCoords()[0]);
-                System.out.print(", ");
-                System.out.print(pp.getCoords()[1]);
-                System.out.print(". ");
-                System.out.print(pp.getType());
-                System.out.println(". ");
-            }
-            System.out.println("for board: asda a");
-            for (int i=0;i<8;i++)
-                for (int j=0;j<8;j++) {
-                    if (board.getPieceAtAbsCoords(i,j)!=null) {
-
-                        System.out.print(i);
-                        System.out.print(", ");
-                        System.out.print(j);
-                        System.out.print(". ");
-                        System.out.print(board.getPieceAtAbsCoords(i,j).getType());
-                        System.out.println(". ");
-                    }
-                }
 
             Piece movingPiece = board.getPieceAtAbsCoords(move.origin[0], move.origin[1]);
             Piece destPiece = board.getPieceAtAbsCoords(move.destination[0], move.destination[1]);

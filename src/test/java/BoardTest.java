@@ -76,7 +76,7 @@ class BoardTest {
         Player p2 = new Player("Player 2", 'B');
         Player[] players = {p1, p2};
         board.setPlayers(players);
-        board.setCurrentPlayer(p1);
+        board.setCurrentPlayer(0);
         board.advanceCurrentPlayer();
         Assertions.assertEquals(p2, board.getCurrentPlayer());
     }
