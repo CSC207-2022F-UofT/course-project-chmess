@@ -143,7 +143,7 @@ public class Move {
         int x = coords[0];
         int y = coords[1];
         char col = (char)((int) 'a' + x);
-        String row = Integer.toString(Board.HEIGHT - y);
+        String row = Integer.toString(y+1);
         return col + row;
     }
 

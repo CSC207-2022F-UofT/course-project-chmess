@@ -85,10 +85,10 @@ public class PromoteMoveTest extends MoveTest {
         Board board = createEmptyBoard('B');
         Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("pawn", 'B', board, 2, 6);
+        createAndPlacePiece("pawn", 'B', board, 2, 1);
 
-        int[] origin = {2, 6};
-        int[] dest = {2, 7};
+        int[] origin = {2, 1};
+        int[] dest = {2, 0};
         Move move = new PromoteMove(origin, dest, "knight");
         Assertions.assertEquals("c2c1n", move.getAlgebraicNotation(board));
     }
@@ -98,10 +98,10 @@ public class PromoteMoveTest extends MoveTest {
         Board board = createEmptyBoard('W');
         Player p1 = board.getPlayerFromChar('W');;
 
-        createAndPlacePiece("pawn", 'W', board, 5, 1);
+        createAndPlacePiece("pawn", 'W', board, 5, 6);
 
-        int[] origin = {5, 1};
-        int[] dest = {5, 0};
+        int[] origin = {5, 6};
+        int[] dest = {5, 7};
         Move move = new PromoteMove(origin, dest, "queen");
         Assertions.assertEquals("f7f8Q", move.getAlgebraicNotation(board));
     }

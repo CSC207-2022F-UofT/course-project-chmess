@@ -17,7 +17,7 @@ public class DisplayGame implements DisplayGameInt{
     public void display(Game game, List<String> moves) {
         Board board = game.getBoard();
         board.selectDefaultPov();
-        for (int y=0; y<Board.HEIGHT; y++) {
+        for (int y=Board.HEIGHT-1; y>=0; y--) {
             for (int x=0; x<Board.WIDTH; x++) {
                 Piece piece = board.getPieceAtRelCoords(x, y);
                 if (piece == null) {

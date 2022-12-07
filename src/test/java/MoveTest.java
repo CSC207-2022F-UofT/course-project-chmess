@@ -78,11 +78,11 @@ public class MoveTest {
         Player p1 = board.getPlayerFromChar('W');;
         Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("king", 'W', board, 0, 7);
-        createAndPlacePiece("pawn", 'B', board, 0, 6);
+        createAndPlacePiece("king", 'W', board, 0, 0);
+        createAndPlacePiece("pawn", 'B', board, 0, 1);
 
-        int[] origin = {0, 7};
-        int[] dest = {0, 6};
+        int[] origin = {0, 0};
+        int[] dest = {0, 1};
         Move move = new Move(origin, dest);
         Assertions.assertEquals("Ka1xa2", move.getAlgebraicNotation(board));
     }
@@ -92,9 +92,9 @@ public class MoveTest {
         piece.setColor(color);
         board.setPieceAtAbsCoords(x, y, piece);
         piece.setCoords(x, y);
+
         return piece;
     }
-
     protected Board createEmptyBoard(char currentPlayerColor) {
         Board board = new Board();
         Player p1 = new Player("Player 1", 'W');

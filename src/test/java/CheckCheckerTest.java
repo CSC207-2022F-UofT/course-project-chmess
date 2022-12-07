@@ -120,7 +120,7 @@ class CheckCheckerTest {
         board1.setPlayers(new Player[]{p1, p2});
         board1.setPieceAtAbsCoords(7,7,king2);
         board1.setPieceAtAbsCoords(5,5,king1);
-        board1.setPieceAtAbsCoords(6,4,pawn);
+        board1.setPieceAtAbsCoords(6,6,pawn);
         board1.setPlayers(new Player[]{p1, p2});
         board1.getPlayers()[0].setPieces(board1.getAllPiecesForColor(board1.getPlayers()[0].getColor()));
         board1.getPlayers()[1].setPieces(board1.getAllPiecesForColor(board1.getPlayers()[1].getColor()));
@@ -132,7 +132,7 @@ class CheckCheckerTest {
         board2.setPlayers(new Player[]{p1, p2});
         board2.setPieceAtAbsCoords(7,7,king2);
         board2.setPieceAtAbsCoords(5,5,king1);
-        board2.setPieceAtAbsCoords(3,6,pawn);
+        board2.setPieceAtAbsCoords(3,4,pawn);
         board2.getPlayers()[0].setPieces(board2.getAllPiecesForColor(board2.getPlayers()[0].getColor()));
         board2.getPlayers()[1].setPieces(board2.getAllPiecesForColor(board2.getPlayers()[1].getColor()));
         Assertions.assertFalse(cc.isPlayerInCheck(board2,'W'));
@@ -226,8 +226,8 @@ class CheckCheckerTest {
         board1.setPlayers(new Player[]{p1, p2});
         board1.setPieceAtAbsCoords(7,7,king2);
         board1.setPieceAtAbsCoords(4,4,king1);
-        board1.setPieceAtAbsCoords(4,6,queen);
-        board1.setPieceAtAbsCoords(4,5,friendlyPiece);
+        board1.setPieceAtAbsCoords(6,4,queen);
+        board1.setPieceAtAbsCoords(5,4,friendlyPiece);
         board1.getPlayers()[0].setPieces(board1.getAllPiecesForColor(board1.getPlayers()[0].getColor()));
         board1.getPlayers()[1].setPieces(board1.getAllPiecesForColor(board1.getPlayers()[1].getColor()));
         Assertions.assertFalse(cc.isPlayerInCheck(board1,'W'));
@@ -242,8 +242,8 @@ class CheckCheckerTest {
         board1.setPlayers(new Player[]{p1, p2});
         board1.setPieceAtAbsCoords(7,7,king2);
         board1.setPieceAtAbsCoords(4,4,king1);
-        board1.setPieceAtAbsCoords(6,6,bishop);
-        board1.setPieceAtAbsCoords(5,5,friendlyPiece);
+        board1.setPieceAtAbsCoords(2,2,bishop);
+        board1.setPieceAtAbsCoords(3,3,friendlyPiece);
         board1.getPlayers()[0].setPieces(board1.getAllPiecesForColor(board1.getPlayers()[0].getColor()));
         board1.getPlayers()[1].setPieces(board1.getAllPiecesForColor(board1.getPlayers()[1].getColor()));
         Assertions.assertFalse(cc.isPlayerInCheck(board1,'W'));
@@ -257,8 +257,8 @@ class CheckCheckerTest {
         board1.setPlayers(new Player[]{p1, p2});
         board1.setPieceAtAbsCoords(7,7,king2);
         board1.setPieceAtAbsCoords(4,4,king1);
-        board1.setPieceAtAbsCoords(4,6,rook);
-        board1.setPieceAtAbsCoords(4,5,friendlyPiece);
+        board1.setPieceAtAbsCoords(6,4,rook);
+        board1.setPieceAtAbsCoords(5,4,friendlyPiece);
         board1.getPlayers()[0].setPieces(board1.getAllPiecesForColor(board1.getPlayers()[0].getColor()));
         board1.getPlayers()[1].setPieces(board1.getAllPiecesForColor(board1.getPlayers()[1].getColor()));
         Assertions.assertFalse(cc.isPlayerInCheck(board1,'W'));

@@ -77,11 +77,11 @@ public class EnPassantMoveTest extends MoveTest {
         Player p1 = board.getPlayerFromChar('W');;
         Player p2 = board.getPlayerFromChar('B');;
 
-        createAndPlacePiece("pawn", 'W', board, 0, 4);
-        createAndPlacePiece("pawn", 'B', board, 1, 4);
+        createAndPlacePiece("pawn", 'W', board, 0, 3);
+        createAndPlacePiece("pawn", 'B', board, 1, 3);
 
-        int[] origin = {1, 4};
-        int[] dest = {0, 5};
+        int[] origin = {1, 3};
+        int[] dest = {0, 2};
         Move move = new EnPassantMove(origin, dest);
         Assertions.assertEquals("b4xa3", move.getAlgebraicNotation(board));
     }
