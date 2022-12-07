@@ -110,7 +110,7 @@ public class Board {
     /**
      * Sets current player to the given player.
      *
-     * @param player the player whose turn it is to make a move
+     * @param index the index of player whose turn it is to make a move
      */
     public void setCurrentPlayer(int index) {
         //this.currentPlayer = players[index];
