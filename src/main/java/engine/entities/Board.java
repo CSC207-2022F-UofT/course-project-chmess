@@ -276,7 +276,7 @@ public class Board {
         int[] newCoords = new int[2];
         newCoords[0]=coord[0];
         newCoords[1]=coord[1];
-        if (this.relativeBoard != this.board) newCoords[1] = HEIGHT - 1 - coord[1];
+        if (this.relativeBoard == this.board) newCoords[1] = HEIGHT - 1 - coord[1];
         //if (this.currentPlayer.getColor() == 'B') relCoords[1] = HEIGHT - 1 - coord[1];
         return newCoords;
     }

@@ -37,8 +37,9 @@ public class PawnMovesGen extends MovesGenerator {
                 addPromoteMoves(moves, pos, new int[]{pos[0] + 1, 7}, board);
             }
         }*/
-        if (pos[1] == 1 && !(this.isOccupiedByPiece(move1, board))) { // checks if pawn is in starting position and not jumping over piece
-            Move move2 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0], pos[1] + 2})); // absolute pawn double move
+        Move move2 = new Move(board.switchCoords(pos), board.switchCoords(new int[]{pos[0], pos[1] + 2}));
+        if (pos[1] == 1 && !(this.isOccupiedByPiece(move1, board)) && !(this.isOccupiedByPiece(move2, board))) { // checks if pawn is in starting position and not jumping over piece
+             // absolute pawn double move
             moves.add(move2);
         }
         if (pos[1] == 5) { // checks en passant    y=4 for another player's relboard

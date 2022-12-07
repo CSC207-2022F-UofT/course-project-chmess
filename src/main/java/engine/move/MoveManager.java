@@ -8,6 +8,7 @@ import engine.entities.Piece;
 import engine.entities.Player;
 import engine.entities.copy.BoardCopier;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import engine.move.*;
@@ -17,9 +18,56 @@ import javax.swing.border.Border;
 public class MoveManager {
     public MoveManager() {}
 
+    //use to debug
+    public static void display(Board board) {
+        board.selectDefaultPov();
+        for (int y = 0; y < Board.HEIGHT; y++) {
+            for (int x = 0; x < Board.WIDTH; x++) {
+                Piece piece = board.getPieceAtRelCoords(x, y);
+                if (piece == null) {
+                    System.out.print(".");
+                } else {
+                    String type = piece.getType();
+                    char pieceChar;
+                    switch (type) {
+                        case "pawn":
+                            pieceChar = 'p';
+                            break;
+                        case "knight":
+                            pieceChar = 'n';
+                            break;
+                        case "bishop":
+                            pieceChar = 'b';
+                            break;
+                        case "rook":
+                            pieceChar = 'r';
+                            break;
+                        case "queen":
+                            pieceChar = 'q';
+                            break;
+                        case "king":
+                            pieceChar = 'k';
+                            break;
+                        default:
+                            pieceChar = '.';
+                            break;
+                    }
+                    if (piece.getColor() == 'W') {
+                        System.out.print(Character.toUpperCase(pieceChar));
+                    } else {
+                        System.out.print(pieceChar);
+                    }
+                }
+            }
+            System.out.print("\n");
+        }
+    }
+
+
     private static void updateGamestate(Game game) {
         Player player=game.getBoard().getCurrentPlayer();
         if (CheckChecker.isPlayerInCheck(game.getBoard(), player.getColor())) {
+            System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCKKKKKKKKKKKK");
             boolean canBreak=false;
             List<Piece> pieces=game.getBoard().getAllPiecesForColor(player.getColor());
             for (Piece p:pieces) {
@@ -27,6 +75,8 @@ public class MoveManager {
                     Board tryBreak=BoardCopier.createCopy(game.getBoard());
                     MoveExecutor.execute(tryBreak, trymove);
                     if (!CheckChecker.isPlayerInCheck(tryBreak, player.getColor())) {
+
+                        display(tryBreak);
                         canBreak=true;
                         break;
                     }

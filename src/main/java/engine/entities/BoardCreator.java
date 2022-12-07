@@ -13,14 +13,14 @@ public class BoardCreator {
     private final Player p2;
     // Board.getPieceAtAbsCoords(0,0) is the bottom-left square a1
     private String boardString =
-            "RNBQKBNR"
-            + "PPPPPPPP"
-            + "........"
-            + "........"
-            + "........"
-            + "........"
-            + "pppppppp"
-            + "rnbqkbnr";
+                      "rnbqkbnr"
+                    + "pppppppp"
+                    + "........"
+                    + "........"
+                    + "........"
+                    + "........"
+                    + "PPPPPPPP"
+                    + "RNBQKBNR" ;
 
     /**
      * Creates a new BoardCreator object.
