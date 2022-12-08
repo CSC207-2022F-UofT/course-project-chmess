@@ -42,7 +42,7 @@ public class PawnMovesGen extends MovesGenerator {
              // absolute pawn double move
             moves.add(move2);
         }
-        if (pos[1] == 4) { // checks en passant
+        if (pos[1] == 4 && board.getPreviousBoard()!=null) { // checks en passant
             /*Move prevMove = board.getPreviousMove();
             int[] origin1 = new int[]{pos[0] + 1, 6};
             int[] origin2 = new int[]{pos[0] - 1, 6};
