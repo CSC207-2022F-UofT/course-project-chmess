@@ -21,12 +21,12 @@ public class PlayerCopier {
 
         // The pieces need to be copies to produce a deep clone
         List<Piece> capturedPieces = oldPlayer.getCapturedPieces();
-        for (Piece piece : capturedPieces) {
+        for (Piece piece : capturedPieces) if (piece.isOnBoard())  {
             newPlayer.addCapturedPiece(piece.copy());
         }
 
         List<Piece> pieceList = oldPlayer.getPieceList();
-        for (Piece piece : pieceList) {
+        for (Piece piece : pieceList) if (piece.isOnBoard()) {
             newPlayer.addPiece(piece.copy());
         }
         return newPlayer;

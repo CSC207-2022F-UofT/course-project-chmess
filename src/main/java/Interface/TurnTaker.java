@@ -1,6 +1,8 @@
 package Interface;
 
+import engine.entities.Board;
 import engine.entities.Game;
+import engine.entities.Piece;
 import engine.move.Move;
 import engine.move.MoveManager;
 
@@ -31,6 +33,52 @@ public class TurnTaker {
         // input move by calling InputMoveInt
         InputMoveInt moveInput = new InputMove();
         String inputtedMove = moveInput.input(movesString,game.getBoard().hasMoved());
+
+        /*Board board=game.getBoard();
+        for (int y = Board.HEIGHT-1; y>=0; y--) {
+            for (int x=0; x<Board.WIDTH; x++) {
+                Piece piece = board.getPieceAtRelCoords(x, y);
+                if (piece == null) {
+                    System.out.print(".");
+                } else {
+                    String type = piece.getType();
+                    char pieceChar;
+                    switch (type) {
+                        case "pawn":
+                            pieceChar = 'p';
+                            break;
+                        case "knight":
+                            pieceChar = 'n';
+                            break;
+                        case "bishop":
+                            pieceChar = 'b';
+                            break;
+                        case "rook":
+                            pieceChar = 'r';
+                            break;
+                        case "queen":
+                            pieceChar = 'q';
+                            break;
+                        case "king":
+                            pieceChar = 'k';
+                            break;
+                        default:
+                            pieceChar = '.';
+                            break;
+                    }
+                    if (piece.getColor() == 'W') {
+                        System.out.print(Character.toUpperCase(pieceChar));
+                    } else {
+                        System.out.print(pieceChar);
+                    }
+                }
+            }
+            System.out.print("\n");
+        }*/
+
+
+
+
         if (Objects.equals(inputtedMove, "U")) {
             MoveManager.undoLastMove(game);
         }

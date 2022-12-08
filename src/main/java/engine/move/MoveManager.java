@@ -101,7 +101,55 @@ public class MoveManager {
         game.setBoard(BoardCopier.createCopy(oldBoard));
         game.getBoard().setPreviousBoard(oldBoard);
         // mutate board with move
-
+        /*
+        for (Piece p:game.getPlayers()[0].getPieceList()) {
+            System.out.print(p.getCoords()[0]);
+            System.out.print(p.getCoords()[1]);
+            System.out.print(p.getColor());
+            System.out.print(p.getType());
+            System.out.println(' ');
+        }
+        Board board=oldBoard;
+        for (int y = Board.HEIGHT-1; y>=0; y--) {
+            for (int x=0; x<Board.WIDTH; x++) {
+                Piece piece = board.getPieceAtRelCoords(x, y);
+                if (piece == null) {
+                    System.out.print(".");
+                } else {
+                    String type = piece.getType();
+                    char pieceChar;
+                    switch (type) {
+                        case "pawn":
+                            pieceChar = 'p';
+                            break;
+                        case "knight":
+                            pieceChar = 'n';
+                            break;
+                        case "bishop":
+                            pieceChar = 'b';
+                            break;
+                        case "rook":
+                            pieceChar = 'r';
+                            break;
+                        case "queen":
+                            pieceChar = 'q';
+                            break;
+                        case "king":
+                            pieceChar = 'k';
+                            break;
+                        default:
+                            pieceChar = '.';
+                            break;
+                    }
+                    if (piece.getColor() == 'W') {
+                        System.out.print(Character.toUpperCase(pieceChar));
+                    } else {
+                        System.out.print(pieceChar);
+                    }
+                }
+            }
+            System.out.print("\n");
+        }*/
 
         MoveExecutor.execute(game.getBoard(), move);
 

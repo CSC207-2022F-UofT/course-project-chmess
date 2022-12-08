@@ -61,7 +61,11 @@ public class Move {
             captured.remove();
             board.getPlayerOfPiece(piece).addCapturedPiece(captured);
         }
+
+
         movePiece(board, origin, destination);
+
+
 
         // Might want to refactor to avoid this repetition.
         piece.setHasMadeFirstMove();
