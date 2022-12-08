@@ -33,12 +33,13 @@ public class KingMovesGen extends MovesGenerator {
         }
         Piece rook1 = board.getPieceAtRelCoords(7, 0);
         Piece rook2 = board.getPieceAtRelCoords(0, 0);
-        if (king.hasMadeFirstMove() && rook1.getType().equals("rook") && rook1.hasMadeFirstMove()) { // TODO implement hasMadeFirstMove()
+        if (rook1!=null && !king.hasMadeFirstMove() && rook1.getType().equals("rook") && !rook1.hasMadeFirstMove()) { // TODO implement hasMadeFirstMove()
+            System.out.println("try");
             if (notAttacked(new int[][]{{6, 0}, {5, 0}, {4, 0}}, board, color) && isEmpty(new int[][]{{6, 0}, {5, 0}}, board)) {
                 moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {6, 0})));
             }
         }
-        if (king.hasMadeFirstMove() && rook2.getType().equals("rook") && rook2.hasMadeFirstMove()) {
+        if (rook2!=null && !king.hasMadeFirstMove() && rook2.getType().equals("rook") && !rook2.hasMadeFirstMove()) {
             if (notAttacked(new int[][]{{1, 0}, {2, 0}, {3, 0}, {4, 0}}, board, color) && isEmpty(new int[][]{{1, 0}, {2, 0}, {3, 0}}, board)) {
                 moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {2, 0})));
             }
@@ -52,14 +53,15 @@ public class KingMovesGen extends MovesGenerator {
      * is NOT under attack. Takes in relative coordinates.
      */
     private boolean notAttacked(int[][] destinations, Board board, char color) {
-        boolean notAttacking = true;
+        /*boolean notAttacking = true;
         List<Move> semiValid = board.semiValidMovesForColor(color);
         for (int[] d : destinations) {
             for (Move m : semiValid) {
                 if (m.destination == board.switchCoords(d)) { notAttacking = false; }
             }
         }
-        return notAttacking;
+        return notAttacking;*/
+        return true;
     }
     /**
      * Checks to see whether destination of move is already
@@ -68,8 +70,12 @@ public class KingMovesGen extends MovesGenerator {
     private boolean isEmpty (int[][] coords, Board board) {
         boolean empty = true;
         for (int[] coord : coords) {
-            Move testMove = new Move(new int[] {0, 0}, board.switchCoords(coord));
-            if (isOccupiedByFriendly(testMove, board) || isOccupiedByEnemy(testMove, board)) { empty = false; }
+            //Move testMove = new Move(new int[] {0, 0}, board.switchCoords(coord));
+            //if (isOccupiedByFriendly(testMove, board) || isOccupiedByEnemy(testMove, board)) { empty = false; }
+            if (board.getPieceAtAbsCoords(board.switchCoords(coord)[0],board.switchCoords(coord)[1])!=null) {
+                empty=false;
+                break;
+            }
         }
         return empty;
     }
