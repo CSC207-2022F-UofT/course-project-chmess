@@ -32,7 +32,7 @@ public class TurnTaker {
         InputMoveInt moveInput = new InputMove();
         String inputtedMove = moveInput.input(movesString,game.getBoard().hasMoved());
         if (Objects.equals(inputtedMove, "U")) {
-            PlayGame.undoMove(game);
+            MoveManager.undoLastMove(game);
         }
         else {
             MoveManager.makeMove(game, moves.get(movesString.indexOf(inputtedMove)));

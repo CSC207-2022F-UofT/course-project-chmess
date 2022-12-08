@@ -34,7 +34,9 @@ public class Board {
         }
         relativeBoard = board;
     }
-
+    /**
+     * Returns whether a move was made.
+     */
     public boolean hasMoved() {
         return prevBoard!=null;
     }
@@ -48,8 +50,7 @@ public class Board {
      * @return a clone of the board
      */
     public Board copy() {
-        BoardCopier bc = new BoardCopier();
-        return bc.createCopy(this);
+        return BoardCopier.createCopy(this);
     }
 
     /**
@@ -121,6 +122,12 @@ public class Board {
         indexOfCurPlayer=index;
     }
 
+    /**
+     * Return the Index in players[] of
+     * the player whose turn it is to make a move.
+     *
+     * @return the Player object
+     */
     public int getIndexOfCurplayer() {
         //return this.currentPlayer;
         return indexOfCurPlayer;
