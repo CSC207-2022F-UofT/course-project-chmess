@@ -35,12 +35,12 @@ public class KingMovesGen extends MovesGenerator {
         Piece rook2 = board.getPieceAtRelCoords(0, 0);
         if (rook1!=null && !king.hasMadeFirstMove() && rook1.getType().equals("rook") && !rook1.hasMadeFirstMove()) { // TODO implement hasMadeFirstMove()
             System.out.println("try");
-            if (notAttacked(new int[][]{{6, 0}, {5, 0}, {4, 0}}, board, color) && isEmpty(new int[][]{{6, 0}, {5, 0}}, board)) {
+            if (isEmpty(new int[][]{{6, 0}, {5, 0}}, board) && notAttacked(new int[][]{{6, 0}, {5, 0}, {4, 0}}, board, color)) {
                 moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {6, 0})));
             }
         }
         if (rook2!=null && !king.hasMadeFirstMove() && rook2.getType().equals("rook") && !rook2.hasMadeFirstMove()) {
-            if (notAttacked(new int[][]{{1, 0}, {2, 0}, {3, 0}, {4, 0}}, board, color) && isEmpty(new int[][]{{1, 0}, {2, 0}, {3, 0}}, board)) {
+            if (isEmpty(new int[][]{{1, 0}, {2, 0}, {3, 0}}, board) && notAttacked(new int[][]{{1, 0}, {2, 0}, {3, 0}, {4, 0}}, board, color)) {
                 moves.add(new CastleMove(board.switchCoords(pos), board.switchCoords(new int[] {2, 0})));
             }
         }
@@ -53,15 +53,14 @@ public class KingMovesGen extends MovesGenerator {
      * is NOT under attack. Takes in relative coordinates.
      */
     private boolean notAttacked(int[][] destinations, Board board, char color) {
-        /*boolean notAttacking = true;
-        List<Move> semiValid = board.semiValidMovesForColor(color);
+        boolean notAttacking = true;
+        List<Move> semiValid = board.semiValidMovesForColorExceptKing(color);
         for (int[] d : destinations) {
             for (Move m : semiValid) {
                 if (m.destination == board.switchCoords(d)) { notAttacking = false; }
             }
         }
-        return notAttacking;*/
-        return true;
+        return notAttacking;
     }
     /**
      * Checks to see whether destination of move is already

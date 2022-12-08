@@ -297,6 +297,20 @@ public class Board {
         return semiValidMoves;
     }
     /**
+     * Returns list of all semivalid moves all pieces except of given color
+     * can make.
+     * Used to check CastleMove
+     */
+    public List<Move> semiValidMovesForColorExceptKing(char color) {
+        List<Move> semiValidMoves = new ArrayList<>();
+        for (Piece p : getAllPiecesForColor(color)) if (!p.getType().equals("king")) {
+            for (Move m : p.generateMoves(this)) {
+                semiValidMoves.add(m);
+            }
+        }
+        return semiValidMoves;
+    }
+    /**
      * Returns list of pieces belonging to color passed in.
      */
     public List<Piece> getAllPiecesForColor(char color) {
