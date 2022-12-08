@@ -44,6 +44,7 @@ public class Player {
     }
 
     public void addCapturedPiece (Piece captured) {
+        captured.remove();
         this.points += captured.getPointValue();
         this.capturedPieces.add(captured);
     }

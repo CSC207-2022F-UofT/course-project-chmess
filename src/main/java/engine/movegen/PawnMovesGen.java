@@ -42,8 +42,8 @@ public class PawnMovesGen extends MovesGenerator {
              // absolute pawn double move
             moves.add(move2);
         }
-        if (pos[1] == 5) { // checks en passant    y=4 for another player's relboard
-            Move prevMove = board.getPreviousMove();
+        if (pos[1] == 4) { // checks en passant
+            /*Move prevMove = board.getPreviousMove();
             int[] origin1 = new int[]{pos[0] + 1, 6};
             int[] origin2 = new int[]{pos[0] - 1, 6};
             int[] dest1 = new int[]{pos[0] + 1, 4};
@@ -54,6 +54,36 @@ public class PawnMovesGen extends MovesGenerator {
                 moves.add(new EnPassantMove(board.switchCoords(pos), board.switchCoords(new int[]{dest1[0], dest1[1] + 1})));
             }
             if (preOri == origin2 && preDest == dest2 && board.getPieceAtRelCoords(preDest[0], preDest[1]).getType().equals("pawn")) {
+                moves.add(new EnPassantMove(board.switchCoords(pos), board.switchCoords(new int[]{dest2[0], dest2[1] + 1})));
+            }*/
+            Board prevBoard = board.getPreviousBoard();
+            int[] origin1 = board.switchCoords(new int[]{pos[0] + 1, 6});
+            int[] origin2 = board.switchCoords(new int[]{pos[0] - 1, 6});
+            int[] dest1 = board.switchCoords(new int[]{pos[0] + 1, 4});
+            int[] dest2 = board.switchCoords(new int[]{pos[0] - 1, 4});
+            //int[] preOri = board.switchCoords(prevMove.origin); //changing to relative
+            //int[] preDest = board.switchCoords(prevMove.destination);
+            boolean destIsPawnInBoard=
+                    board.getPieceAtAbsCoords(dest1[0],dest1[1])!=null
+                    && board.getPieceAtAbsCoords(dest1[0],dest1[1]).getType().equals("pawn");
+            boolean destIsNullInPreBoard=prevBoard.getPieceAtAbsCoords(dest1[0],dest1[1])==null;
+            boolean originIsPawnInPreBoard=
+                    prevBoard.getPieceAtAbsCoords(origin1[0],origin1[1])!=null
+                    && prevBoard.getPieceAtAbsCoords(origin1[0],origin1[1]).getType().equals("pawn");
+            boolean originIsNullInBoard=board.getPieceAtAbsCoords(origin1[0],origin1[1])==null;
+
+            if (destIsPawnInBoard && destIsNullInPreBoard && originIsPawnInPreBoard && originIsNullInBoard) {
+                moves.add(new EnPassantMove(board.switchCoords(pos), board.switchCoords(new int[]{dest1[0], dest1[1] + 1})));
+            }
+            destIsPawnInBoard=
+                    board.getPieceAtAbsCoords(dest2[0],dest2[1])!=null &&
+                            board.getPieceAtAbsCoords(dest2[0],dest2[1]).getType().equals("pawn");
+            destIsNullInPreBoard=prevBoard.getPieceAtAbsCoords(dest2[0],dest2[1])==null;
+            originIsPawnInPreBoard=
+                    prevBoard.getPieceAtAbsCoords(origin2[0],origin2[1])!=null
+                            && prevBoard.getPieceAtAbsCoords(origin2[0],origin2[1]).getType().equals("pawn");
+            originIsNullInBoard=board.getPieceAtAbsCoords(origin2[0],origin2[1])==null;
+            if (destIsPawnInBoard && destIsNullInPreBoard && originIsPawnInPreBoard && originIsNullInBoard) {
                 moves.add(new EnPassantMove(board.switchCoords(pos), board.switchCoords(new int[]{dest2[0], dest2[1] + 1})));
             }
         }

@@ -96,6 +96,7 @@ public class Move {
         Piece movingPiece = board.getPieceAtAbsCoords(origin[0], origin[1]);
         boolean isCapture = board.getPieceAtAbsCoords(destination[0], destination[1]) != null;
 
+
         StringBuilder sb = new StringBuilder();
         sb.append(getPieceString(movingPiece));
         sb.append(getChessCoords(origin));
