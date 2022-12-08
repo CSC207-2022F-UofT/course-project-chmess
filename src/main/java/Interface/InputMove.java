@@ -16,12 +16,12 @@ public class InputMove implements InputMoveInt{
      *
      * @return string representing algebraic notation of move
      */
-    public String input(List<String> validMoves) {
+    public String input(List<String> validMoves, boolean canUndo) {
         Scanner reader = new Scanner(System.in);
         while (true) {
             System.out.println("Input move from list of moves shown above: ");
             String c = reader.next();
-            if (Objects.equals(c, "U") || validMoves.contains(c)) {
+            if ((canUndo && Objects.equals(c, "U")) || validMoves.contains(c)) {
                 return c;
             }
             System.out.println("Invalid Move. ");

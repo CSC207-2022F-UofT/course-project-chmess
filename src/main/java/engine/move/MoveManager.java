@@ -125,6 +125,7 @@ public class MoveManager {
      * @param game
      */
     public static void undoLastMove(Game game) {
+
         game.setBoard(game.getBoard().getPreviousBoard());
         // TODO update points, pieces, gamestate?
     }

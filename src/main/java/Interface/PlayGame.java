@@ -22,7 +22,12 @@ public class PlayGame {
      * Reverts game to before the latest move was made.
      */
     public static void undoMove(Game game) {
-        MoveManager.undoLastMove(game);
+        if (game.getBoard().hasMoved()) {
+            MoveManager.undoLastMove(game);
+        }
+        else {
+            System.out.println("Invalid Move. ");
+        }
         PlayGame.play(game);
     }
 }

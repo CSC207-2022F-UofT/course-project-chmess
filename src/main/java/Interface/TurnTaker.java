@@ -30,15 +30,18 @@ public class TurnTaker {
         gameDisplay.display(game, movesString);
         // input move by calling InputMoveInt
         InputMoveInt moveInput = new InputMove();
-        String inputtedMove = moveInput.input(movesString);
+        String inputtedMove = moveInput.input(movesString,game.getBoard().hasMoved());
         if (Objects.equals(inputtedMove, "U")) {
             PlayGame.undoMove(game);
+        }
+        else {
+            MoveManager.makeMove(game, moves.get(movesString.indexOf(inputtedMove)));
         }
         // makes move by calling makeMove in MoveManager
 
 
         //movestring must contain inputtedmove
-        MoveManager.makeMove(game, moves.get(movesString.indexOf(inputtedMove)));
+        //MoveManager.makeMove(game, moves.get(movesString.indexOf(inputtedMove)));
         //System.out.println("Move succ");
         //MoveManager.makeMove(game, Move.getMoveFromNotation(inputtedMove));
     }

@@ -35,6 +35,9 @@ public class Board {
         relativeBoard = board;
     }
 
+    public boolean hasMoved() {
+        return prevBoard!=null;
+    }
     /**
      * Returns a deep clone of this Board instance.
      * More precisely, all arrays, Player instances, and Piece instances
