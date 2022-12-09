@@ -190,7 +190,7 @@ public class MoveManager {
         ori[1] = moveString.charAt(1);
         dest[0] = moveString.charAt(3);
         dest[1] = moveString.charAt(4);
-        return new Move (ori, dest);
+        return new Move(ori, dest);
 /*
         String[] pieceStrings = {"k", "q", "r", "b", "n"};
         String[] moveParams = moveString.split("");
@@ -223,6 +223,39 @@ public class MoveManager {
         }
 
         return null; */
+    }
+
+        /**
+         * Returns list of all semivalid moves all pieces except of given color
+         * can make.
+         * Used to check CastleMove
+         */
+        public static List<Move> semiValidMovesForColorExceptKing(char color, Board board) {
+            List<Move> semiValidMoves = new ArrayList<>();
+            for (Piece p : getAllPiecesForColor(color, board)) if (!p.getType().equals("king")) {
+                semiValidMoves.addAll(p.generateMoves(board));
+            }
+            return semiValidMoves;
+        }
+        /**
+         * Returns list of pieces belonging to color passed in.
+         */
+        public static List<Piece> getAllPiecesForColor(char color, Board board) {
+            List<Piece> piecesForColor = new ArrayList<>();
+            for (int y = 0; y < Board.HEIGHT; y++) {
+                for (int x = 0; x < Board.WIDTH; x++) {
+                    if (board.getPieceAtAbsCoords(x, y) != null) {
+                        if (board.getPieceAtAbsCoords(x, y).getColor() == color) {
+                            piecesForColor.add(board.getPieceAtAbsCoords(x, y));
+                        }
+                    }
+                }
+            }
+            return piecesForColor;
+        }
+
+
+
 
     }
-}
+

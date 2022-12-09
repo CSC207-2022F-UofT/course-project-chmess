@@ -283,33 +283,7 @@ public class Board {
         //if (this.currentPlayer.getColor() == 'B') relCoords[1] = HEIGHT - 1 - coord[1];
         return newCoords;
     }
-    /**
-     * Returns list of all semivalid moves all pieces of given color
-     * can make.
-     */
-    public List<Move> semiValidMovesForColor(char color) {
-        List<Move> semiValidMoves = new ArrayList<>();
-        for (Piece p : getAllPiecesForColor(color)) {
-            for (Move m : p.generateMoves(this)) {
-                semiValidMoves.add(m);
-            }
-        }
-        return semiValidMoves;
-    }
-    /**
-     * Returns list of all semivalid moves all pieces except of given color
-     * can make.
-     * Used to check CastleMove
-     */
-    public List<Move> semiValidMovesForColorExceptKing(char color) {
-        List<Move> semiValidMoves = new ArrayList<>();
-        for (Piece p : getAllPiecesForColor(color)) if (!p.getType().equals("king")) {
-            for (Move m : p.generateMoves(this)) {
-                semiValidMoves.add(m);
-            }
-        }
-        return semiValidMoves;
-    }
+
     /**
      * Returns list of pieces belonging to color passed in.
      */

@@ -54,7 +54,7 @@ public class KingMovesGen extends MovesGenerator {
      */
     private boolean notAttacked(int[][] destinations, Board board, char color) {
         boolean notAttacking = true;
-        List<Move> semiValid = board.semiValidMovesForColorExceptKing(color);
+        List<Move> semiValid = MoveManager.semiValidMovesForColorExceptKing(color, board);
         for (int[] d : destinations) {
             for (Move m : semiValid) {
                 if (m.destination == board.switchCoords(d)) { notAttacking = false; }

@@ -1,6 +1,8 @@
 package engine.entities;
 
 
+import engine.move.MoveManager;
+
 /**
  * A creator for the "typical" Board instance.
  * The created Board object will have new pieces placed
@@ -141,8 +143,8 @@ public class BoardCreator {
         Board board = new Board();
         placeAllPieces(board);
 
-        p1.setPieces(board.getAllPiecesForColor(p1.getColor()));
-        p2.setPieces(board.getAllPiecesForColor(p2.getColor()));
+        p1.setPieces(MoveManager.getAllPiecesForColor(p1.getColor(), board));
+        p2.setPieces(MoveManager.getAllPiecesForColor(p2.getColor(), board));
 
         board.setPlayers(new Player[]{p1, p2});
         board.setCurrentPlayer(0);
