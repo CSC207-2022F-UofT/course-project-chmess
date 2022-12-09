@@ -23,9 +23,9 @@ public class Chmess {
     private static ArrayList<String> askPlayers() {
         ArrayList<String> l = new ArrayList<>();
         Scanner reader = new Scanner(System.in);
-        System.out.println("Enter Player 1 name: ");
+        System.out.println("Enter Player 1 name (White): ");
         l.add(reader.next());
-        System.out.println("Enter Player 2 name: ");
+        System.out.println("Enter Player 2 name (Black): ");
         l.add(reader.next());
         return l;
     }
@@ -44,7 +44,7 @@ public class Chmess {
             } else if (Objects.equals(c, "L")) {
                 System.out.println("Enter file name: ");
                 String fileName = reader.next();
-                ImportInt importStarting = new Import();
+                ImportPositionInt importStarting = new ImportPosition();
                 ArrayList<String> players = askPlayers();
                 GameCreator gameCreate = new GameCreator();
                 PlayGame.play(gameCreate.createImport(players.get(0), players.get(1), importStarting.importGame(fileName)));

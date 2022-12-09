@@ -15,6 +15,7 @@ public class PlayGame {
         while (game.getGameState() != '$' && game.getGameState() != '#') {
             TurnTaker.takeTurn(game);
             }
+        game.getBoard().advanceCurrentPlayer();
         DisplayEndInt dis = new DisplayEnd();
         dis.display(game.getBoard().getCurrentPlayer().name, game.getGameState());
         }

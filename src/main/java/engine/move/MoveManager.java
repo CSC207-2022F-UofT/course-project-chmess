@@ -159,8 +159,6 @@ public class MoveManager {
 
         updateGamestate(game);
 
-        // TODO update gamestate
-        // TODO update points, pieces captured
     }
 
     /**
@@ -175,7 +173,6 @@ public class MoveManager {
     public static void undoLastMove(Game game) {
 
         game.setBoard(game.getBoard().getPreviousBoard());
-        // TODO update points, pieces, gamestate?
     }
 
     /**
@@ -186,7 +183,6 @@ public class MoveManager {
      * @return move instance
      */
     public static Move getMoveFromNotation(Game game, String moveString) {
-        // TODO
         // calls Move constructor to create new instance of move
         int[] ori = new int[2];
         int[] dest = new int[2];

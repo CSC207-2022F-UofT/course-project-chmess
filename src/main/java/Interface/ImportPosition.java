@@ -3,7 +3,7 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
-public class Import implements ImportInt{
+public class ImportPosition implements ImportPositionInt{
     /**
      * Imports starting position from given file.
      *

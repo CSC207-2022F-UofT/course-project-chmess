@@ -1,5 +1,5 @@
 package Interface;
 
-public interface ImportInt {
+public interface ImportPositionInt {
     public String importGame (String fileName);
 }
