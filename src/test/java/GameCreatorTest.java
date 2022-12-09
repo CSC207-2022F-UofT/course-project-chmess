@@ -1,7 +1,7 @@
+import engine.entities.Game;
+import engine.entities.GameCreator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import engine.entities.*;
 
 class GameCreatorTest {
     @Test

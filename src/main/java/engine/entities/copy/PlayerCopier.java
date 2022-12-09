@@ -26,7 +26,7 @@ public class PlayerCopier {
         }
 
         List<Piece> pieceList = oldPlayer.getPieceList();
-        for (Piece piece : pieceList) {
+        for (Piece piece : pieceList) if (piece.isOnBoard()) {
             newPlayer.addPiece(piece.copy());
         }
         return newPlayer;

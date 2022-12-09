@@ -1,5 +1,7 @@
 package engine.entities;
 
+import engine.move.Move;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -37,7 +39,12 @@ public class Player {
         return this.points;
     }
 
+    public void setPieces(List<Piece> pieces) {
+        this.pieces = pieces;
+    }
+
     public void addCapturedPiece (Piece captured) {
+        captured.remove();
         this.points += captured.getPointValue();
         this.capturedPieces.add(captured);
     }
@@ -53,4 +60,17 @@ public class Player {
     public void addPiece(Piece newPiece) {
         this.pieces.add(newPiece);
     }
+    /**
+     * Returns all moves a player can make.
+     */
+    public List<Move> generatePlayerMoves (Board board) {
+        List<Move> moves = new ArrayList<Move>();
+        for (Piece piece : this.pieces) if (piece.isOnBoard()) {
+
+
+            moves.addAll(piece.generateMoves(board));
+        }
+        return moves;
+    }
+
 }

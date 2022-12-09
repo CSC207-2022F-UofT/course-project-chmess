@@ -1,5 +1,8 @@
 package engine.entities;
 
+
+import engine.move.MoveManager;
+
 /**
  * A creator for the "typical" Board instance.
  * The created Board object will have new pieces placed
@@ -11,15 +14,15 @@ public class BoardCreator {
     private final Player p1;
     private final Player p2;
     // Board.getPieceAtAbsCoords(0,0) is the bottom-left square a1
-    private final String boardString =
-            "RNBQKBNR"
-            + "PPPPPPPP"
-            + "........"
-            + "........"
-            + "........"
-            + "........"
-            + "pppppppp"
-            + "rnbqkbnr";
+    private String boardString =
+                      "RNBQKBNR"
+                    + "PPPPPPPP"
+                    + "........"
+                    + "........"
+                    + "........"
+                    + "........"
+                    + "pppppppp"
+                    + "rnbqkbnr";
 
     /**
      * Creates a new BoardCreator object.
@@ -32,6 +35,16 @@ public class BoardCreator {
     public BoardCreator(Player p1, Player p2) {
         this.p1 = p1;
         this.p2 = p2;
+    }
+
+    /**
+     * Changes default starting position to board
+     * as represented in startingPosition.
+     *
+     * @param startingPosition List of strings where each string represents one row of the board
+     */
+    public void changeStartingPosition(String startingPosition) {
+        this.boardString = startingPosition;
     }
 
     /**
@@ -129,6 +142,12 @@ public class BoardCreator {
     public Board create() {
         Board board = new Board();
         placeAllPieces(board);
+
+        p1.setPieces(MoveManager.getAllPiecesForColor(p1.getColor(), board));
+        p2.setPieces(MoveManager.getAllPiecesForColor(p2.getColor(), board));
+
+        board.setPlayers(new Player[]{p1, p2});
+        board.setCurrentPlayer(0);
         return board;
     }
 }

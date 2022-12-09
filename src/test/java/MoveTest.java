@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import engine.entities.*;
 import engine.move.*;
+import engine.entities.*;
 
 public class MoveTest {
     protected final PieceFactory pf = new PieceFactory();
@@ -92,9 +92,9 @@ public class MoveTest {
         piece.setColor(color);
         board.setPieceAtAbsCoords(x, y, piece);
         piece.setCoords(x, y);
+
         return piece;
     }
-
     protected Board createEmptyBoard(char currentPlayerColor) {
         Board board = new Board();
         Player p1 = new Player("Player 1", 'W');
@@ -102,9 +102,9 @@ public class MoveTest {
         Player[] players = {p1, p2};
         board.setPlayers(players);
         if (currentPlayerColor == 'W') {
-            board.setCurrentPlayer(p1);
+            board.setCurrentPlayer(0);
         } else {
-            board.setCurrentPlayer(p2);
+            board.setCurrentPlayer(1);
         }
 
         return board;

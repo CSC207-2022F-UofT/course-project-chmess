@@ -1,7 +1,9 @@
+import engine.entities.copy.BoardCopier;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import engine.entities.Board;
+import engine.entities.BoardCreator;
 import engine.entities.Piece;
 import engine.entities.PieceFactory;
 import engine.entities.Player;
@@ -16,7 +18,12 @@ class BoardCopierTest {
         piece.setCoords(0,0);
         board.setPieceAtAbsCoords(0, 0, piece);
 
+
+        board.getPlayers()[0].setPieces(board.getAllPiecesForColor(board.getPlayers()[0].getColor()));
+        board.getPlayers()[1].setPieces(board.getAllPiecesForColor(board.getPlayers()[1].getColor()));
+
         Board copy = board.copy();
+        //Board copy=BoardCopier.createCopy(board);
 
         Piece piece_original = board.getPieceAtAbsCoords(0, 0);
         Piece piece_copy = copy.getPieceAtAbsCoords(0, 0);
@@ -60,6 +67,7 @@ class BoardCopierTest {
         Player p2 = new Player("Player 2", 'B');
         Player[] players = {p1, p2};
         board.setPlayers(players);
+        board.setCurrentPlayer(0);
         return board;
     }
 }

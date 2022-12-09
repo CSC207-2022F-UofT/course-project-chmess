@@ -26,7 +26,7 @@ class QueenMovesGenTest {
     }
     @Test
     public void queenBottomRightCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece queen = new Piece();
         queen.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(7, 0, queen);
@@ -61,7 +61,7 @@ class QueenMovesGenTest {
     }
     @Test
     public void queenBottomLeftCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece queen = new Piece();
         queen.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(0, 0, queen);
@@ -97,7 +97,7 @@ class QueenMovesGenTest {
     }
     @Test
     public void queenTopLeftCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece queen = new Piece();
         queen.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(0, 7, queen);
@@ -133,7 +133,7 @@ class QueenMovesGenTest {
     }
     @Test
     public void queenTopRightCornerEmptyBoard() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece queen = new Piece();
         queen.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(7, 7, queen);
@@ -169,7 +169,7 @@ class QueenMovesGenTest {
     }
     @Test
     public void queenNearMidLeftSideEnemiesBlockingCompleteRightSide() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece queen = new Piece();
         queen.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(1, 3, queen);
@@ -218,7 +218,7 @@ class QueenMovesGenTest {
     }
     @Test
     public void queenNearBottomRightCornerFriendlyBlockingBottomAndRight() {
-        Board board = CreateEmptyBoard();
+        Board board = createEmptyBoard();
         Piece queen = new Piece();
         queen.setColor(board.getPlayers()[0].getColor());
         board.setPieceAtAbsCoords(5, 2, queen);
@@ -263,7 +263,7 @@ class QueenMovesGenTest {
             Assertions.assertTrue(isMatch);
         }
     }
-    private Board CreateEmptyBoard() {
+    private Board createEmptyBoard() {
         Player p1 = new Player("Player 1", 'W');
         Player p2 = new Player("Player 2", 'B');
         Board board = new Board();

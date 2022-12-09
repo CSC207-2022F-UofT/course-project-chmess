@@ -24,9 +24,13 @@ public abstract class MovesGenerator {
      * @param board the board on which these moves exist
      */
     public void removeInvalid (List<Move> moves, Board board) {
-        for(Move move : moves){
-            if(!(checkTile(move, board))){
-                moves.remove(move);
+        int i = 0;
+        while (i < moves.size()) {
+            Move move = moves.get(i);
+            if (!(checkTile(move, board))) {
+                moves.remove(i);
+            } else {
+                i++;
             }
         }
     }
@@ -60,6 +64,7 @@ public abstract class MovesGenerator {
     public boolean isOccupiedByFriendly (Move move, Board board) {
         //ensure destination tile is occupied
         if(board.getPieceAtAbsCoords(move.destination[0], move.destination[1]) != null){
+
             Piece movingPiece = board.getPieceAtAbsCoords(move.origin[0], move.origin[1]);
             Piece destPiece = board.getPieceAtAbsCoords(move.destination[0], move.destination[1]);
             //returns true if moving and destination pieces have same colours

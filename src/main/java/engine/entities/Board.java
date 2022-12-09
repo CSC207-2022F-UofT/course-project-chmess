@@ -5,6 +5,7 @@ import java.util.List;
 
 import engine.move.Move;
 import engine.entities.copy.BoardCopier;
+
 /**
  * A board of chess pieces.
  */
@@ -17,7 +18,10 @@ public class Board {
     // the first player has color 'W' (white)
     // the second player has color 'B' (black)
     private Player[] players = new Player[2];
-    private Player currentPlayer;
+    //private Player currentPlayer;
+    //private Player lastPlayer;
+    private int indexOfCurPlayer;
+    private Board prevBoard;
 
     /**
      * Creates an empty board with no players.
@@ -30,7 +34,12 @@ public class Board {
         }
         relativeBoard = board;
     }
-
+    /**
+     * Returns whether a move was made.
+     */
+    public boolean hasMoved() {
+        return prevBoard!=null;
+    }
     /**
      * Returns a deep clone of this Board instance.
      * More precisely, all arrays, Player instances, and Piece instances
@@ -41,8 +50,7 @@ public class Board {
      * @return a clone of the board
      */
     public Board copy() {
-        BoardCopier bc = new BoardCopier();
-        return bc.createCopy(this);
+        return BoardCopier.createCopy(this);
     }
 
     /**
@@ -87,8 +95,10 @@ public class Board {
      * @return the preceding Board object
      */
     public Board getPreviousBoard() {
-        // TODO
-        return null;
+        return this.prevBoard;
+    }
+    public void setPreviousBoard(Board board) {
+        this.prevBoard = board;
     }
 
     /**
@@ -104,12 +114,24 @@ public class Board {
     /**
      * Sets current player to the given player.
      *
-     * @param player the player whose turn it is to make a move
+     * @param index the index of player whose turn it is to make a move
      */
-    public void setCurrentPlayer(Player player) {
-        this.currentPlayer = player;
+    public void setCurrentPlayer(int index) {
+        //this.currentPlayer = players[index];
+        //this.lastPlayer = lastp;
+        indexOfCurPlayer=index;
     }
 
+    /**
+     * Return the Index in players[] of
+     * the player whose turn it is to make a move.
+     *
+     * @return the Player object
+     */
+    public int getIndexOfCurplayer() {
+        //return this.currentPlayer;
+        return indexOfCurPlayer;
+    }
     /**
      * Return the Player object corresponding to
      * the player whose turn it is to make a move.
@@ -117,7 +139,8 @@ public class Board {
      * @return the Player object
      */
     public Player getCurrentPlayer() {
-        return this.currentPlayer;
+        //return this.currentPlayer;
+        return this.players[indexOfCurPlayer];
     }
 
     /**
@@ -128,12 +151,16 @@ public class Board {
      * set it to the first player in the array.
      */
     public void advanceCurrentPlayer() {
-        int i;
+        /*int i;
         for (i = 0; i < players.length; i++) {
             if (players[i] == currentPlayer) break;
         }
-        int newIndex = (i + 1) % players.length;
-        this.currentPlayer = players[newIndex];
+        int newIndex = (i + 1) % players.length;*/
+        indexOfCurPlayer=(indexOfCurPlayer+1)% players.length;
+
+        /*Player temp=this.lastPlayer;
+        this.lastPlayer=this.currentPlayer;*/
+        //this.currentPlayer = players[newIndex];
     }
 
     /**
@@ -153,7 +180,10 @@ public class Board {
     }
 
     public Piece getPieceAtAbsCoords(int x, int y) {
-        return board[y][x];
+        if (!(x < 0 || x > WIDTH - 1 || y < 0 || y > HEIGHT - 1)) {
+            return board[y][x];
+        }
+        return null;
     }
 
     /**
@@ -239,7 +269,6 @@ public class Board {
     public void selectMirrorPov() {
         this.relativeBoard = mirror;
     }
-
     /**
      * Returns the absolute coordinates corresponding to the relative coordinates
      * or vice versa.
@@ -247,33 +276,25 @@ public class Board {
      * @see Board#setPieceAtRelCoords(int, int, Piece) setPieceAtRelCoords
      */
     public int[] switchCoords(int[] coord) {
-        int[] absCoords = coord;
-        if (relativeBoard != board) absCoords[1] = HEIGHT - 1 - coord[1];
+        int[] newCoords = new int[2];
+        newCoords[0]=coord[0];
+        newCoords[1]=coord[1];
+        if (this.relativeBoard != this.board) newCoords[1] = HEIGHT - 1 - coord[1];
+        //if (this.currentPlayer.getColor() == 'B') relCoords[1] = HEIGHT - 1 - coord[1];
+        return newCoords;
+    }
 
-        return absCoords;
-    }
-    /**
-     * Returns list of all semivalid moves all pieces of given color
-     * can make.
-     */
-    public List<Move> semiValidMovesForColor(char color) {
-        List<Move> semiValidMoves = null;
-        for (Piece p : getAllPiecesForColor(color)) {
-            for (Move m : p.generateMoves()) {
-                semiValidMoves.add(m);
-            }
-        }
-        return semiValidMoves;
-    }
     /**
      * Returns list of pieces belonging to color passed in.
      */
-    private List<Piece> getAllPiecesForColor(char color) {
-        List<Piece> piecesForColor = null;
+    public List<Piece> getAllPiecesForColor(char color) {
+        List<Piece> piecesForColor = new ArrayList<>();
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
-                if (getPieceAtAbsCoords(x, y).getColor() == color) {
-                    piecesForColor.add(getPieceAtAbsCoords(x, y));
+                if (getPieceAtAbsCoords(x, y) != null) {
+                    if (getPieceAtAbsCoords(x, y).getColor() == color) {
+                        piecesForColor.add(getPieceAtAbsCoords(x, y));
+                    }
                 }
             }
         }
@@ -291,4 +312,14 @@ public class Board {
         }
         return pieces;
     }
+
+    public List<Move> generatePlayerMoves (Player player) {
+        List<Move> moves = new ArrayList<Move>();
+        for (Piece piece : getAllPiecesForColor(player.getColor())) {
+            //System.out.println("HaHAHAHAHAA");
+            moves.addAll(piece.generateMoves(this));
+        }
+        return moves;
+    }
+
 }

@@ -14,6 +14,7 @@ public class Piece {
     private int pointValue;
     private MovesGenerator mg;
     private boolean hasMoved = false;
+    private boolean isOnBoard = true;
 
     public Piece() {
         this.coords = new int[2];
@@ -73,6 +74,9 @@ public class Piece {
         return hasMoved;
     }
 
+    public void remove() {isOnBoard=false;}
+    public boolean isOnBoard() {return isOnBoard;}
+
     public void setCoords(int x, int y) {
         this.coords[0] = x;
         this.coords[1] = y;
@@ -89,12 +93,12 @@ public class Piece {
      *
      * @return list of semivalid moves
      */
-    public List<Move> generateMoves() {
+    public List<Move> generateMoves(Board board) {
         // TODO. Note: Should use mg.
         // mg probably needs to take at least the board
         // and the coordinates of this piece (a priori
         // it knows nothing except *how* to generate moves)
-        return null;
+        return mg.generate(board, this);
     }
 
     public void setMovesGenerator(MovesGenerator mg) {

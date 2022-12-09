@@ -101,7 +101,7 @@ class BoardCreatorTest {
 
         for (int x = 0; x < 8; x++) {
             Assertions.assertEquals('W', board.getPieceAtAbsCoords(x, 0).getColor());
-            Assertions.assertEquals('W', board.getPieceAtAbsCoords(x, 0).getColor());
+            Assertions.assertEquals('W', board.getPieceAtAbsCoords(x, 1).getColor());
             Assertions.assertEquals('B', board.getPieceAtAbsCoords(x, 6).getColor());
             Assertions.assertEquals('B', board.getPieceAtAbsCoords(x, 7).getColor());
         }

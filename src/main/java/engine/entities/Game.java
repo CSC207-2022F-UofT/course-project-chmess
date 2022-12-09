@@ -1,5 +1,8 @@
 package engine.entities;
 
+import engine.entities.Board;
+import engine.entities.Player;
+
 /**
  * A game of chess.
  */

@@ -56,10 +56,17 @@ public class Move {
     public void execute(Board board) {
         Piece piece = board.getPieceAtAbsCoords(origin[0], origin[1]);
         Piece captured = removePiece(board, destination);
+
         if (captured != null) {
+            captured.remove();
             board.getPlayerOfPiece(piece).addCapturedPiece(captured);
         }
+
+
         movePiece(board, origin, destination);
+
+
+
         // Might want to refactor to avoid this repetition.
         piece.setHasMadeFirstMove();
         board.advanceCurrentPlayer();
@@ -93,6 +100,7 @@ public class Move {
         Piece movingPiece = board.getPieceAtAbsCoords(origin[0], origin[1]);
         boolean isCapture = board.getPieceAtAbsCoords(destination[0], destination[1]) != null;
 
+
         StringBuilder sb = new StringBuilder();
         sb.append(getPieceString(movingPiece));
         sb.append(getChessCoords(origin));
@@ -102,12 +110,45 @@ public class Move {
         sb.append(getChessCoords(destination));
         return sb.toString();
     }
+    /**
+     * Converts algebraic notation to move instance and returns
+     * that move instance.
+     *
+     * @param moveString String representing algebraic notation of move
+     * @return move instance
+     */
+    public static Move getMoveFromNotation(String moveString) {
+        // TODO
+        // calls Move constructor to create new instance of move
+
+        String[] pieceStrings = {"k", "q", "r", "b", "n"};
+        String[] moveParams = moveString.split("");
+
+//        if ("O-O".equals(moveString)) {
+//            CastleMove castle = new CastleMove();
+//        } else if ("O-O-O".equals(moveString)) {
+//            // TODO
+//            // castling
+//        } else if (moveString.contains("=")) {
+//            // TODO
+//            // promotion
+//        } else if (moveString.contains("x")) {
+//            // TODO
+//            // capture
+//        } else {
+//            // TODO
+//            // normal move
+//        }
+
+        return null;
+    }
+
 
     protected String getChessCoords(int[] coords) {
         int x = coords[0];
         int y = coords[1];
         char col = (char)((int) 'a' + x);
-        String row = Integer.toString(y + 1);
+        String row = Integer.toString(y+1);
         return col + row;
     }
 
